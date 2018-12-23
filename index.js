@@ -146,6 +146,11 @@ $(document).ready(function () {
       this.echo(commands.source(command.split(' ')[1]));
     }
 
+    // The command was a comment so just ignore it
+    else if (command.startsWith('#')) {
+      this.echo('');
+    }
+
     else {
       this.echo(commands.error_msg(command))
     }
