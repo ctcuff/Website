@@ -7,19 +7,18 @@ body {
 .header {
   background-color: #2b2b2b;
   padding: 8px;
-  font-size: 24px;
-  color: white;
+  font-size: 16px;
   top: 0;
   width: 100%;
   position: fixed;
-  z-index: 1000;
-  overflow: hidden;
 }
 
-.header-right {
-  float: right;
-  width: 42px;
-  height: auto;
+.header a {
+  float: left;
+  text-align: center;
+  padding: 8px;
+  line-height: 20px;
+  color: white;
 }
 
 .terminal, .terminal-wrapper {
@@ -49,12 +48,6 @@ body {
 }
 
 #github-btn {
-  font-size: 42px;
+  font-size: 34px;
   color: white
 }
-
-#email-btn {
-  font-size: 42px;
-  color: white
-}
-
