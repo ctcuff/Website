@@ -1,5 +1,9 @@
+$terminal-font-size: 19px;
+$terminal-background-color: #131846;
+$terminal-text-color: white;
+
 body {
-  background: #131846;
+  background: $terminal-background-color;
   font-family: Consolas, serif;
   padding-top: 25px;
 }
@@ -12,13 +16,14 @@ body {
   width: 100%;
   z-index: 1000;
   position: fixed;
-}
-.header a {
-  float: left;
-  text-align: center;
-  padding: 8px;
-  line-height: 20px;
-  color: white;
+
+  a {
+    float: left;
+    text-align: center;
+    padding: 8px;
+    line-height: 20px;
+    color: white;
+  }
 }
 
 .terminal, .terminal-wrapper {
@@ -27,27 +32,24 @@ body {
 }
 
 .terminal .terminal-output div span {
-  font-size: 19px;
+  font-size: $terminal-font-size;
   margin-bottom: 18px;
-  color: white;
+  color: $terminal-text-color;
 }
 
-.terminal .terminal-output > :not(.raw) a[href] {
+.terminal .terminal-output>:not(.raw) a[href] {
   color: white;
-  font-size: 19px;
-}
-.terminal .terminal-output > :not(.raw) a[href] :hover {
-  color: #969696;
+  font-size: $terminal-font-size;
 }
 
 .cmd .prompt > span {
-  font-size: 19px;
+  font-size: $terminal-font-size;
   margin-bottom: 16px;
 }
 
 .cmd span[data-text] span {
-  font-size: 19px;
-  color: white;
+  font-size: $terminal-font-size;
+  color: $terminal-text-color;
 }
 
 .t {
@@ -57,7 +59,5 @@ body {
 
 #github-btn {
   font-size: 34px;
-  color: white;
+  color: white
 }
-
-/*# sourceMappingURL=style.css.map */
