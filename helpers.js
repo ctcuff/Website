@@ -17,14 +17,14 @@ const projects = {
     {
       name: 'AlexaClassScheduler',
       description: 'An Alexa skill that remembers your classes for you (adios calendars).',
-      languages: ['Python', 'Kotlin'],
+      languages: ['Python'],
       source: 'https://github.com/ctcuff/AlexaClassScheduler'
     },
     {
-      name: 'UCFParking',
-      description: "An app that shows how full each parking garage is (pro-tip, don't park past 11AM)",
-      languages: ['Kotlin'],
-      source: 'https://github.com/ctcuff/ucfparking'
+      name: 'UCFParking-API',
+      description: "An API / Website that shows how full each garage was at each hour everyday.",
+      languages: ['Javascript', 'Python'],
+      source: 'https://github.com/ctcuff/UCFParking-API'
     }
   ]
 };
