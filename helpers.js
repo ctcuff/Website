@@ -15,10 +15,10 @@ const projects = {
       source: 'https://github.com/ctcuff/Tweety-Android'
     },
     {
-      name: 'AlexaClassScheduler',
-      description: 'An Alexa skill that remembers your classes for you (adios calendars).',
-      languages: ['Python'],
-      source: 'https://github.com/ctcuff/AlexaClassScheduler'
+      name: 'MotionPy',
+      description: "A motion detection system for a RaspberryPi 3 along with an Android app to control it.",
+      languages: ['Python, Kotlin'],
+      source: 'https://github.com/ctcuff/MotionPy'
     },
     {
       name: 'UCFParking-API',
