@@ -1,0 +1,31 @@
+$transitionTime: 0.3s;
+
+* {
+  transition: all $transitionTime ease-out;
+}
+
+body {
+  overflow-x: hidden;
+}
+
+::-webkit-scrollbar {
+  width: 8px;
+}
+
+::-webkit-scrollbar-track {
+  background: #fff;
+}
+
+::-webkit-scrollbar-thumb {
+  background: #b7b7b7;
+}
+
+::-webkit-scrollbar-thumb:hover {
+  background: #838383;
+}
+
+@media screen and (max-width: 600px){
+  .display-4 {
+    font-size: 42px;
+  }
+}

@@ -1,0 +1,25 @@
+{
+  "name": "portfolio_react",
+  "version": "0.1.0",
+  "private": true,
+  "homepage": "https://ctcuff.github.io/ctcuff.github.io",
+  "dependencies": {
+    "react": "^16.8.6",
+    "react-dom": "^16.8.6",
+    "react-scripts": "0.9.x",
+    "react-bootstrap": "latest",
+    "react-scroll": "latest"
+  },
+  "devDependencies": {},
+  "scripts": {
+    "start": "react-scripts start",
+    "build": "react-scripts build",
+    "test": "react-scripts test --env=jsdom",
+    "eject": "react-scripts eject",
+    "prefix-css": "postcss src/styles/*.css --use autoprefixer -d src/styles/",
+    "compile-sass": "node scripts/compile-sass.js && npm run prefix-css",
+    "remove-css": "rm src/styles/*.css && rm src/styles/*.map",
+    "predeploy": "npm run build",
+    "deploy": "gh-pages -d build -b master"
+  }
+}

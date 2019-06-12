@@ -1,0 +1,50 @@
+@keyframes Profile_slideDown {
+  0% {
+    opacity: 0;
+    transform: translateY(-150%);
+  }
+  100% {
+    opacity: 1;
+    transform: translateY(0);
+  }
+}
+
+
+.Profile_container {
+  height: 100vh;
+  display: flex;
+  flex-direction: column;
+  text-align: center;
+}
+
+.Profile_col {
+  margin: auto;
+}
+
+.Profile_col > a {
+  font-size: 32px;
+  text-decoration: none;
+}
+
+.Profile_row {
+  margin: 0;
+  flex: 5;
+}
+
+.Profile_image-header {
+  opacity: 0;
+  animation: Profile_slideDown 2s ease 0s forwards;
+}
+
+$animClasses: Profile_col-about Profile_col-projects Profile_col-contact;
+// The delay of the first animation
+$initialDelay: 1.2s;
+// The time it takes for the next animations to trigger
+$additionalDelay: 0.5;
+
+@for $i from 1 through length($animClasses) {
+  .#{nth($animClasses, $i)} {
+    opacity: 0;
+    animation: Profile_slideDown 2s ease $initialDelay + (($i - 1) * $additionalDelay) forwards;
+  }
+}
