@@ -16,8 +16,8 @@
     "build": "react-scripts build",
     "test": "react-scripts test --env=jsdom",
     "eject": "react-scripts eject",
-    "prefix-css": "postcss src/styles/*.css --use autoprefixer -d src/styles/",
-    "compile-sass": "node scripts/compile-sass.js && npm run prefix-css",
+    "compile-sass": "node scripts/compile-sass.js",
+    "prefix-css": "node run compile-sass && postcss src/styles/*.css --use autoprefixer -d src/styles/",
     "remove-css": "rm src/styles/*.css && rm src/styles/*.map",
     "predeploy": "npm run build",
     "deploy": "gh-pages -d build -b master"
