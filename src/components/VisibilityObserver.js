@@ -1,4 +1,5 @@
 import React, { Component } from 'react';
+import ReactDOM from 'react-dom';
 
 /**
  * Used to determine when a Component becomes visible when scrolling
@@ -13,6 +14,7 @@ export default class VisibilityObserver extends Component {
   }
 
   componentDidMount() {
+    this.node = ReactDOM.findDOMNode(this);
     window.addEventListener('scroll', this.isScrolledIntoView);
   }
 
@@ -21,17 +23,17 @@ export default class VisibilityObserver extends Component {
   }
 
   isScrolledIntoView = () => {
-    // Makes sure this event only fires when the element
-    // comes into view for the first time
-    if (this.state.triggered) {
+    // Makes sure this only fires once if the once
+    // prop was passed into this component
+    if (this.state.triggered && this.props.once) {
       return;
     }
 
-    const { watchId, onVisible } = this.props;
-    const elem = document.getElementById(watchId);
+    const { onVisible, delay } = this.props;
+    const elem = this.node;
 
     if (!elem) {
-      console.error(`Element ${watchId} was not found`);
+      console.error(`Element was not found`);
       return;
     }
 
@@ -42,12 +44,19 @@ export default class VisibilityObserver extends Component {
     // Ensures this event doesn't fire a billion times
     // every time we scroll
     if (this.state.visible !== isVisible) {
-      this.setState({ triggered: true });
-      setTimeout(onVisible, this.props.delay || 0);
+      this.setState({
+        triggered: true,
+        visible: isVisible
+      });
+      setTimeout(() => onVisible(isVisible), delay || 0);
     }
   };
 
   render() {
-    return <div>{this.props.children}</div>
+    return (
+      <div className={this.props.className} id={this.props.id}>
+        {this.props.children}
+      </div>
+    );
   }
 }

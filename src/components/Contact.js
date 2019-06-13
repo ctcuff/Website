@@ -38,42 +38,31 @@ export default class Contact extends Component {
 
     animations.forEach((anim, i) => {
       // Applies the animation to the <Image/> tag
-      elements[i].firstElementChild.firstElementChild.classList.add(anim);
+      elements[i].firstElementChild.classList.add(anim);
     });
   };
 
   render() {
     return (
-      <VisibilityObserver watchId="contact-container" onVisible={this.onVisible} delay={250}>
-        <div className="Contact_container" id="contact-container">
-          <Element name="Contact"/>
-          <div
-            className="Contact_image-container"
-            id="img-wrapper"
-          >
-            <div>
-              <a target="_blank" href="https://github.com/ctcuff" rel="noopener noreferrer">
-                <Image src={githubLogo} className="Contact_img"/>
-              </a>
-            </div>
-            <div>
-              <a href="mailto:dev.ctcuff@gmail.com" target="_blank" rel="noopener noreferrer">
-                <Image src={emailLogo} className="Contact_img"/>
-              </a>
-            </div>
-            <div>
-              <a href="https://www.linkedin.com/in/cameron-cuff-126405161/" target="_blank" rel="noopener noreferrer">
-                <Image src={linkedInLogo} className="Contact_img"/>
-              </a>
-            </div>
-            <div>
-              <a href={resumePdf} target="_blank" rel="noopener noreferrer">
-                <Image src={resumeLogo} className="Contact_img"/>
-              </a>
-            </div>
+      <div className="Contact_container" id="contact-container">
+        <Element name="Contact"/>
+        <VisibilityObserver className="Contact_image-container" onVisible={this.onVisible}  delay={250} once>
+          <div id="img-wrapper">
+            <a target="_blank" href="https://github.com/ctcuff" rel="noopener noreferrer">
+              <Image src={githubLogo} className="Contact_img"/>
+            </a>
+            <a href="mailto:dev.ctcuff@gmail.com" target="_blank" rel="noopener noreferrer">
+              <Image src={emailLogo} className="Contact_img"/>
+            </a>
+            <a href="https://www.linkedin.com/in/cameron-cuff-126405161/" target="_blank" rel="noopener noreferrer">
+              <Image src={linkedInLogo} className="Contact_img"/>
+            </a>
+            <a href={resumePdf} target="_blank" rel="noopener noreferrer">
+              <Image src={resumeLogo} className="Contact_img"/>
+            </a>
           </div>
-        </div>
-      </VisibilityObserver>
+        </VisibilityObserver>
+      </div>
     );
   }
 }

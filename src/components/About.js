@@ -52,7 +52,7 @@ export default class About extends Component {
     };
 
     const desktop = (
-      <div id="about" className="About_container">
+      <div className="About_container">
         <Element name="About"/>
         <div
           id="about-left"
@@ -86,7 +86,7 @@ export default class About extends Component {
     );
 
     const mobile = (
-      <div className="About_container" id="about">
+      <div className="About_container">
         <Element name="About"/>
         <Row className="About_row">
           <Col style={colStyle} className="About_col" id="about-left">
@@ -115,7 +115,7 @@ export default class About extends Component {
     );
 
     return (
-      <VisibilityObserver watchId="about" onVisible={this.onElementVisible} delay={500}>
+      <VisibilityObserver onVisible={this.onElementVisible} delay={500} once>
         {this.state.isMobile ? desktop : mobile}
       </VisibilityObserver>
     );

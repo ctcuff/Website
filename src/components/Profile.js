@@ -2,7 +2,7 @@ import React, { Component } from 'react';
 import Image from 'react-bootstrap/Image';
 import Row from 'react-bootstrap/Row';
 import Col from 'react-bootstrap/Col';
-import * as Scroll from 'react-scroll';
+import { scroller } from 'react-scroll';
 import AnimatedSpan from './AnimatedSpan';
 import '../styles/Profile.css';
 
@@ -13,7 +13,7 @@ export default class Profile extends Component {
     // in the other components
     const id = e.currentTarget.getAttribute('href');
     e.preventDefault();
-    Scroll.scroller.scrollTo(id, {
+    scroller.scrollTo(id, {
       duration: 2000,
       smooth: 'easeInOutQuad'
     });

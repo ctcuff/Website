@@ -30,12 +30,6 @@ $animationsMobile: Contact-slideDown Contact-slideRight Contact-slideUp Contact-
 
 .Contact_image-container {
   margin: auto;
-  display: flex;
-  flex-wrap: wrap;
-
-  & > div {
-    flex: 1 1 auto
-  }
 }
 
 .Contact_img {
@@ -44,12 +38,13 @@ $animationsMobile: Contact-slideDown Contact-slideRight Contact-slideUp Contact-
 
 // Desktop
 @media screen and (min-width: 601px) {
-  .Contact_image-container {
+  .Contact_image-container > div {
     display: flex;
-    & > div:hover {
+
+    & > a:hover {
       animation: Contact-shake 0.7s infinite;
     }
-}
+  }
 
   .Contact_img {
     margin: 16px;
@@ -58,7 +53,7 @@ $animationsMobile: Contact-slideDown Contact-slideRight Contact-slideUp Contact-
 
 // Mobile
 @media screen and (max-width: 600px) {
-  .Contact_image-container {
+  .Contact_image-container > div {
     display: grid;
   }
   .Contact_img {
