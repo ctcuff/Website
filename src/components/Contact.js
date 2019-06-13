@@ -2,11 +2,11 @@ import React, { Component } from 'react';
 import { Element } from 'react-scroll';
 import VisibilityObserver from './VisibilityObserver';
 import Image from 'react-bootstrap/Image';
-import emailLogo from '../../public/email.png';
-import githubLogo from '../../public/github.png';
-import linkedInLogo from '../../public/linked-in.png';
-import resumeLogo from '../../public/resume.png';
-import resumePdf from '../../public/resume.pdf';
+import emailLogo from '../static/email.png';
+import githubLogo from '../static/github.png';
+import linkedInLogo from '../static/linked-in.png';
+import resumeLogo from '../static/resume.png';
+import resumePdf from '../static/resume.pdf';
 import '../styles/Contact.css';
 
 export default class Contact extends Component {
@@ -52,22 +52,22 @@ export default class Contact extends Component {
             id="img-wrapper"
           >
             <div>
-              <a target="_blank" href="https://github.com/ctcuff">
+              <a target="_blank" href="https://github.com/ctcuff" rel="noopener noreferrer">
                 <Image src={githubLogo} className="Contact_img"/>
               </a>
             </div>
             <div>
-              <a href="mailto:dev.ctcuff@gmail.com" target="_blank">
+              <a href="mailto:dev.ctcuff@gmail.com" target="_blank" rel="noopener noreferrer">
                 <Image src={emailLogo} className="Contact_img"/>
               </a>
             </div>
             <div>
-              <a href="https://www.linkedin.com/in/cameron-cuff-126405161/" target="_blank">
+              <a href="https://www.linkedin.com/in/cameron-cuff-126405161/" target="_blank" rel="noopener noreferrer">
                 <Image src={linkedInLogo} className="Contact_img"/>
               </a>
             </div>
             <div>
-              <a href={resumePdf} target="_blank">
+              <a href={resumePdf} target="_blank" rel="noopener noreferrer">
                 <Image src={resumeLogo} className="Contact_img"/>
               </a>
             </div>

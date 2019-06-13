@@ -3,7 +3,7 @@ import { Element } from 'react-scroll';
 import VisibilityObserver from './VisibilityObserver';
 import Row from 'react-bootstrap/Row';
 import Col from 'react-bootstrap/Col';
-import logo from '../../public/07.png';
+import logo from '../static/lightbulb.png';
 import '../styles/About.css';
 
 export default class About extends Component {
