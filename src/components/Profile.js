@@ -4,7 +4,7 @@ import Row from 'react-bootstrap/Row';
 import Col from 'react-bootstrap/Col';
 import { scroller } from 'react-scroll';
 import AnimatedSpan from './AnimatedSpan';
-import '../styles/Profile.css';
+import '../styles/Profile.scss';
 
 export default class Profile extends Component {
 

@@ -4,7 +4,7 @@ import VisibilityObserver from './VisibilityObserver';
 import Row from 'react-bootstrap/Row';
 import Col from 'react-bootstrap/Col';
 import logo from '../static/lightbulb.png';
-import '../styles/About.css';
+import '../styles/About.scss';
 
 export default class About extends Component {
 

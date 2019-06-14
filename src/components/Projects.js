@@ -3,7 +3,7 @@ import { Element } from 'react-scroll';
 import Card from 'react-bootstrap/Card';
 import Row from 'react-bootstrap/Row';
 import Col from 'react-bootstrap/Col';
-import '../styles/Projects.css';
+import '../styles/Projects.scss';
 
 export default class Projects extends Component {
 

@@ -7,7 +7,7 @@ import githubLogo from '../static/github.png';
 import linkedInLogo from '../static/linked-in.png';
 import resumeLogo from '../static/resume.png';
 import resumePdf from '../static/resume.pdf';
-import '../styles/Contact.css';
+import '../styles/Contact.scss';
 
 export default class Contact extends Component {
   constructor(props) {
