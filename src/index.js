@@ -8,7 +8,7 @@ import Contact from './components/Contact';
 import './styles/index.scss';
 
 function Spacer() {
-  const margin = isMobile ? '30vh' : '32px';
+  const margin = isMobile ? '15vh' : '32px';
   return (
     <div
       style={{

@@ -9,7 +9,6 @@
   }
 }
 
-
 .Profile_container {
   height: 100vh;
   display: flex;
@@ -24,6 +23,10 @@
 .Profile_col > a {
   font-size: 32px;
   text-decoration: none;
+}
+
+.Profile_image {
+  margin-bottom: 16px;
 }
 
 .Profile_row {

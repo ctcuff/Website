@@ -38,11 +38,6 @@
 
 // Mobile
 @media screen and (max-width: 770px) {
-  .Project_container {
-    height: auto;
-
-  }
-
   .Project_header {
     margin: 32px 0 16px 0;
   }
@@ -50,10 +45,6 @@
 
 // Desktop
 @media screen and (min-width: 771px) {
-  .Project_container {
-    height: 100vh;
-  }
-
   .Project_header {
     margin-bottom: 8px;
   }
