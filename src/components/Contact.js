@@ -6,7 +6,7 @@ import emailLogo from '../static/email.svg';
 import githubLogo from '../static/github.svg';
 import linkedInLogo from '../static/linked-in.svg';
 import resumeLogo from '../static/resume.svg';
-import resumePdf from '../static/resume.svg';
+import resumePdf from '../static/resume.pdf';
 import '../styles/Contact.scss';
 
 export default class Contact extends Component {
