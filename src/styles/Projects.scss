@@ -1,3 +1,35 @@
+@keyframes Project_slideIn {
+  0% {
+    opacity: 0;
+    transform: translateY(-20%);
+    box-shadow: 0 1rem 3rem rgba(0, 0, 0, .175);
+  }
+  100% {
+    opacity: 1;
+    transform: translateY(0);
+    box-shadow: none;
+  }
+}
+
+@keyframes Project_slideRight {
+  0% {
+    opacity: 0;
+    transform: translateX(-30%);
+  }
+  100% {
+    opacity: 1;
+    transform: translateX(0);
+  }
+}
+
+.Project_card-animation {
+  animation: Project_slideIn 2s ease 0s forwards;
+}
+
+.Project_header-animation {
+  animation: Project_slideRight 2s ease 0s forwards;
+}
+
 .Project_container {
   display: flex;
   flex-direction: column;
@@ -10,6 +42,7 @@
   cursor: pointer;
   margin: 16px;
   flex: 1 1 auto;
+  opacity: 0;
 }
 
 .Project_card:hover {
@@ -34,6 +67,10 @@
 .Project_col {
   text-align: start;
   margin: auto;
+}
+
+.Project_header {
+  opacity: 0;
 }
 
 // Mobile
