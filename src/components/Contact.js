@@ -13,6 +13,7 @@ export default class Contact extends Component {
   constructor(props) {
     super(props);
     this.state = { isMobile: window.innerWidth <= 600 };
+    this.imgWrapper = React.createRef();
   }
 
   componentDidMount() {
@@ -34,20 +35,20 @@ export default class Contact extends Component {
       ? ['m-slide-in-right', 'm-slide-in-down', 'm-slide-in-up', 'm-slide-in-left']
       : ['slide-in-right', 'slide-in-down', 'slide-in-up', 'slide-in-left'];
 
-    const elements = document.getElementById('img-wrapper').children;
+    const elements = this.imgWrapper.current.children;
 
     animations.forEach((anim, i) => {
       // Applies the animation to the <Image/> tag
-      elements[i].firstElementChild.classList.add(anim);
+      elements[i].firstChild.classList.add(anim);
     });
   };
 
   render() {
     return (
-      <div className="Contact_container" id="contact-container">
+      <div className="Contact_container">
         <Element name="Contact"/>
         <VisibilityObserver className="Contact_image-container" onVisible={this.onVisible}  delay={250} once>
-          <div id="img-wrapper">
+          <div ref={this.imgWrapper}>
             <a target="_blank" href="https://github.com/ctcuff" rel="noopener noreferrer">
               <Image src={githubLogo} className="Contact_img"/>
             </a>
