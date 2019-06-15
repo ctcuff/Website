@@ -2,11 +2,11 @@ import React, { Component } from 'react';
 import { Element } from 'react-scroll';
 import VisibilityObserver from './VisibilityObserver';
 import Image from 'react-bootstrap/Image';
-import emailLogo from '../static/email.png';
-import githubLogo from '../static/github.png';
-import linkedInLogo from '../static/linked-in.png';
-import resumeLogo from '../static/resume.png';
-import resumePdf from '../static/resume.pdf';
+import emailLogo from '../static/email.svg';
+import githubLogo from '../static/github.svg';
+import linkedInLogo from '../static/linked-in.svg';
+import resumeLogo from '../static/resume.svg';
+import resumePdf from '../static/resume.svg';
 import '../styles/Contact.scss';
 
 export default class Contact extends Component {
