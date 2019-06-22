@@ -9,10 +9,10 @@ import '../styles/Profile.scss';
 
 export default function Profile() {
 
-  const onHrefClick = (e) => {
+  const onHrefClick = (e: React.MouseEvent): void => {
     // Scrolls to the sections defined by the <Element/> tag
     // in the other components
-    const id = e.currentTarget.getAttribute('href');
+    const id = e.currentTarget!.getAttribute('href') as string;
     e.preventDefault();
     scroller.scrollTo(id, {
       duration: 2000,

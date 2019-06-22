@@ -1,15 +1,30 @@
 import React, { Component } from 'react';
 
+type ObserverProps = {
+  onVisible: () => void;
+  className?: string;
+  delay?: number;
+  once?: boolean;
+};
+
+type ObserverState = {
+  visible: boolean;
+  triggered: boolean;
+}
+
 /**
  * Used to determine when a Component becomes visible when scrolling
  **/
-export default class VisibilityObserver extends Component {
-  constructor(props) {
+export default class VisibilityObserver extends Component<ObserverProps, ObserverState> {
+  private readonly child: React.RefObject<HTMLDivElement>;
+
+  state = {
+    visible: false,
+    triggered: false
+  };
+
+  constructor(props: ObserverProps) {
     super(props);
-    this.state = {
-      visible: false,
-      triggered: false
-    };
     this.child = React.createRef();
   }
 
@@ -21,7 +36,7 @@ export default class VisibilityObserver extends Component {
     window.removeEventListener('scroll', this.isScrolledIntoView);
   }
 
-  isScrolledIntoView = () => {
+  isScrolledIntoView = (): void => {
     const { onVisible, delay, once } = this.props;
 
     // Makes sure this only fires once if the once
@@ -30,10 +45,15 @@ export default class VisibilityObserver extends Component {
       return;
     }
 
-    const elem = this.child.current;
-    const elementBottom = elem.offsetTop + elem.offsetHeight;
-    const viewportBottom = window.scrollY + window.innerHeight;
-    const isVisible = elementBottom > window.scrollY && elem.offsetTop < viewportBottom;
+    const elem: (HTMLDivElement | null) = this.child.current;
+
+    if (!elem) {
+      return;
+    }
+
+    const elementBottom: number = elem.offsetTop + elem.offsetHeight;
+    const viewportBottom: number = window.scrollY + window.innerHeight;
+    const isVisible: boolean = elementBottom > window.scrollY && elem.offsetTop < viewportBottom;
 
     // Ensures this event doesn't fire a billion times
     // every time we scroll
@@ -42,7 +62,7 @@ export default class VisibilityObserver extends Component {
         triggered: true,
         visible: isVisible
       });
-      setTimeout(() => onVisible(isVisible), delay || 0);
+      setTimeout(() => onVisible(), delay || 0);
     }
   };
 

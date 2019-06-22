@@ -6,13 +6,23 @@ import emailLogo from '../static/email.svg';
 import githubLogo from '../static/github.svg';
 import linkedInLogo from '../static/linked-in.svg';
 import resumeLogo from '../static/resume.svg';
-import resumePdf from '../static/resume.pdf';
 import '../styles/Contact.scss';
 
-export default class Contact extends Component {
-  constructor(props) {
+const resumePdf = require('../static/resume.pdf');
+
+type ContactState = {
+  isMobile: boolean;
+}
+
+export default class Contact extends Component<{}, ContactState> {
+  private readonly imgWrapper: React.RefObject<HTMLDivElement>;
+
+  state = {
+    isMobile: window.innerWidth <= 600
+  };
+
+  constructor(props: {}) {
     super(props);
-    this.state = { isMobile: window.innerWidth <= 600 };
     this.imgWrapper = React.createRef();
   }
 
@@ -24,22 +34,28 @@ export default class Contact extends Component {
     window.removeEventListener('resize', this.onWindowResize)
   }
 
-  onWindowResize = () => {
+  onWindowResize = (): void => {
     this.setState({ isMobile: window.innerWidth <= 600 });
   };
 
-  onVisible = () => {
+  onVisible = (): void => {
+    const wrapper = this.imgWrapper.current;
+
+    if (!wrapper) {
+      return;
+    }
+
     // A different screen size needs different animations so the
     // animations don't overlap
     const animations = (this.state.isMobile)
       ? ['m-slide-in-right', 'm-slide-in-down', 'm-slide-in-up', 'm-slide-in-left']
       : ['slide-in-right', 'slide-in-down', 'slide-in-up', 'slide-in-left'];
 
-    const elements = this.imgWrapper.current.children;
+    const elements: HTMLCollection = wrapper.children;
 
     animations.forEach((anim, i) => {
-      // Applies the animation to the <Image/> tag
-      elements[i].firstChild.classList.add(anim);
+      const img = elements[i].firstChild as HTMLImageElement;
+      img.classList.add(anim);
     });
   };
 
@@ -47,7 +63,7 @@ export default class Contact extends Component {
     return (
       <div className="Contact_container">
         <Element name="Contact"/>
-        <VisibilityObserver className="Contact_image-container" onVisible={this.onVisible}  delay={250} once>
+        <VisibilityObserver className="Contact_image-container" onVisible={this.onVisible} delay={250} once>
           <div ref={this.imgWrapper}>
             <a target="_blank" href="https://github.com/ctcuff" rel="noopener noreferrer">
               <Image src={githubLogo} className="Contact_img"/>

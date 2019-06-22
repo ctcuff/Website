@@ -5,26 +5,50 @@ import Card from 'react-bootstrap/Card';
 import Row from 'react-bootstrap/Row';
 import Col from 'react-bootstrap/Col';
 import VisibilityObserver from './VisibilityObserver';
-import projectsJson from '../static/projects';
 import '../styles/Projects.scss';
 
-export default class Projects extends Component {
+type Project = {
+  title: string;
+  description: string;
+  codeRepo: string;
+  websiteLink?: string;
+}
 
-  constructor(props) {
+const projectsJson: Project[] = require('../static/projects.json');
+
+export default class Projects extends Component {
+  private readonly cardContainer: React.RefObject<HTMLDivElement>;
+  private readonly header: React.RefObject<HTMLHeadingElement>;
+
+  constructor(props: {}) {
     super(props);
     this.cardContainer = React.createRef();
     this.header = React.createRef();
   }
 
-  onVisible = () => {
-    this.header.current.classList.add('Project_header-animation');
+  onVisible = (): void => {
+    const header = this.header.current;
+
+    if (!header) {
+      return;
+    }
+
+    header.classList.add('Project_header-animation');
 
     setTimeout(() => {
-      [...this.cardContainer.current.children].forEach((card, index) => {
+      const container = this.cardContainer.current;
+
+      if (!container) {
+        return;
+      }
+
+      [...container.children].forEach((child, index) => {
+        const card = child as HTMLDivElement;
         setTimeout(() => card.classList.add('Project_card-animation'), index * 750);
+
         // Need to remove the animation afterwards so the hover effect works
         card.addEventListener('animationend', () => {
-          card.style.opacity = 1;
+          card.style.opacity = '1';
           card.classList.remove('Project_card-animation');
         });
       });
@@ -49,11 +73,11 @@ export default class Projects extends Component {
                     <Card.Title>{project.title}</Card.Title>
                     <Card.Text>{project.description}</Card.Text>
                     {
-                      project.website_link !== null
-                        ? <Card.Link href={project.website_link} target="_blank">Go to site</Card.Link>
+                      project.websiteLink !== null
+                        ? <Card.Link href={project.websiteLink} target="_blank">Go to site</Card.Link>
                         : null
                     }
-                    <Card.Link href={project.code_repo} target="_blank">View code</Card.Link>
+                    <Card.Link href={project.websiteLink || ""} target="_blank">View code</Card.Link>
                   </Card.Body>
                 </Card>
               )}
