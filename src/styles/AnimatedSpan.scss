@@ -3,26 +3,26 @@ $translationY: 5%;
 
 .AnimatedSpan {
   position: relative;
-}
 
-// For the underline effect when About, Projects, or Contact is clicked or hovered
-.AnimatedSpan::before {
-  $scale: 0;
+  // For the underline effect when About, Projects, or Contact is clicked or hovered
+  &::before {
+    $scale: 0;
 
-  content: '';
-  position: absolute;
-  left: 50%;
-  bottom: 0;
-  width: 100%;
-  height: 2px;
-  background-color: #8a8a8a;
-  transform-origin: center;
+    content: '';
+    position: absolute;
+    left: 50%;
+    bottom: 0;
+    width: 100%;
+    height: 2px;
+    background-color: #8a8a8a;
+    transform-origin: center;
 
-  transform: translateX($translationX) scaleX($scale);
-  transition: transform 0.5s ease-in-out;
-}
+    transform: translateX($translationX) scaleX($scale);
+    transition: transform 0.5s ease-in-out;
+  }
 
-.AnimatedSpan:hover::before {
-  $scale: 1;
-  transform: translate($translationX, $translationY) scaleX($scale);
+  &:hover::before {
+    $scale: 1;
+    transform: translate($translationX, $translationY) scaleX($scale);
+  }
 }
