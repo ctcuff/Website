@@ -2,19 +2,19 @@
   {
     "title": "Tweet-Tracker",
     "description": "A website to track the occurrences of a given keyword on Twitter in real time. This project was built using Python (Flask) as a backend, and React.js and Javascript in the frontend.",
-    "website_link": "https://tweeter-tracker.herokuapp.com/",
-    "code_repo": "https://github.com/ctcuff/Tweet-Tracker"
+    "websiteLink": "https://tweeter-tracker.herokuapp.com/",
+    "codeRepo": "https://github.com/ctcuff/Tweet-Tracker"
   },
   {
     "title": "UCFParking",
     "description": "This is an API and website that tracks how full each parking garage is. Every hour, a scrapper scraps UCF's parking site and saves it to an online database. The backend was created using Python (Flask, again) and the frontend utilizes Javascript and jQuery.",
-    "website_link": "https://ucfparking.herokuapp.com/",
-    "code_repo": "https://github.com/ctcuff/UCFParking-Web"
+    "websiteLink": "https://ucfparking.herokuapp.com/",
+    "codeRepo": "https://github.com/ctcuff/UCFParking-Web"
   },
   {
     "title": "MotionPy",
     "description": "A motion detection system using a Raspberry Pi 3, camera module, breadboard, some paper clips and a top-of-the-line cardboard box. A Python server (surprise surprise, it's Flask again) running on the Raspberry Pi sends an Android app, written in Java and Kotlin, a notification and a picture when movement is detected. Images are saved online via Firebase.",
-    "website_link": null,
-    "code_repo": "https://github.com/ctcuff/MotionPy"
+    "websiteLink": null,
+    "codeRepo": "https://github.com/ctcuff/MotionPy"
   }
 ]
