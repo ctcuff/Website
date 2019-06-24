@@ -29,6 +29,7 @@ export default function Profile() {
               width={isMobile ? 150 : 200}
               src="https://avatars2.githubusercontent.com/u/7400747?v=4"
               className="shadow Profile_image"
+              alt="Profile image"
               roundedCircle
             />
             <h1 className="display-4 text-muted">Cameron Cuff</h1>

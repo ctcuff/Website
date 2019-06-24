@@ -1,7 +1,6 @@
 import React, { Component } from 'react';
 import { Element } from 'react-scroll';
 import VisibilityObserver from './VisibilityObserver';
-import Image from 'react-bootstrap/Image';
 import emailLogo from '../static/email.svg';
 import githubLogo from '../static/github.svg';
 import linkedInLogo from '../static/linked-in.svg';
@@ -66,16 +65,16 @@ export default class Contact extends Component<{}, ContactState> {
         <VisibilityObserver className="Contact_image-container" onVisible={this.onVisible} delay={250} once>
           <div ref={this.imgWrapper}>
             <a target="_blank" href="https://github.com/ctcuff" rel="noopener noreferrer">
-              <Image src={githubLogo} className="Contact_img"/>
+              <img src={githubLogo} className="Contact_img" alt="GitHub" title="GitHub"/>
             </a>
             <a href="mailto:dev.ctcuff@gmail.com" target="_blank" rel="noopener noreferrer">
-              <Image src={emailLogo} className="Contact_img"/>
+              <img src={emailLogo} className="Contact_img" alt="Email" title="Email"/>
             </a>
             <a href="https://www.linkedin.com/in/cameron-cuff-126405161/" target="_blank" rel="noopener noreferrer">
-              <Image src={linkedInLogo} className="Contact_img"/>
+              <img src={linkedInLogo} className="Contact_img" alt="linkedin" title="linkedin"/>
             </a>
             <a href={resumePdf} target="_blank" rel="noopener noreferrer">
-              <Image src={resumeLogo} className="Contact_img"/>
+              <img src={resumeLogo} className="Contact_img" alt="Resume" title="Resume"/>
             </a>
           </div>
         </VisibilityObserver>
