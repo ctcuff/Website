@@ -7,7 +7,7 @@
   },
   {
     "title": "UCFParking",
-    "description": "This is an API and website that tracks how full each parking garage is. Every hour, a scrapper scraps UCF's parking site and saves it to an online database. The backend was created using Python (Flask, again) and the frontend utilizes Javascript and jQuery.",
+    "description": "This is an API and website that tracks how full each parking garage is. Every hour, a scrapper scraps UCF's parking site and saves it to an online database. The backend was created using Python (Flask, again) and the frontend, JavaScript.",
     "websiteLink": "https://ucfparking.herokuapp.com/",
     "codeRepo": "https://github.com/ctcuff/UCFParking-Web"
   },
