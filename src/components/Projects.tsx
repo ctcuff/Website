@@ -42,8 +42,7 @@ export default class Projects extends Component {
         return;
       }
 
-      [...container.children].forEach((child, index) => {
-        const card = child as HTMLDivElement;
+      Array.prototype.forEach.call(container.children, (card: HTMLDivElement, index: number) => {
         setTimeout(() => card.classList.add('Project_card-animation'), index * 750);
 
         // Need to remove the animation afterwards so the hover effect works
