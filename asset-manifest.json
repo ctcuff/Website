@@ -1,21 +1,21 @@
 {
   "files": {
     "main.css": "/ctcuff.github.io/static/css/main.4cabec0d.chunk.css",
-    "main.js": "/ctcuff.github.io/static/js/main.6103756e.chunk.js",
-    "main.js.map": "/ctcuff.github.io/static/js/main.6103756e.chunk.js.map",
+    "main.js": "/ctcuff.github.io/static/js/main.55804794.chunk.js",
+    "main.js.map": "/ctcuff.github.io/static/js/main.55804794.chunk.js.map",
     "runtime~main.js": "/ctcuff.github.io/static/js/runtime~main.db7871cf.js",
     "runtime~main.js.map": "/ctcuff.github.io/static/js/runtime~main.db7871cf.js.map",
-    "static/js/2.37ba9b19.chunk.js": "/ctcuff.github.io/static/js/2.37ba9b19.chunk.js",
-    "static/js/2.37ba9b19.chunk.js.map": "/ctcuff.github.io/static/js/2.37ba9b19.chunk.js.map",
+    "static/js/2.dd764d0f.chunk.js": "/ctcuff.github.io/static/js/2.dd764d0f.chunk.js",
+    "static/js/2.dd764d0f.chunk.js.map": "/ctcuff.github.io/static/js/2.dd764d0f.chunk.js.map",
     "index.html": "/ctcuff.github.io/index.html",
-    "precache-manifest.85ad990ffc9808e07f32294a9af0f14b.js": "/ctcuff.github.io/precache-manifest.85ad990ffc9808e07f32294a9af0f14b.js",
+    "precache-manifest.f0ff447f1bc88c171dc1d41184456b93.js": "/ctcuff.github.io/precache-manifest.f0ff447f1bc88c171dc1d41184456b93.js",
     "service-worker.js": "/ctcuff.github.io/service-worker.js",
     "static/css/main.4cabec0d.chunk.css.map": "/ctcuff.github.io/static/css/main.4cabec0d.chunk.css.map",
+    "static/media/cuff_resume.pdf": "/ctcuff.github.io/static/media/cuff_resume.c2d539e5.pdf",
     "static/media/email.svg": "/ctcuff.github.io/static/media/email.ca821b14.svg",
     "static/media/github.svg": "/ctcuff.github.io/static/media/github.76d344f0.svg",
     "static/media/lightbulb.png": "/ctcuff.github.io/static/media/lightbulb.963c089e.png",
     "static/media/linked-in.svg": "/ctcuff.github.io/static/media/linked-in.1fe3be0e.svg",
-    "static/media/resume.svg": "/ctcuff.github.io/static/media/resume.27c242bb.svg",
-    "static/media/resume.pdf": "/ctcuff.github.io/static/media/resume.47122fd7.pdf"
+    "static/media/resume.svg": "/ctcuff.github.io/static/media/resume.27c242bb.svg"
   }
 }
