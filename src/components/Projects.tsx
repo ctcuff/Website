@@ -76,7 +76,7 @@ export default class Projects extends Component {
                         ? <Card.Link href={project.websiteLink} target="_blank">Go to site</Card.Link>
                         : null
                     }
-                    <Card.Link href={project.websiteLink || ""} target="_blank">View code</Card.Link>
+                    <Card.Link href={project.codeRepo} target="_blank">View code</Card.Link>
                   </Card.Body>
                 </Card>
               )}

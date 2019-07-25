@@ -21,7 +21,8 @@
     "@types/react-bootstrap": "^0.32.17",
     "@types/react-scroll": "^1.5.4",
     "enzyme": "^3.10.0",
-    "enzyme-adapter-react-16": "^1.14.0"
+    "enzyme-adapter-react-16": "^1.14.0",
+    "gh-pages": "^2.0.1"
   },
   "scripts": {
     "start": "react-scripts start",

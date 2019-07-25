@@ -7,7 +7,7 @@ import linkedInLogo from '../static/linked-in.svg';
 import resumeLogo from '../static/resume.svg';
 import '../styles/Contact.scss';
 
-const resumePdf = require('../static/resume.pdf');
+const resumePdf = require('../static/cuff_resume.pdf');
 
 type ContactState = {
   isMobile: boolean;
