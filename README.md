@@ -1,29 +1,4 @@
-# portfolio_vue
+# Welcome to my portfolio
+Hello, World! This site was brought to you by Vue.
 
-## Project setup
-```
-yarn install
-```
-
-### Compiles and hot-reloads for development
-```
-yarn run serve
-```
-
-### Compiles and minifies for production
-```
-yarn run build
-```
-
-### Run your tests
-```
-yarn run test
-```
-
-### Lints and fixes files
-```
-yarn run lint
-```
-
-### Customize configuration
-See [Configuration Reference](https://cli.vuejs.org/config/).
+If for some reason you'd like to run this yourself (don't worry, I won't judge you), you'll need have [npm](https://www.npmjs.com/) installed. If it's installed, run `npm install` to install the required dependencies then run `npm run serve` and head to localhost in your browser.
