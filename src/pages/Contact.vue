@@ -13,7 +13,7 @@
       <a href="https://www.linkedin.com/in/cameron-cuff-126405161/" target="_blank">
         <img src="../assets/images/linked-in.svg" alt="linkedin" title="linkedin">
       </a>
-      <a href="../assets/cuff_resume.pdf" target="_blank">
+      <a href="../cuff_resume.pdf" target="_blank">
         <img src="../assets/images/resume.svg" alt="Resume" title="Resume">
       </a>
     </div>
