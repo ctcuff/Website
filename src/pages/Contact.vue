@@ -29,24 +29,35 @@
   export default {
     data() {
       return {
-        children: []
+        linkChildren: [],
+        isMobile: window.innerWidth <= 500
       };
     },
     beforeRouteLeave(to, from, next) {
+      const { linkChildren, isMobile } = this;
       enterTimeline.clear();
 
-      this.children.forEach((child, i) => {
-        exitTimeline.to(
-          child,
-          1.5,
-          {
-            y: Math.pow(-1, i) * 70,
-            opacity: 0,
-            stagger: 0.2
-          },
-          0
-        );
-      });
+      if (isMobile) {
+        exitTimeline
+          .fromTo(this.$refs.linkContainer, 2, { y: 0, opacity: 1 }, { y: -40, opacity: 0 }, 0)
+          .fromTo(linkChildren[0], 2, { y: 0, opacity: 1 }, { y: -70, opacity: 0 }, 0)
+          .fromTo(linkChildren[1], 2, { x: 0, opacity: 1 }, { x: -70, opacity: 0 }, 0)
+          .fromTo(linkChildren[2], 2, { x: 0, opacity: 1 }, { x: 70, opacity: 0 }, 0)
+          .fromTo(linkChildren[3], 2, { y: 0, opacity: 1 }, { y: 70, opacity: 0 }, 0);
+      } else {
+        linkChildren.forEach((child, i) => {
+          exitTimeline.to(
+            child,
+            1.5,
+            {
+              y: Math.pow(-1, i) * 70,
+              opacity: 0,
+              stagger: 0.2
+            },
+            0
+          );
+        });
+      }
 
       exitTimeline
         .to(this.$refs.linkContainer, 1.5, { y: -40, opacity: 0 }, 0)
@@ -54,21 +65,30 @@
         .play();
     },
     mounted() {
+      const { linkChildren, isMobile } = this;
       exitTimeline.clear();
-      const self = this;
 
       Array.prototype.forEach.call(this.$refs.imgContainer.children, child => {
-        self.children.push(child.firstElementChild);
+        linkChildren.push(child.firstElementChild);
       });
 
-      enterTimeline
-        .fromTo(this.$refs.linkContainer, 2, { y: -40, opacity: 0 }, { y: 0, opacity: 1 }, 0)
-        .fromTo(this.children[0], 2, { x: -70, opacity: 0 }, { x: 0, opacity: 1 }, 0)
-        .fromTo(this.children[1], 2, { y: -70, opacity: 0 }, { y: 0, opacity: 1 }, 0.4)
-        .fromTo(this.children[2], 2, { y: 70, opacity: 0 }, { y: 0, opacity: 1 }, 0.8)
-        .fromTo(this.children[3], 2, { x: 70, opacity: 0 }, { x: 0, opacity: 1 }, 1.2)
-        .delay(0.5)
-        .play();
+      if (isMobile) {
+        enterTimeline
+          .fromTo(this.$refs.linkContainer, 2, { y: -40, opacity: 0 }, { y: 0, opacity: 1 }, 0)
+          .fromTo(linkChildren[0], 2, { y: -70, opacity: 0 }, { y: 0, opacity: 1 }, 0)
+          .fromTo(linkChildren[1], 2, { x: -70, opacity: 0 }, { x: 0, opacity: 1 }, 0.4)
+          .fromTo(linkChildren[2], 2, { x: 70, opacity: 0 }, { x: 0, opacity: 1 }, 0.8)
+          .fromTo(linkChildren[3], 2, { y: 70, opacity: 0 }, { y: 0, opacity: 1 }, 1.2);
+      } else {
+        enterTimeline
+          .fromTo(this.$refs.linkContainer, 2, { y: -40, opacity: 0 }, { y: 0, opacity: 1 }, 0)
+          .fromTo(linkChildren[0], 2, { x: -70, opacity: 0 }, { x: 0, opacity: 1 }, 0)
+          .fromTo(linkChildren[1], 2, { y: -70, opacity: 0 }, { y: 0, opacity: 1 }, 0.4)
+          .fromTo(linkChildren[2], 2, { y: 70, opacity: 0 }, { y: 0, opacity: 1 }, 0.8)
+          .fromTo(linkChildren[3], 2, { x: 70, opacity: 0 }, { x: 0, opacity: 1 }, 1.2);
+      }
+
+      enterTimeline.delay(0.5).play();
     }
   };
 </script>
