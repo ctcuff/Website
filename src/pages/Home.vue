@@ -27,9 +27,9 @@
     },
     beforeRouteLeave(to, from, next) {
       exitTimeline
-        .staggerTo(this.$refs.textWrapper.children, 1, { y: 20, opacity: 0, stagger: 0.2 }, 0)
-        .to(this.$refs.headerTop, 1, { y: -110, opacity: 0 }, 0)
-        .to(this.$refs.headerBottom, 1, { y: 110, opacity: 0 }, 0)
+        .staggerTo(this.$refs.textWrapper.children, 1, { y: 20, opacity: 0, stagger: -0.2 }, 0)
+        .to(this.$refs.headerTop, 1, { y: -70, opacity: 0 }, 0)
+        .to(this.$refs.headerBottom, 1, { y: 70, opacity: 0 }, 0)
         .eventCallback('onComplete', next)
         .play();
       // Need to clear the timeline so it restarts on mount
@@ -86,7 +86,6 @@
 
     &#top {
       margin-left: 20px;
-
     }
 
     &#bottom {

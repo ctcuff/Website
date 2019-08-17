@@ -73,9 +73,9 @@
       enterTimeline.clear();
       exitTimeline
         .to(this.$refs.homeLink, 1.5, { y: -70, opacity: 0 }, 0)
-        .to(this.$refs.motionPy, 1.5, { x: 70, opacity: 0 }, 0)
-        .to(this.$refs.ucfParking, 1.5, { y: 70, opacity: 0 }, 0)
-        .to(this.$refs.tweetTracker, 1.5, { x: -70, opacity: 0 }, 0)
+        .to(this.$refs.motionPy, 1.5, { y: -70, opacity: 0 }, 0)
+        .to(this.$refs.ucfParking, 1.5, { x: 70, opacity: 0 }, 0)
+        .to(this.$refs.tweetTracker, 1.5, { y: 70, opacity: 0 }, 0)
         .eventCallback('onComplete', next)
         .play();
     },
