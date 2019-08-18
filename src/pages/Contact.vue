@@ -36,27 +36,21 @@
     beforeRouteLeave(to, from, next) {
       const { linkChildren, isMobile } = this;
       enterTimeline.clear();
+      exitTimeline
+        .fromTo(this.$refs.linkContainer, 2, { y: 0, opacity: 1 }, { y: -40, opacity: 0 }, 0);
 
       if (isMobile) {
         exitTimeline
-          .fromTo(this.$refs.linkContainer, 2, { y: 0, opacity: 1 }, { y: -40, opacity: 0 }, 0)
           .fromTo(linkChildren[0], 2, { y: 0, opacity: 1 }, { y: -70, opacity: 0 }, 0)
           .fromTo(linkChildren[1], 2, { x: 0, opacity: 1 }, { x: -70, opacity: 0 }, 0)
           .fromTo(linkChildren[2], 2, { x: 0, opacity: 1 }, { x: 70, opacity: 0 }, 0)
           .fromTo(linkChildren[3], 2, { y: 0, opacity: 1 }, { y: 70, opacity: 0 }, 0);
       } else {
-        linkChildren.forEach((child, i) => {
-          exitTimeline.to(
-            child,
-            1.5,
-            {
-              y: Math.pow(-1, i) * 70,
-              opacity: 0,
-              stagger: 0.2
-            },
-            0
-          );
-        });
+        exitTimeline
+          .fromTo(linkChildren[0], 2, { x: 0, opacity: 1 }, { x: -70, opacity: 0 }, 0)
+          .fromTo(linkChildren[1], 2, { y: 0, opacity: 1 }, { y: -70, opacity: 0 }, 0)
+          .fromTo(linkChildren[2], 2, { y: 0, opacity: 1 }, { y: 70, opacity: 0 }, 0)
+          .fromTo(linkChildren[3], 2, { x: 0, opacity: 1 }, { x: 70, opacity: 0 }, 0);
       }
 
       exitTimeline
