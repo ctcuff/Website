@@ -76,7 +76,7 @@
     display: flex;
     flex-direction: column;
     height: 100%;
-    justify-content: space-evenly;
+    justify-content: space-around;
   }
 
   .router-link-active {
