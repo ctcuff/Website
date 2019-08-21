@@ -97,6 +97,16 @@
 
     @media screen and (max-width: 850px) {
       font-size: 65px;
+      &#top {
+        margin-top: 16px;
+      }
+      &#bottom {
+        margin-bottom: 16px;
+      }
+    }
+
+    @media screen and (max-width: 360px) {
+      font-size: 50px;
     }
   }
 
