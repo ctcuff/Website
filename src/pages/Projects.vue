@@ -59,6 +59,26 @@
         </p>
       </div>
     </section>
+    <section ref="livecode">
+      <div class="flex" id="livecode">
+        <p class="description">
+          Why code by yourself when you can do it with other people? LiveCode is a website that lets
+          multiple users connect to another user's workspace and edit code together. The backend
+          is hosted using Firebase and the front-end was built using Vue.js.
+        </p>
+        <div>
+          <h1>LiveCode</h1>
+          <div class="link-wrapper">
+            <p class="link">
+              <a target=_blank href="https://github.com/ctcuff/LiveCode">View Code</a>
+            </p>
+            <p class="link">
+              <a target=_blank href="https://ctcuff.github.io/LiveCode">View Site</a>
+            </p>
+          </div>
+        </div>
+      </div>
+    </section>
   </div>
 </template>
 
@@ -75,7 +95,8 @@
         .to(this.$refs.homeLink, 1.5, { y: -70, opacity: 0 }, 0)
         .to(this.$refs.motionPy, 1.5, { y: -70, opacity: 0 }, 0)
         .to(this.$refs.ucfParking, 1.5, { x: 70, opacity: 0 }, 0)
-        .to(this.$refs.tweetTracker, 1.5, { y: 70, opacity: 0 }, 0)
+        .to(this.$refs.tweetTracker, 1.5, { y: -70, opacity: 0 }, 0)
+        .to(this.$refs.livecode, 1.5, { y: 70, opacity: 0 }, 0)
         .eventCallback('onComplete', next)
         .play();
     },
@@ -86,6 +107,7 @@
         .fromTo(this.$refs.motionPy, 2, { x: 70, opacity: 0 }, { x: 0, opacity: 1 }, 0)
         .fromTo(this.$refs.ucfParking, 2, { y: 70, opacity: 0 }, { y: 0, opacity: 1 }, 0)
         .fromTo(this.$refs.tweetTracker, 2, { x: -70, opacity: 0 }, { x: 0, opacity: 1 }, 0)
+        .fromTo(this.$refs.livecode, 2, { x: 70, opacity: 0 }, { x: 0, opacity: 1 }, 0)
         .delay(0.5)
         .play();
     }
@@ -93,28 +115,6 @@
 </script>
 
 <style lang="scss" scoped>
-
-  .flex {
-    display: flex;
-    width: 100%;
-
-    & h1 {
-      padding-top: 40px;
-    }
-
-    &#tweet-tracker {
-      flex-direction: column;
-    }
-
-    @media screen and (max-width: 760px) {
-      & {
-        flex-direction: column;
-      }
-      &#ucf-parking {
-        flex-direction: column-reverse;
-      }
-    }
-  }
 
   h1 {
     margin: 0;
@@ -136,6 +136,36 @@
     @media screen and (max-width: 760px) {
       font-size: 20px;
       line-height: 1.7em;
+    }
+  }
+
+  a {
+    font-size: 19px;
+  }
+
+  section {
+    margin: 16px 0;
+  }
+
+  .flex {
+    display: flex;
+    width: 100%;
+
+    & h1 {
+      padding-top: 40px;
+    }
+
+    &#tweet-tracker {
+      flex-direction: column;
+    }
+
+    @media screen and (max-width: 760px) {
+      & {
+        flex-direction: column;
+      }
+      &#ucf-parking, &#livecode {
+        flex-direction: column-reverse;
+      }
     }
   }
 
