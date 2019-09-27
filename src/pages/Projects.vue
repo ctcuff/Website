@@ -79,6 +79,14 @@
         </div>
       </div>
     </section>
+    <a
+        href="https://github.com/ctcuff/ctcuff.github.io"
+        class="router-link"
+        target="_blank"
+        ref="portfolioLink"
+    >
+      View code for this site
+    </a>
   </div>
 </template>
 
@@ -97,6 +105,7 @@
         .to(this.$refs.ucfParking, 1.5, { x: 70, opacity: 0 }, 0)
         .to(this.$refs.tweetTracker, 1.5, { y: -70, opacity: 0 }, 0)
         .to(this.$refs.livecode, 1.5, { y: 70, opacity: 0 }, 0)
+        .to(this.$refs.portfolioLink, 1.5, { opacity: 0 }, 0)
         .eventCallback('onComplete', next)
         .play();
     },
@@ -108,6 +117,7 @@
         .fromTo(this.$refs.ucfParking, 2, { y: 70, opacity: 0 }, { y: 0, opacity: 1 }, 0)
         .fromTo(this.$refs.tweetTracker, 2, { x: -70, opacity: 0 }, { x: 0, opacity: 1 }, 0)
         .fromTo(this.$refs.livecode, 2, { x: 70, opacity: 0 }, { x: 0, opacity: 1 }, 0)
+        .fromTo(this.$refs.portfolioLink, 2, { opacity: 0 }, { opacity: 1 }, 0)
         .delay(0.5)
         .play();
     }
