@@ -1,13 +1,11 @@
 <template>
-  <div>
-    <aside ref="sidebar">
-      <div id="flex" ref="linkContainer">
-        <router-link to="/about">About</router-link>
-        <router-link to="/projects">Projects</router-link>
-        <router-link to="/contact">Contact</router-link>
-      </div>
-    </aside>
-  </div>
+  <nav ref="sidebar">
+    <div id="flex" ref="linkContainer">
+      <router-link to="/about">About</router-link>
+      <router-link to="/projects">Projects</router-link>
+      <router-link to="/contact">Contact</router-link>
+    </div>
+  </nav>
 </template>
 
 <script>
@@ -46,7 +44,7 @@
 <style lang="scss" scoped>
   @import "../assets/scss/sidebar";
 
-  aside {
+  nav {
     position: fixed;
     top: 0;
     border-right: 1px solid black;
