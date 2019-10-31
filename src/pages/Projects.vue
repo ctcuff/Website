@@ -33,7 +33,7 @@
               <a target=_blank href="https://github.com/ctcuff/UCFParking-Web">View Code</a>
             </p>
             <p class="link">
-              <a target=_blank href="https://ucfparking.herokuapp.com/">View Site</a>
+              <a target=_blank href="https://ucfgarages.com/">View Site</a>
             </p>
           </div>
         </div>
