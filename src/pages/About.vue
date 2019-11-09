@@ -6,14 +6,22 @@
     </div>
     <div id="center">
       <div id="image-placeholder" ref="image">
-        <img src="../assets/images/avatar.jpg" alt="">
+        <img src="../assets/images/avatar.jpg" alt="profile image">
       </div>
       <p ref="aboutText">
         Hey there, my name is Cameron Cuff. I'm a Junior studying Computer
-        Science at the University of Central Florida. I enjoy programming in
-        Java, Python, and Javascript and I'm currently learning React, Vue,
-        Typescript, and a bit of Flask for backend tasks. In my free time, I
-        love to play piano and clarinet.
+        Science at the University of Central Florida. I originally started at
+        the University of North Florida in 2017 majoring in music performance,
+        but I decided to take a risk and change my major to computer science.
+        After finding out that I actually enjoyed it, I decieded to transfer to
+        UCF in the fall of 2018. I currently work as a Web Applications Developer
+        for the
+        <a href="https://cdl.ucf.edu/" target="_blank">
+          Center for Distributed Learning at UCF
+        </a>.
+        I enjoy programming in Java, Python, and Javascript and I'm learning
+        about React, Vue, Typescript, and Flask for backend tasks. In my free time,
+        I love to play piano and clarinet.
       </p>
     </div>
   </div>
