@@ -13,14 +13,14 @@
         Science at the University of Central Florida. I originally started at
         the University of North Florida in 2017 majoring in music performance,
         but I decided to take a risk and change my major to computer science.
-        After finding out that I actually enjoyed it, I decieded to transfer to
+        After finding out that I actually enjoyed it, I decided to transfer to
         UCF in the fall of 2018. I currently work as a Web Applications Developer
         for the
         <a href="https://cdl.ucf.edu/" target="_blank">
           Center for Distributed Learning at UCF
         </a>.
         I enjoy programming in Java, Python, and Javascript and I'm learning
-        about React, Vue, Typescript, and Flask for backend tasks. In my free time,
+        about React, Vue, and Go for backend tasks. In my free time,
         I love to play piano and clarinet.
       </p>
     </div>
@@ -29,6 +29,7 @@
 
 <script>
   import { TimelineMax, Power3 } from 'gsap/all';
+  import VanillaTilt from 'vanilla-tilt';
 
   const enterTimeline = new TimelineMax({ paused: true });
   const exitTimeline = new TimelineMax({ paused: true });
@@ -36,6 +37,7 @@
   export default {
     beforeRouteLeave(to, from, next) {
       const duration = 1;
+
       enterTimeline.clear();
       exitTimeline
         .to(this.$refs.header, duration, { y: 100, opacity: 0 }, 0)
@@ -46,6 +48,12 @@
         .play();
     },
     mounted() {
+      VanillaTilt.init(this.$refs.image, {
+        speed: 1000,
+        scale: 1.1,
+        gyroscope: true
+      });
+
       exitTimeline.clear();
       enterTimeline
         .fromTo(this.$refs.aboutText, 2, { opacity: 0, y: 50 }, { opacity: 1, y: 0 }, 0)
@@ -75,8 +83,13 @@
     position: fixed;
     bottom: 0;
     right: 0;
-    @media screen and (max-width: 630px), screen and (max-height: 600px) {
+
+    @media screen and (max-width: 900px), screen and (max-height: 600px) {
       display: none;
+    }
+
+    @media screen and (max-width: 1200px) {
+      font-size: 65px;
     }
   }
 
@@ -91,14 +104,20 @@
   p {
     margin-top: 32px;
     line-height: 38px;
-    font-size: 20px;
+    font-size: 16px;
+
+    @media screen and (max-width: 900px) {
+      font-size: 20px;
+    }
   }
 
   p.link {
     width: 0;
     margin: 0;
+    font-size: 20px;
     cursor: pointer;
     transition: color 0.2s ease-in-out;
+
     &:hover {
       color: red;
     }
