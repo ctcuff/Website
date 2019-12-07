@@ -23,7 +23,7 @@
       <div class="flex" id="ucf-parking">
         <p class="description">
           A website along with an api that tracks how full each parking garage is.
-          Every hour, a scrapper scraps UCF's parking site and saves it to a MongoDB database.
+          Every hour, a scraper scrapes UCF's parking site and saves it to a MongoDB database.
           The backend was created using Python (Flask, again) and the frontend, Vue.js.
         </p>
         <div>
