@@ -16,7 +16,7 @@
         After finding out that I actually enjoyed it, I decided to transfer to
         UCF in the fall of 2018. I currently work as a Web Applications Developer
         for the
-        <a href="https://cdl.ucf.edu/" target="_blank">
+        <a href="https://techrangers.cdl.ucf.edu/about.html" target="_blank">
           Center for Distributed Learning at UCF
         </a>.
         I enjoy programming in Java, Python, and Javascript and I'm learning
@@ -50,8 +50,8 @@
     mounted() {
       VanillaTilt.init(this.$refs.image, {
         speed: 1000,
-        scale: 1.1,
-        gyroscope: true
+        gyroscope: true,
+        'full-page-listening': true
       });
 
       exitTimeline.clear();
