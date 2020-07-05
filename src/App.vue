@@ -1,26 +1,40 @@
 <template>
-  <div>
-    <Sidebar />
-    <div id="wrapper">
-      <router-view></router-view>
-    </div>
+  <div class="app">
+    <CustomCursor />
+    <Navbar />
+    <router-view></router-view>
   </div>
 </template>
 
 <script>
-  import Sidebar from '@/components/Sidebar';
+  import Navbar from '@/components/Navbar'
+  import CustomCursor from '@/components/Cursor'
+  import debounce from '@/util/debounce'
 
   export default {
     components: {
-      Sidebar
+      Navbar,
+      CustomCursor
+    },
+    mounted() {
+      this.updateViewport()
+      window.addEventListener('resize', debounce(this.updateViewport, 250))
+    },
+    destroyed() {
+      window.removeEventListener('resize', this.updateViewport)
+    },
+    methods: {
+      updateViewport() {
+        // Updats the --vh variable used in the height mixin
+        const vh = window.innerHeight * 0.01
+        document.documentElement.style.setProperty('--vh', `${vh}px`)
+      }
     }
-  };
+  }
 </script>
 
 <style lang="scss" scoped>
-  @import 'assets/scss/sidebar';
-
-  #wrapper {
-    margin-left: $sidebar-width;
+  .app {
+    cursor: none;
   }
 </style>

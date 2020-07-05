@@ -1,10 +1,13 @@
-const BundleAnalyzerPlugin = require('webpack-bundle-analyzer').BundleAnalyzerPlugin;
+// Helps stylelint play nicely with vue files
+// const StylelintPlugin = require('stylelint-webpack-plugin')
 
 module.exports = {
   productionSourceMap: false,
-  configureWebpack: {
-    plugins: [
-      // new BundleAnalyzerPlugin(),
-    ]
-  }
-};
+  // configureWebpack: {
+  //   plugins: [
+  //     new StylelintPlugin({
+  //       files: ['src/**/*.vue']
+  //     })
+  //   ]
+  // }
+}

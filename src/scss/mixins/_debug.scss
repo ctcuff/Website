@@ -1,0 +1,25 @@
+@import 'breakpoints';
+
+// Small mixin that changes the background color
+// of an element so it's breakpoint can be visualized
+@mixin DEBUG_background-color {
+  @include breakpoint(xs) {
+    background-color: lightgray;
+  }
+
+  @include breakpoint(sm) {
+    background-color: orange;
+  }
+
+  @include breakpoint(md) {
+    background-color: lightskyblue;
+  }
+
+  @include breakpoint(lg) {
+    background-color: lightgreen;
+  }
+
+  @include breakpoint(xl) {
+    background-color: lightcoral;
+  }
+}

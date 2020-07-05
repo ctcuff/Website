@@ -1,11 +1,10 @@
-import Vue from 'vue';
-import Router from 'vue-router';
-import Home from '@/pages/Home';
-import About from '@/pages/About';
-import Projects from '@/pages/Projects';
-import Contact from '@/pages/Contact';
+import Vue from 'vue'
+import Router from 'vue-router'
+import Home from '@/components/Home'
+import About from '@/components/About'
+import Projects from '@/components/Projects'
 
-Vue.use(Router);
+Vue.use(Router)
 
 export default new Router({
   routes: [
@@ -20,10 +19,6 @@ export default new Router({
     {
       path: '/projects',
       component: Projects
-    },
-    {
-      path: '/contact',
-      component: Contact
-    },
+    }
   ]
-});
+})
