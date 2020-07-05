@@ -1,10 +1,12 @@
 <template>
   <nav ref="navbar">
-    <router-link to="/projects" class="link navbar__link navbar__link--bold link">
+    <router-link to="/projects" class="link--no-cursor navbar__link navbar__link--bold">
       <span>Projects</span>
     </router-link>
-    <router-link to="/" class="link navbar__link">Welcome to my portfolio</router-link>
-    <router-link to="/about" class="link navbar__link navbar__link--bold link">
+    <router-link to="/" class="link--no-cursor navbar__link"
+      >Welcome to my portfolio</router-link
+    >
+    <router-link to="/about" class="link--no-cursor navbar__link navbar__link--bold">
       <span>About</span>
     </router-link>
   </nav>
@@ -13,24 +15,20 @@
 <script>
   import gsap from 'gsap'
 
-  const timeline = gsap.timeline({ paused: true })
-
   export default {
     mounted() {
-      timeline
-        .fromTo(
-          this.$refs.navbar,
-          {
-            opacity: 0,
-            y: '-100%'
-          },
-          {
-            opacity: 1,
-            duration: 1,
-            y: '0%'
-          }
-        )
-        .play()
+      gsap.fromTo(
+        this.$refs.navbar,
+        {
+          opacity: 0,
+          y: '-100%'
+        },
+        {
+          opacity: 1,
+          duration: 1,
+          y: '0%'
+        }
+      )
     }
   }
 </script>
@@ -52,10 +50,6 @@
       margin-top: 3em;
     }
   }
-
-  // .navbar__title {
-  //   cursor: pointer;
-  // }
 
   .navbar__link {
     text-decoration: none;

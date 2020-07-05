@@ -1,7 +1,11 @@
 <template>
   <div class="content">
     <div class="content__image">
-      <img src="../assets/images/profile-pixel.png" alt="" ref="profileImage" />
+      <img
+        src="../assets/images/profile-pixel.png"
+        alt="pixelated profile"
+        ref="profileImage"
+      />
     </div>
     <div class="content__about">
       <section>
@@ -16,10 +20,11 @@
             <a
               href="https://techrangers.cdl.ucf.edu/about.html"
               target="_blank"
-              class="link content__link"
+              class="link--no-cursor content__link"
             >
               <mark>Center for Distributed Learning.</mark>
             </a>
+            In my free time, I love to play piano and clarinet.
           </p>
         </div>
       </section>
@@ -34,19 +39,27 @@
 
   export default {
     beforeRouteLeave(to, from, next) {
-      const aboutText = document.querySelectorAll(
-        '.content__about-header, .content__about-text'
-      )
+      const aboutHeader = document.querySelectorAll('.content__about-header')
+      const aboutText = document.querySelectorAll('.content__about-text')
 
       timeline
+        .to(
+          aboutHeader,
+          {
+            opacity: 0,
+            ease: 'Power2.easeIn',
+            duration: 1,
+            y: '-100%'
+          },
+          0
+        )
         .to(
           aboutText,
           {
             opacity: 0,
             ease: 'Power2.easeIn',
             duration: 1,
-            y: '-100%',
-            stagger: 0.2
+            y: '70%'
           },
           0
         )
@@ -55,7 +68,7 @@
           {
             opacity: 0,
             scale: 0.9,
-            duration: 1.5,
+            duration: 1.25,
             delay: 0.2
           },
           0
@@ -64,11 +77,11 @@
         .play(0)
     },
     mounted() {
-      const aboutText = document.querySelectorAll(
+      const abountContent = document.querySelectorAll(
         '.content__about-header, .content__about-text'
       )
       gsap.fromTo(
-        aboutText,
+        abountContent,
         {
           opacity: 0,
           y: '100%'
@@ -89,7 +102,7 @@
         {
           opacity: 1,
           scale: 1,
-          duration: 1.5
+          duration: 1.25
         }
       )
     }
@@ -99,8 +112,6 @@
 <style lang="scss" scoped>
   @import '../scss/mixins/breakpoints';
   @import '../scss/mixins/height';
-
-  $link-highlight-color: rgba(0, 0, 255, 0.2);
 
   .content {
     display: flex;

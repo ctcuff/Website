@@ -35,7 +35,6 @@
         gsap.to(this.$refs.outterCursor, {
           scale: 3,
           ease: 'back'
-          // ease: CustomEase.create('custom', 'M0,0 C0.128,0.572 0.519,1.481 0.622,1.236 0.712,1.02 0.838,1 1,1')
         })
       },
 
@@ -69,7 +68,7 @@
       },
 
       initLinkAnimation() {
-        const links = document.querySelectorAll('.link')
+        const links = document.querySelectorAll('.link--no-cursor')
         links.forEach(link => {
           link.removeEventListener('mouseenter', this.onLinkHover)
           link.removeEventListener('mouseleave', this.onLinkLeave)
@@ -84,6 +83,8 @@
 </script>
 
 <style lang="scss" scoped>
+  @import '../scss/mixins/breakpoints';
+
   $inner-size: 6px;
   $outter-size: 20px;
 
@@ -94,6 +95,11 @@
     pointer-events: none;
     z-index: 100;
     border-radius: 50%;
+    visibility: hidden;
+
+    @include breakpoint(lg) {
+      visibility: visible;
+    }
   }
 
   .cursor--inner {

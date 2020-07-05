@@ -13,49 +13,41 @@
   import gsap from 'gsap'
   import Splitting from 'splitting'
 
-  const timeline = gsap.timeline({ paused: true })
-
   export default {
     beforeRouteLeave(to, from, next) {
       const text = document.querySelectorAll(
         '.content__text .word > .char, .content__text--message'
       )
-      const timelineOpts = {
-        from: {
-          opacity: 1,
-          y: '0%',
-          rotation: 0
-        },
-        to: {
+      gsap
+        .to(text, {
           opacity: 0,
           duration: 1,
           ease: 'Power2.easeIn',
           y: '-150%',
-          stagger: 0.02
-        }
-      }
-      timeline.to(text, timelineOpts.to).eventCallback('onComplete', () => next())
+          stagger: 0.03
+        })
+        .eventCallback('onComplete', () => next())
+        .play()
     },
     mounted() {
       Splitting()
       const text = document.querySelectorAll(
         '.content__text .word > .char, .content__text--message'
       )
-      const timelineOpts = {
-        from: {
+
+      gsap.fromTo(
+        text,
+        {
           opacity: 0,
           y: '-100%'
         },
-        to: {
+        {
           opacity: 1,
           duration: 1.2,
           y: '0%',
-          delay: 0.2,
-          stagger: 0.02
+          stagger: 0.03
         }
-      }
-
-      timeline.fromTo(text, timelineOpts.from, timelineOpts.to).play()
+      )
     }
   }
 </script>
