@@ -23,6 +23,8 @@ small {
     Roboto, Oxygen, Ubuntu, Cantarell, 'Open Sans', 'Helvetica Neue', sans-serif;
 }
 
-.link--no-cursor {
+// Utility class that tells the cursor
+// to expand when the item is hovered over
+.cursor__link {
   cursor: none;
 }

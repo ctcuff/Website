@@ -1,12 +1,12 @@
 <template>
   <nav ref="navbar">
-    <router-link to="/projects" class="link--no-cursor navbar__link navbar__link--bold">
+    <router-link to="/projects" class="cursor__link navbar__link navbar__link--bold">
       <span>Projects</span>
     </router-link>
-    <router-link to="/" class="link--no-cursor navbar__link"
-      >Welcome to my portfolio</router-link
-    >
-    <router-link to="/about" class="link--no-cursor navbar__link navbar__link--bold">
+    <router-link to="/" class="cursor__link navbar__link">
+      Welcome to my portfolio
+    </router-link>
+    <router-link to="/about" class="cursor__link navbar__link navbar__link--bold">
       <span>About</span>
     </router-link>
   </nav>

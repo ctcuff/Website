@@ -69,7 +69,7 @@
       },
 
       initLinkAnimation() {
-        const links = document.querySelectorAll('.link--no-cursor')
+        const links = document.querySelectorAll('.cursor__link')
         links.forEach(link => {
           link.removeEventListener('mouseenter', this.onLinkHover)
           link.removeEventListener('mouseleave', this.onLinkLeave)

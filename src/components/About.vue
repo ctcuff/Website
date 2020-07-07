@@ -10,17 +10,17 @@
     <div class="content__about">
       <section>
         <div class="content__wrapper">
-          <h1 class="content__about-header">About Me</h1>
+          <h1 class="content__about-header" ref="aboutHeader">About Me</h1>
         </div>
         <div class="content__wrapper">
-          <p class="content__about-text">
+          <p class="content__about-text" ref="aboutText">
             I won't bore you with my life story so here's the jist: I'm a senior at UCF
             studying Computer Science. I currently work as a Web Applications Developer
             for the
             <a
               href="https://techrangers.cdl.ucf.edu/about.html"
               target="_blank"
-              class="link--no-cursor content__link"
+              class="cursor__link content__link"
             >
               <mark>Center for Distributed Learning.</mark>
             </a>
@@ -38,37 +38,26 @@
   const timeline = gsap.timeline({ paused: true })
 
   export default {
+    data: () => ({
+      animationDuration: 1
+    }),
     beforeRouteLeave(to, from, next) {
-      const aboutHeader = document.querySelectorAll('.content__about-header')
-      const aboutText = document.querySelectorAll('.content__about-text')
+      const timelineOpts = {
+        opacity: 0,
+        ease: 'Power2.easeIn',
+        duration: this.animationDuration,
+        y: '100%'
+      }
 
       timeline
-        .to(
-          aboutHeader,
-          {
-            opacity: 0,
-            ease: 'Power2.easeIn',
-            duration: 1,
-            y: '-100%'
-          },
-          0
-        )
-        .to(
-          aboutText,
-          {
-            opacity: 0,
-            ease: 'Power2.easeIn',
-            duration: 1,
-            y: '70%'
-          },
-          0
-        )
+        .to(this.$refs.aboutText, timelineOpts, 0)
+        .to(this.$refs.aboutHeader, timelineOpts, 0.2)
         .to(
           this.$refs.profileImage,
           {
             opacity: 0,
             scale: 0.9,
-            duration: 1.25,
+            duration: this.animationDuration,
             delay: 0.2
           },
           0
@@ -88,7 +77,7 @@
         },
         {
           opacity: 1,
-          duration: 1,
+          duration: this.animationDuration,
           y: '0%',
           stagger: 0.2
         }
@@ -102,7 +91,7 @@
         {
           opacity: 1,
           scale: 1,
-          duration: 1.25
+          duration: this.animationDuration
         }
       )
     }

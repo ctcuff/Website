@@ -6,6 +6,13 @@
         I make things sometimes.
       </p>
     </section>
+    <router-link
+      to="/contact"
+      class="content__text--contact cursor__link"
+      ref="contactLink"
+    >
+      Contact
+    </router-link>
   </div>
 </template>
 
@@ -14,18 +21,37 @@
   import Splitting from 'splitting'
 
   export default {
+    data: () => ({
+      animationDuration: 1,
+      animationStagger: 0.03
+    }),
     beforeRouteLeave(to, from, next) {
       const text = document.querySelectorAll(
         '.content__text .word > .char, .content__text--message'
       )
       gsap
-        .to(text, {
-          opacity: 0,
-          duration: 1,
-          ease: 'Power2.easeIn',
-          y: '-150%',
-          stagger: 0.03
-        })
+        .timeline()
+        .to(
+          text,
+          {
+            opacity: 0,
+            duration: this.animationDuration,
+            ease: 'Power2.easeIn',
+            y: '-150%',
+            stagger: this.animationStagger
+          },
+          0
+        )
+        .to(
+          this.$refs.contactLink.$el,
+          {
+            opacity: 0,
+            duration: this.animationDuration,
+            y: '150%',
+            ease: 'Power2.easeIn'
+          },
+          0
+        )
         .eventCallback('onComplete', () => next())
         .play()
     },
@@ -43,9 +69,22 @@
         },
         {
           opacity: 1,
-          duration: 1.2,
+          duration: this.animationDuration,
           y: '0%',
-          stagger: 0.03
+          stagger: this.animationStagger
+        }
+      )
+
+      gsap.fromTo(
+        this.$refs.contactLink.$el,
+        {
+          opacity: 0,
+          y: '150%'
+        },
+        {
+          opacity: 1,
+          y: '0%',
+          duration: this.animationDuration
         }
       )
     }
@@ -79,6 +118,16 @@
   .content__text--message {
     text-align: center;
     font-style: italic;
+  }
+
+  .content__text--contact {
+    font-weight: bold;
+    position: absolute;
+    text-align: center;
+    bottom: 0;
+    margin-bottom: 1em;
+    color: black;
+    text-decoration: none;
   }
 
   .content__item {
