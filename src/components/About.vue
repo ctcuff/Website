@@ -77,11 +77,11 @@
         .play(0)
     },
     mounted() {
-      const abountContent = document.querySelectorAll(
+      const aboutContent = document.querySelectorAll(
         '.content__about-header, .content__about-text'
       )
       gsap.fromTo(
-        abountContent,
+        aboutContent,
         {
           opacity: 0,
           y: '100%'

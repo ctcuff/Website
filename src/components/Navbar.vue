@@ -13,7 +13,7 @@
 </template>
 
 <script>
-  import gsap from 'gsap'
+  import { gsap } from 'gsap'
 
   export default {
     mounted() {
@@ -58,27 +58,5 @@
 
   .navbar__link--bold {
     font-weight: bold;
-  }
-
-  .nav__link--animate {
-    position: relative;
-  }
-
-  .nav__link--animate::before {
-    content: '';
-    position: absolute;
-    top: 50%;
-    left: 0;
-    right: 0;
-    height: 2px;
-    background-color: #000;
-    transform-origin: center right;
-    transform: scaleX(0) translateY(-50%);
-    transition: transform 0.3s ease;
-  }
-
-  .nav__link--animate:hover::before {
-    transform-origin: center left;
-    transform: scaleX(1) translateY(-50%);
   }
 </style>

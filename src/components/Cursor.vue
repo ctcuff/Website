@@ -1,12 +1,12 @@
 <template>
   <div>
     <div class="cursor cursor--inner" ref="innerCursor"></div>
-    <div class="cursor cursor--outter" ref="outterCursor"></div>
+    <div class="cursor cursor--outer" ref="outerCursor"></div>
   </div>
 </template>
 
 <script>
-  import gsap from 'gsap'
+  import { gsap } from 'gsap'
 
   export default {
     name: 'CustomCursor',
@@ -32,19 +32,19 @@
     },
     methods: {
       onLinkHover() {
-        gsap.to(this.$refs.outterCursor, {
+        gsap.to(this.$refs.outerCursor, {
           scale: 3,
           ease: 'back'
         })
       },
 
       onLinkLeave() {
-        gsap.to(this.$refs.outterCursor, { scale: 1 })
+        gsap.to(this.$refs.outerCursor, { scale: 1 })
       },
 
       initCursor() {
         const innerCursor = document.querySelectorAll('.cursor--inner')
-        const outterCursor = document.querySelectorAll('.cursor--outter')
+        const outterCursor = document.querySelectorAll('.cursor--outer')
 
         document.addEventListener('mousemove', event => {
           this.clientX = event.clientX
@@ -57,9 +57,10 @@
             y: this.clientY
           })
 
-          gsap.to(outterCursor, 0.5, {
+          gsap.to(outterCursor, {
             x: this.clientX,
-            y: this.clientY
+            y: this.clientY,
+            duration: 0.5
           })
 
           requestAnimationFrame(render)
@@ -86,7 +87,7 @@
   @import '../scss/mixins/breakpoints';
 
   $inner-size: 6px;
-  $outter-size: 20px;
+  $outer-size: 20px;
 
   .cursor {
     position: fixed;
@@ -110,11 +111,11 @@
     height: $inner-size;
   }
 
-  .cursor--outter {
-    left: calc(#{-$outter-size} / 2);
-    top: calc(#{-$outter-size} / 2);
+  .cursor--outer {
+    left: calc(#{-$outer-size} / 2);
+    top: calc(#{-$outer-size} / 2);
     background: rgba(0, 0, 0, 0.2);
-    width: $outter-size;
-    height: $outter-size;
+    width: $outer-size;
+    height: $outer-size;
   }
 </style>
