@@ -125,6 +125,14 @@
     display: flex;
     align-items: center;
     margin: 0.5em 0;
+
+    @supports (-webkit-text-stroke: 1px black) {
+      &:hover {
+        .contact__link {
+          color: black;
+        }
+      }
+    }
   }
 
   .circle--outer {
@@ -177,10 +185,6 @@
       transition: color 0.5s ease-in-out;
       color: transparent;
       text-decoration: none;
-
-      &:hover {
-        color: black;
-      }
     }
 
     @include breakpoint(sm) {
