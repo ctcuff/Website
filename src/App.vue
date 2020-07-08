@@ -1,6 +1,5 @@
 <template>
-  <div class="app">
-    <CustomCursor />
+  <div>
     <Navbar />
     <router-view></router-view>
   </div>
@@ -8,13 +7,11 @@
 
 <script>
   import Navbar from '@/components/Navbar'
-  import CustomCursor from '@/components/Cursor'
   import debounce from '@/util/debounce'
 
   export default {
     components: {
-      Navbar,
-      CustomCursor
+      Navbar
     },
     mounted() {
       this.updateViewport()
@@ -32,9 +29,3 @@
     }
   }
 </script>
-
-<style lang="scss" scoped>
-  .app {
-    cursor: none;
-  }
-</style>

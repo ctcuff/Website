@@ -1,13 +1,14 @@
 <template>
   <div class="content">
-    <div class="content__image">
+    <div class="content__left">
       <img
         src="../assets/images/profile-pixel.png"
         alt="pixelated profile"
         ref="profileImage"
+        class="content__image"
       />
     </div>
-    <div class="content__about">
+    <div class="content__right">
       <section>
         <div class="content__wrapper">
           <h1 class="content__about-header" ref="aboutHeader">About Me</h1>
@@ -20,7 +21,7 @@
             <a
               href="https://techrangers.cdl.ucf.edu/about.html"
               target="_blank"
-              class="cursor__link content__link"
+              class="content__link"
             >
               <mark>Center for Distributed Learning.</mark>
             </a>
@@ -51,7 +52,7 @@
 
       timeline
         .to(this.$refs.aboutText, timelineOpts, 0)
-        .to(this.$refs.aboutHeader, timelineOpts, 0.2)
+        .to(this.$refs.aboutHeader, timelineOpts, 0)
         .to(
           this.$refs.profileImage,
           {
@@ -69,6 +70,7 @@
       const aboutContent = document.querySelectorAll(
         '.content__about-header, .content__about-text'
       )
+
       gsap.fromTo(
         aboutContent,
         {
@@ -82,6 +84,7 @@
           stagger: 0.2
         }
       )
+
       gsap.fromTo(
         this.$refs.profileImage,
         {
@@ -113,36 +116,36 @@
     }
   }
 
-  .content__image {
+  .content__left,
+  .content__right {
     flex: 1;
     display: flex;
     justify-content: center;
+  }
+
+  .content__left {
     align-items: center;
+  }
 
-    img {
-      width: 55%;
-      height: auto;
-      align-self: center;
-      user-select: none;
-      pointer-events: none;
-
-      @include breakpoint(sm) {
-        width: 70%;
-      }
-
-      @include breakpoint(lg) {
-        width: 80%;
-      }
+  .content__right {
+    @include breakpoint(sm) {
+      align-items: center;
     }
   }
 
-  .content__about {
-    flex: 1;
-    display: flex;
-    justify-content: center;
+  .content__image {
+    width: 55%;
+    height: auto;
+    align-self: center;
+    user-select: none;
+    pointer-events: none;
 
     @include breakpoint(sm) {
-      align-items: center;
+      width: 70%;
+    }
+
+    @include breakpoint(lg) {
+      width: 80%;
     }
   }
 

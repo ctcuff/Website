@@ -6,11 +6,7 @@
         I make things sometimes.
       </p>
     </section>
-    <router-link
-      to="/contact"
-      class="content__text--contact cursor__link"
-      ref="contactLink"
-    >
+    <router-link to="/contact" class="content__text--contact" ref="contactLink">
       Contact
     </router-link>
   </div>

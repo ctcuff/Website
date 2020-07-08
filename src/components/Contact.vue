@@ -1,42 +1,25 @@
 <template>
   <div class="contact">
     <div>
-      <div class="contact__row-wrapper">
-        <div class="contact__row" data-link="https://github.com/ctcuff">
-          <div class="circle--outer">
-            <div class="circle--inner"></div>
+      <div v-for="link in links" :key="link.url">
+        <div class="contact__row-wrapper">
+          <div
+            class="contact__row"
+            @mouseenter="onRowMouseEnter"
+            @mouseleave="onRowMouseLeave"
+          >
+            <div class="circle--outer">
+              <div class="circle--inner"></div>
+            </div>
+            <a
+              class="contact__link"
+              :href="link.url"
+              target="_blank"
+              rel="noopener noreferrer"
+            >
+              {{ link.text }}
+            </a>
           </div>
-          <p class="contact__row__text contact__row__text--stroke">GitHub</p>
-        </div>
-      </div>
-
-      <div class="contact__row-wrapper">
-        <div
-          class="contact__row"
-          data-link="https://www.linkedin.com/in/cameron-cuff-126405161/"
-        >
-          <div class="circle--outer">
-            <div class="circle--inner"></div>
-          </div>
-          <p class="contact__row__text contact__row__text--stroke">LinkedIn</p>
-        </div>
-      </div>
-
-      <div class="contact__row-wrapper">
-        <div class="contact__row" data-link="../cuff_resume.pdf">
-          <div class="circle--outer">
-            <div class="circle--inner"></div>
-          </div>
-          <p class="contact__row__text contact__row__text--stroke">Resume</p>
-        </div>
-      </div>
-
-      <div class="contact__row-wrapper">
-        <div class="contact__row" data-link="mailto:dev.ctcuff@gmail.com">
-          <div class="circle--outer">
-            <div class="circle--inner"></div>
-          </div>
-          <p class="contact__row__text contact__row__text--stroke">Email</p>
         </div>
       </div>
     </div>
@@ -50,7 +33,25 @@
     data: () => ({
       mounted: false,
       textAnimationDuration: 1,
-      animationStagger: 0.15
+      animationStagger: 0.15,
+      links: [
+        {
+          text: 'GitHub',
+          url: 'https://github.com/ctcuff'
+        },
+        {
+          text: 'LinkedIn',
+          url: 'https://www.linkedin.com/in/cameron-cuff-126405161/'
+        },
+        {
+          text: 'Resume',
+          url: '../cuff_resume.pdf'
+        },
+        {
+          text: 'Email',
+          url: 'mailto:dev.ctcuff@gmail.com'
+        }
+      ]
     }),
     beforeRouteLeave(to, from, next) {
       this.mounted = false
@@ -64,18 +65,10 @@
           ease: 'Power2.easeIn'
         })
         .eventCallback('onComplete', () => next())
-        .play()
     },
     mounted() {
-      const rows = document.querySelectorAll('.contact__row')
-
-      rows.forEach(row => {
-        row.addEventListener('mouseenter', this.onRowMouseEnter)
-        row.addEventListener('mouseleave', this.onRowMouseLeave)
-        row.addEventListener('click', this.onRowItemClick)
-      })
-
       this.mounted = true
+      const rows = document.querySelectorAll('.contact__row')
 
       gsap.fromTo(
         rows,
@@ -96,40 +89,21 @@
           return
         }
 
-        const rowElement = event.target
-        const innerCircle = rowElement.children[0].firstElementChild
-        const rowText = rowElement.children[1]
-
-        gsap
-          .to(innerCircle, {
-            x: '0%',
-            duration: 0.25
-          })
-          .eventCallback('onStart', () => {
-            rowText.classList.remove('contact__row__text--stroke')
-          })
+        // Animates the inner circle
+        gsap.to(event.target.children[0].firstElementChild, {
+          x: '0%',
+          duration: 0.25
+        })
       },
       onRowMouseLeave(event) {
         if (!this.mounted) {
           return
         }
-
-        const rowElement = event.target
-        const innerCircle = rowElement.children[0].firstElementChild
-        const rowText = rowElement.children[1]
-
-        gsap
-          .to(innerCircle, {
-            x: '-150%',
-            duration: 0.5,
-            ease: 'Power2.easeIn'
-          })
-          .eventCallback('onStart', () => {
-            rowText.classList.add('contact__row__text--stroke')
-          })
-      },
-      onRowItemClick(event) {
-        window.open(event.target.dataset.link, '_blank')
+        gsap.to(event.target.children[0].firstElementChild, {
+          x: '-150%',
+          duration: 0.5,
+          ease: 'Power2.easeIn'
+        })
       }
     }
   }
@@ -190,11 +164,24 @@
     overflow: hidden;
   }
 
-  .contact__row__text {
+  .contact__link {
     font-size: 2.5em;
-    font-family: 'Avenir';
+    font-family: 'AvenirNextLTPro-Bold';
     font-weight: bold;
     margin: 0;
+    color: black;
+    text-decoration: none;
+
+    @supports (-webkit-text-stroke: 1px black) {
+      -webkit-text-stroke: 1px black;
+      transition: color 0.5s ease-in-out;
+      color: transparent;
+      text-decoration: none;
+
+      &:hover {
+        color: black;
+      }
+    }
 
     @include breakpoint(sm) {
       font-size: 2.3em;
@@ -207,21 +194,5 @@
     @include breakpoint(lg) {
       font-size: 4em;
     }
-  }
-
-  .contact__row__text--stroke {
-    @supports (-webkit-text-stroke: 1px black) {
-      -webkit-text-stroke: 1px black;
-      -webkit-text-fill-color: white;
-    }
-  }
-
-  // Prevents these elements from becoming the
-  // target element when a contact__row item is
-  // clicked or hovered
-  .circle--inner,
-  .circle--outer,
-  .contact__row__text {
-    pointer-events: none;
   }
 </style>
