@@ -174,7 +174,7 @@
 
   .contact__link {
     font-size: 2.5em;
-    font-family: 'AvenirNextLTPro-Bold';
+    font-family: 'AvenirNext-Bold';
     margin: 0;
     color: black;
     text-decoration: none;

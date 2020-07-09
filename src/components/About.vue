@@ -152,7 +152,7 @@
   .content__about-header {
     font-size: 2em;
     margin: 0;
-    font-family: 'AvenirNextLTPro-Bold', monospace;
+    font-family: 'AvenirNext-Bold', monospace;
 
     @include breakpoint(lg) {
       font-size: 3em;
