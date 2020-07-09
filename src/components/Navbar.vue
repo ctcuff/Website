@@ -1,12 +1,12 @@
 <template>
   <nav ref="navbar">
-    <router-link to="/projects" class="navbar__link navbar__link--bold">
+    <router-link to="/projects" class="navbar__link">
       Projects
     </router-link>
     <router-link to="/" class="navbar__link">
       Welcome to my portfolio
     </router-link>
-    <router-link to="/about" class="navbar__link navbar__link--bold">
+    <router-link to="/about" class="navbar__link">
       About
     </router-link>
   </nav>
@@ -54,9 +54,5 @@
   .navbar__link {
     text-decoration: none;
     color: black;
-  }
-
-  .navbar__link--bold {
-    font-weight: bold;
   }
 </style>

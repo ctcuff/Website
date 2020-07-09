@@ -117,7 +117,6 @@
   }
 
   .content__text--contact {
-    font-weight: bold;
     position: absolute;
     text-align: center;
     bottom: 0;
