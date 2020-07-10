@@ -1,23 +1,87 @@
 <template>
-  <div>
-    <img src="../assets/images/ucf-parking.png" />
+  <div class="projects">
+    <p data-splitting>My</p>
+    <p data-splitting>Projects</p>
   </div>
 </template>
 
 <script>
-  export default {}
+  import { gsap } from 'gsap'
+  import Splitting from 'splitting'
+
+  export default {
+    data: () => ({
+      animationDuration: 1,
+      animationStagger: 0.03
+    }),
+    beforeRouteLeave(to, from, next) {
+      const words = document.querySelectorAll('.char')
+
+      gsap
+        .to(words, {
+          y: '-100%',
+          opacity: 1,
+          duration: this.animationDuration,
+          stagger: this.animationStagger,
+          ease: 'Power2.easeIn'
+        })
+        .eventCallback('onComplete', () => next())
+    },
+    mounted() {
+      Splitting()
+      const words = document.querySelectorAll('.char')
+
+      gsap.fromTo(
+        words,
+        {
+          opacity: 0,
+          y: '100%'
+        },
+        {
+          opacity: 1,
+          y: '0%',
+          stagger: this.animationStagger,
+          duration: this.animationDuration
+        }
+      )
+    }
+  }
 </script>
 
 <style lang="scss" scoped>
-  div {
+  @import '../scss/mixins/height';
+  @import '../scss/mixins/fonts';
+
+  .projects {
+    font-size: 10vw;
     display: flex;
     justify-content: center;
     align-items: center;
-    height: calc(100vh - 3em);
+    height: 100vh;
+    text-transform: uppercase;
+
+    @include full-height;
   }
 
-  img {
-    width: 50%;
-    height: auto;
+  p {
+    margin: 0;
+    cursor: default;
+    user-select: none;
+    overflow: hidden;
+
+    @include font('Montserrat');
+  }
+
+  p:first-child {
+    margin-right: 0.35em;
+  }
+
+  p:last-child {
+    @supports (-webkit-text-stroke: 1px black) {
+      -webkit-text-stroke: 1px black;
+      transition: color 0.5s ease-in-out;
+      color: transparent;
+      text-decoration: none;
+    }
   }
 </style>

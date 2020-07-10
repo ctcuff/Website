@@ -111,6 +111,7 @@
 
 <style lang="scss" scoped>
   @import '../scss/mixins/breakpoints';
+  @import '../scss/mixins/fonts';
 
   .contact {
     display: flex;
@@ -174,7 +175,6 @@
 
   .contact__link {
     font-size: 2.5em;
-    font-family: 'AvenirNext-Bold';
     margin: 0;
     color: black;
     text-decoration: none;
@@ -185,6 +185,8 @@
       color: transparent;
       text-decoration: none;
     }
+
+    @include font('AvenirNext-Bold');
 
     @include breakpoint(sm) {
       font-size: 2.3em;

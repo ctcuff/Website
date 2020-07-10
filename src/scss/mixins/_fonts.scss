@@ -1,0 +1,18 @@
+@import url('https://fonts.googleapis.com/css2?family=Montserrat:wght@800&display=swap');
+
+@font-face {
+  font-family: 'AvenirNext';
+  src: url(../assets/fonts/AvenirNextLTPro-Regular.otf);
+}
+
+@font-face {
+  font-family: 'AvenirNext-Bold';
+  src: url(../assets/fonts/AvenirNextLTPro-Bold.otf);
+}
+
+// Helper mixin so default fonts don't need to
+// be specified all the time
+@mixin font($font) {
+  font-family: $font, -apple-system, BlinkMacSystemFont, 'Segoe UI',
+    Roboto, Oxygen, Ubuntu, Cantarell, 'Open Sans', 'Helvetica Neue', sans-serif;
+}

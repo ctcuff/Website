@@ -89,6 +89,7 @@
 
 <style lang="scss" scoped>
   @import '../scss/mixins/height';
+  @import '../scss/mixins/fonts';
 
   .content {
     display: flex;
@@ -98,6 +99,7 @@
     flex-direction: column;
 
     @include full-height;
+    @include font('AvenirNext');
   }
 
   .content__text {

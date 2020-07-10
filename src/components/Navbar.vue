@@ -36,6 +36,7 @@
 <style lang="scss" scoped>
   @import '../scss/mixins/breakpoints';
   @import '../scss/mixins/debug';
+  @import '../scss/mixins/fonts';
 
   nav {
     position: absolute;
@@ -54,5 +55,7 @@
   .navbar__link {
     text-decoration: none;
     color: black;
+
+    @include font('AvenirNext');
   }
 </style>

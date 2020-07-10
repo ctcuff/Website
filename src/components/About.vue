@@ -104,6 +104,7 @@
 <style lang="scss" scoped>
   @import '../scss/mixins/breakpoints';
   @import '../scss/mixins/height';
+  @import '../scss/mixins/fonts';
 
   .content {
     display: flex;
@@ -111,6 +112,7 @@
     height: 100vh;
 
     @include full-height;
+    @include font('AvenirNext');
     @include breakpoint(sm) {
       flex-direction: row;
     }
@@ -152,8 +154,8 @@
   .content__about-header {
     font-size: 2em;
     margin: 0;
-    font-family: 'AvenirNext-Bold', monospace;
 
+    @include font('AvenirNext-Bold');
     @include breakpoint(lg) {
       font-size: 3em;
     }
@@ -183,7 +185,7 @@
     color: black;
 
     mark {
-      background-color: rgba(255, 0, 0, 0.15);
+      background-color: rgba(0, 0, 255, 0.15);
     }
   }
 </style>
