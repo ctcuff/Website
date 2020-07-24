@@ -46,8 +46,10 @@
     grid-template-columns: 1fr 2fr 1fr;
     justify-items: center;
     z-index: 2;
+    font-size: 0.8em;
 
     @include breakpoint(lg) {
+      font-size: 1em;
       margin-top: 3em;
     }
   }
