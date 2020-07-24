@@ -11,11 +11,8 @@
   @include full-height;
 
   &__title {
-    // position: absolute;
-    // bottom: 300px;
     color: #353535;
     line-height: 52px;
-    max-width: 300px;
     margin-bottom: 32px;
 
     h1 {
@@ -27,10 +24,8 @@
   }
 
   &__description {
-    // position: absolute;
-    // bottom: 224px;
-    // height: 60px;
     margin-bottom: 32px;
+    max-width: 300px;
     color: #8e9093;
 
     & p {
@@ -39,9 +34,6 @@
   }
 
   &__link {
-    // position: absolute;
-    // bottom: 190px;
-
     a {
       color: #353535;
       font-weight: bold;
@@ -72,14 +64,8 @@
   width: 100%;
   height: 100%;
   flex-direction: column;
-  margin-left: 100px;
-  // margin-top: 100px;
+  margin-left: 117px;
   justify-content: center;
-  // padding: 0 35% 0% 100px;
-
-  // @media (max-width: 400px) {
-  //   margin-left: 0;
-  // }
 }
 
 .project__image {
@@ -88,7 +74,7 @@
 }
 
 .project__image--background {
-  width: 90%;
+  width: 100%;
   height: 100%;
   position: relative;
   display: flex;
@@ -112,24 +98,26 @@
 }
 
 .project__image--foreground {
+  display: flex;
+  height: 100%;
+  width: 54%;
   position: absolute;
-  width: 680px;
-  height: 450px;
-  left: 580px;
-  top: 20%;
+  top: 0;
+  right: 0;
 
   img {
     position: absolute;
-    width: inherit;
-    height: inherit;
+    width: 100%;
+    height: 100%;
     z-index: 1;
+    object-fit: contain;
     user-select: none;
   }
 }
 
 .carousel {
   position: fixed;
-  right: 10px;
+  left: 0;
   top: 0;
   display: flex;
   align-items: center;
@@ -138,6 +126,7 @@
   @include font('Avenir');
 
   ul {
+    padding: 0;
     list-style: none;
   }
 }
@@ -192,10 +181,37 @@
   }
 }
 
-@media (max-width: 450px) {
+@media (max-width: 1300px) {
+  .project__title {
+    max-width: 300px;
+  }
+}
+
+@media (max-width: 850px) {
+  .project__image--foreground {
+    width: 50%;
+    height: 100%;
+    top: 0;
+  }
+
   .project__info {
+    height: 100%;
+    margin-left: 100px;
+  }
+
+  .project__title > h1 {
+    font-size: 35px;
+  }
+
+  .project__description {
+    max-width: 200px;
+  }
+}
+
+@media (max-width: 600px) {
+  .project__info {
+    height: 100%;
     margin-left: 0;
-    // margin-top: 50%;
   }
 
   .project {
@@ -204,13 +220,9 @@
   }
 
   .project__image--foreground {
-    left: 0;
     width: 100%;
-    top: 0;
-
-    img {
-      object-fit: contain;
-    }
+    top: 5%;
+    height: 50%;
   }
 
   .project__image--background {
@@ -218,6 +230,8 @@
   }
 
   .carousel {
-    top: 9%;
+    top: 20%;
+    right: 10px;
+    left: unset;
   }
 }

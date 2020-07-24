@@ -1,15 +1,15 @@
 <template>
   <div ref="root">
     <div class="project">
-      <div class="project__info">
+      <div class="project__info no-overflow">
         <div class="project__title no-overflow">
           <h1 ref="projectTitle">{{ projects[activeItemIndex].title }}</h1>
         </div>
-        <div class="project__description no-overflow">
+        <div class="project__description">
           <p ref="projectDescription">{{ projects[activeItemIndex].description }}</p>
         </div>
-        <div class="project__link no-overflow">
-          <a :href="projects[activeItemIndex].link" ref="projectLink">View details</a>
+        <div class="project__link no-overflow" ref="projectLink">
+          <a :href="projects[activeItemIndex].link">View details</a>
         </div>
       </div>
       <div class="project__image">
@@ -36,6 +36,7 @@
           :class="{ 'carousel__item--active': activeItemIndex === i - 1 }"
           v-for="i in projects.length"
           :key="i"
+          :title="projects[i - 1].title"
           :data-position="i - 1"
         >
           <span>{{ `${i}`.padStart(2, 0) }}</span>
@@ -51,7 +52,6 @@
   export default {
     data: () => ({
       animationDuration: 1,
-      animationStagger: 0.03,
       scrollEvents: ['DOMMouseScroll', 'mousewheel', 'wheel'],
       lastScrolled: Date.now(),
       activeItemIndex: 0,
@@ -75,7 +75,7 @@
         },
         {
           title: 'Dependency Visualizer',
-          description: "View a graph of a package's dependencies.",
+          description: "View a graph of a JavaScript package's dependencies from npm.",
           backgroundImage: require('../assets/images/dependency-visualizer-fullscreen.png'),
           foregroundImage: require('../assets/images/dependency-visualizer.png'),
           link: '/#/projects?q=Dependency%20Visualizer'
@@ -102,9 +102,10 @@
           return
         }
 
-        if (event.keyCode === 38) {
+        // Keyboard arrow keys: up && left or down && right
+        if (event.keyCode === 38 || event.keyCode === 37) {
           this.animateTransition('UP')
-        } else if (event.keyCode === 40) {
+        } else if (event.keyCode === 40 || event.keyCode === 39) {
           this.animateTransition('DOWN')
         }
       },
@@ -156,6 +157,7 @@
         } = this.$refs
 
         const text = gsap.utils.toArray([projectTitle, projectDescription, projectLink])
+        const duration = 0.7
 
         this.isAnimating = true
 
@@ -166,19 +168,20 @@
             {
               y: direction === 'UP' ? '-100%' : '100%',
               opacity: 0,
-              ease: 'power2.in'
+              ease: 'power2.in',
+              duration
             },
             0
           )
-          .to(projectImageForeground, { opacity: 0 }, 0)
-          .to(projectImageBackground, { opacity: 0 }, 0)
+          .to(projectImageForeground, { opacity: 0, duration }, 0)
+          .to(projectImageBackground, { opacity: 0, duration }, 0)
           .add(() => this.changeIndex(direction))
           .to(
             text,
             {
               y: '0%',
               opacity: 1,
-              ease: 'power2.out'
+              duration
             },
             1
           )
@@ -188,25 +191,127 @@
       }
     },
     mounted() {
+      const {
+        projectTitle,
+        projectDescription,
+        projectImageForeground,
+        projectImageBackground,
+        projectLink,
+        carouselList,
+        root
+      } = this.$refs
+
+      const text = gsap.utils.toArray([projectTitle, projectDescription, projectLink])
+      const images = gsap.utils.toArray([projectImageBackground, projectImageForeground])
+
       window.addEventListener('keydown', this.onKeyDown)
+      root.addEventListener('touchstart', this.handleTouchStart)
+      root.addEventListener('touchmove', this.handleTouchMove)
 
-      this.scrollEvents.forEach(event => {
-        this.$refs.root.addEventListener(event, this.onScroll)
-      })
+      this.scrollEvents.forEach(event => root.addEventListener(event, this.onScroll))
 
-      this.$refs.root.addEventListener('touchstart', this.handleTouchStart)
-      this.$refs.root.addEventListener('touchmove', this.handleTouchMove)
-
-      Array.prototype.forEach.call(this.$refs.carouselList.children, child => {
+      Array.prototype.forEach.call(carouselList.children, child => {
         child.addEventListener('click', () => {
           this.activeItemIndex = parseInt(child.dataset.position)
         })
       })
+
+      gsap
+        .timeline()
+        .fromTo(
+          carouselList,
+          {
+            x: '-100%',
+            opacity: 0
+          },
+          {
+            x: '0%',
+            opacity: 1,
+            duration: this.animationDuration
+          },
+          0
+        )
+        .fromTo(
+          text,
+          {
+            y: '-100%',
+            opacity: 0
+          },
+          {
+            y: '0%',
+            opacity: 1,
+            duration: this.animationDuration
+          },
+          0
+        )
+        .fromTo(
+          images,
+          {
+            opacity: 0
+          },
+          {
+            opacity: 1,
+            duration: this.animationDuration
+          },
+          0
+        )
+    },
+    beforeRouteLeave(to, from, next) {
+      const {
+        projectTitle,
+        projectDescription,
+        projectImageForeground,
+        projectImageBackground,
+        projectLink,
+        carouselList
+      } = this.$refs
+
+      const text = gsap.utils.toArray([projectTitle, projectDescription, projectLink])
+      const images = gsap.utils.toArray([projectImageBackground, projectImageForeground])
+      const ease = 'Power2.easeIn'
+
+      gsap
+        .timeline()
+        .eventCallback('onComplete', () => next())
+        .to(
+          carouselList,
+          {
+            x: '-100%',
+            duration: this.animationDuration,
+            opacity: 0,
+            ease
+          },
+          0
+        )
+        .to(
+          text,
+          {
+            y: '-100%',
+            duration: this.animationDuration,
+            opacity: 0,
+            ease
+          },
+          0
+        )
+        .to(
+          images,
+          {
+            duration: this.animationDuration,
+            opacity: 0,
+            ease
+          },
+          0
+        )
     },
     beforeDestroy() {
+      const root = this.$refs.root
+
       window.removeEventListener('keydown', this.onKeyDown)
+      root.removeEventListener('touchstart', this.handleTouchStart)
+      root.removeEventListener('touchmove', this.handleTouchMove)
+
       this.scrollEvents.forEach(event => {
-        this.$refs.root.removeEventListener(event, this.onScroll)
+        root.removeEventListener(event, this.onScroll)
       })
     }
   }
