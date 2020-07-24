@@ -44,8 +44,10 @@
     },
     "lint-staged": {
         "./src/**/*{.js,.vue}": [
-            "yarn format",
             "yarn lint"
+        ],
+        "./src/**/*{.scss,.js,.vue}": [
+            "yarn format"
         ]
     },
     "postcss": {

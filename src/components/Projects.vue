@@ -56,6 +56,8 @@
       lastScrolled: Date.now(),
       activeItemIndex: 0,
       isAnimating: false,
+      xDown: null,
+      yDown: null,
       projects: [
         {
           title: 'UCF Parking',
@@ -106,6 +108,31 @@
           this.animateTransition('DOWN')
         }
       },
+      handleTouchStart(event) {
+        const firstTouch = event.touches[0]
+        this.xDown = firstTouch.clientX
+        this.yDown = firstTouch.clientY
+      },
+      handleTouchMove(event) {
+        if (!this.xDown || !this.yDown) {
+          return
+        }
+
+        const xUp = event.touches[0].clientX
+        const yUp = event.touches[0].clientY
+        const xDiff = this.xDown - xUp
+        const yDiff = this.yDown - yUp
+
+        if (Math.abs(xDiff) < Math.abs(yDiff)) {
+          // yDiff > 0 is a swipe up
+          // yDiff < 0 is a swipe down
+          const direction = yDiff > 0 ? 'DOWN' : 'UP'
+          this.animateTransition(direction)
+        }
+
+        this.xDown = null
+        this.yDown = null
+      },
       changeIndex(direction) {
         if (direction === 'UP') {
           this.activeItemIndex -= 1
@@ -144,7 +171,7 @@
             0
           )
           .to(projectImageForeground, { opacity: 0 }, 0)
-          .to(projectImageBackground, { opacity: 0 }, 0.4)
+          .to(projectImageBackground, { opacity: 0 }, 0)
           .add(() => this.changeIndex(direction))
           .to(
             text,
@@ -156,7 +183,7 @@
             1
           )
           .to(projectImageForeground, { opacity: 1 }, 1)
-          .to(projectImageBackground, { opacity: 1 }, 1.2)
+          .to(projectImageBackground, { opacity: 1 }, 1)
           .add(() => (this.isAnimating = false))
       }
     },
@@ -166,6 +193,9 @@
       this.scrollEvents.forEach(event => {
         this.$refs.root.addEventListener(event, this.onScroll)
       })
+
+      this.$refs.root.addEventListener('touchstart', this.handleTouchStart)
+      this.$refs.root.addEventListener('touchmove', this.handleTouchMove)
 
       Array.prototype.forEach.call(this.$refs.carouselList.children, child => {
         child.addEventListener('click', () => {
@@ -183,185 +213,5 @@
 </script>
 
 <style lang="scss" scoped>
-  @import '../scss/mixins/height';
-  @import '../scss/mixins/fonts';
-
-  .project {
-    display: flex;
-    flex-direction: row;
-    width: 100%;
-    @include font('Avenir');
-    @include full-height;
-
-    &__title {
-      position: absolute;
-      bottom: 300px;
-      color: #353535;
-      line-height: 52px;
-      max-width: 300px;
-
-      h1 {
-        font-size: 45px;
-        margin: 0;
-      }
-
-      @include font('AvenirNext-Bold');
-    }
-
-    &__description {
-      position: absolute;
-      bottom: 224px;
-      height: 60px;
-      color: #8e9093;
-
-      & p {
-        margin: 0;
-      }
-    }
-
-    &__link {
-      position: absolute;
-      bottom: 190px;
-
-      a {
-        color: #353535;
-        font-weight: bold;
-        text-decoration: none;
-        font-size: 14px;
-        position: relative;
-
-        &::before {
-          content: '';
-          width: 20px;
-          height: 1px;
-          background-color: #000;
-          vertical-align: middle;
-          display: inline-block;
-          margin-right: 16px;
-          transition: width 0.3s ease-in-out;
-        }
-
-        &:hover::before {
-          width: 60px;
-        }
-      }
-    }
-  }
-
-  .project__info {
-    display: flex;
-    width: 100%;
-    height: 100%;
-    padding: 0 35% 0% 100px;
-  }
-
-  .project__image {
-    width: 43%;
-    height: 100%;
-  }
-
-  .project__image--background {
-    width: 90%;
-    height: 100vh;
-    position: relative;
-    display: flex;
-
-    img {
-      width: auto;
-      filter: brightness(90%);
-      user-select: none;
-
-      @include full-height;
-    }
-
-    &::before {
-      content: '';
-      position: absolute;
-      width: 100%;
-      height: 100%;
-      background-color: rgba(255, 255, 255, 0.6);
-      z-index: 1;
-    }
-  }
-
-  .project__image--foreground {
-    position: absolute;
-    width: 680px;
-    height: 450px;
-    left: 580px;
-    top: 20%;
-
-    img {
-      position: absolute;
-      width: inherit;
-      height: inherit;
-      z-index: 1;
-      user-select: none;
-    }
-  }
-
-  .carousel {
-    position: fixed;
-    right: 10px;
-    top: 0;
-    display: flex;
-    align-items: center;
-    height: 100%;
-    margin-right: 5px;
-    @include font('Avenir');
-
-    ul {
-      list-style: none;
-    }
-  }
-
-  .carousel__item {
-    $transition: transform 0.3s ease-in-out, opacity 0.3s ease-in-out;
-    line-height: 3;
-    font-size: 12px;
-    text-align: left;
-    cursor: pointer;
-    user-select: none;
-
-    span {
-      opacity: 0;
-      display: inline-block;
-      transition: $transition;
-    }
-
-    &::after {
-      content: '';
-      width: 13px;
-      background-color: #353535;
-      height: 1px;
-      transform-origin: right;
-      display: inline-block;
-      vertical-align: middle;
-      transition: $transition;
-    }
-
-    &:hover {
-      span {
-        opacity: 1;
-        transform: translateX(13px);
-      }
-
-      &::after {
-        opacity: 0;
-        transform: translateX(13px);
-      }
-    }
-  }
-
-  .carousel__item--active {
-    span {
-      opacity: 1;
-      transform: translateX(13px);
-    }
-
-    &::after {
-      opacity: 0;
-      transform: translateX(13px);
-    }
-  }
+  @import '../scss/components/projects';
 </style>
