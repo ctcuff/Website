@@ -219,6 +219,10 @@
   cursor: pointer;
   user-select: none;
 
+  @include breakpoint(md) {
+    padding-right: 5em;
+  }
+
   span {
     opacity: 0;
     display: inline-block;

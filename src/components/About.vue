@@ -26,7 +26,7 @@
             >
               Center for Distributed Learning.
             </a>
-            In my free time, I love to play piano and clarinet.
+            In my free time, I like to play piano and work on side projects.
           </p>
         </div>
       </section>

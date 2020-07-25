@@ -22,6 +22,14 @@ const projects = [
     foregroundImage: require('./assets/images/dependency-visualizer.png'),
     imageAlt: 'Dependency visualizer website screenshot',
     link: '/project?index=2'
+  },
+  {
+    title: 'Portfolio',
+    description: 'This very website and how I approach projects.',
+    backgroundImage: require('./assets/images/portfolio-fullscreen.png'),
+    foregroundImage: require('./assets/images/portfolio.png'),
+    imageAlt: 'Portfolio website screenshot',
+    link: '/project?index=3'
   }
 ]
 
@@ -29,7 +37,7 @@ const projectData = [
   {
     title: 'UCF Parking',
     image: {
-      src: require('./assets/images/ucf-parking.png'),
+      src: require('./assets/images/ucf-parking1.png'),
       alt: 'UCF Parking Website'
     },
     links: {
@@ -176,6 +184,82 @@ const projectData = [
           sure I didn't keep making the same request. To solve this, I implemented my own cache using
           the browser's local storage. This way, once a request has been made, subsequent look-ups
           become much faster. This project was ultimately a huge lesson in writing efficient code.`
+      }
+    ]
+  },
+  {
+    title: 'Portfolio',
+    image: {
+      src: require('./assets/images/portfolio.png'),
+      alt: 'Portfolio website'
+    },
+    links: {
+      github: 'https://github.com/ctcuff/ctcuff.github.io'
+    },
+    sections: [
+      {
+        heading: `Hey look its my website`,
+        text: `
+          So, the screenshot might be kind of misleading. It's an earlier version
+          of this site. Generally, what I like to do is redesign the site every once
+          a while to keep me on my toes and help me learn about design an other things.
+          This website started back in 2017 as a single page glued together with some
+          jQuery and Bootstrap sprinkled in. To be honest, I had no idea what I was doing...
+          (I still don't). In early 2018, I decided to ditch jQuery for React and
+          remade the site, keeping the origin Bootstrap look. It sure looked tacky, but
+          it got the job done. When 2019 hit, I wanted to learn Vue so I completely
+          redesigned the site, ditched Bootstrap, and decided to go with vanilla CSS/SCSS
+          for everything (that's the screenshot you see above). Today, I'm still using Vue,
+          but I continue too style the site without the use of design or CSS libraries.
+          I think it gives me a much better appreciation for CSS and gets those
+          creative juices flowing.`
+      },
+      {
+        heading: 'The approach',
+        text: `
+          When I get an idea for a site, one of the first things I do is look to 
+          others for design inspiration. Whenever when I see a website that looks nice,
+          I bookmark it, pop open my text editor, create a simple HTML and CSS file, and try to 
+          redesign parts of it from scratch. I always start simple, try to recreate a 
+          cool button hover effect or even something as simple as a shaped element.
+          When I get stuck, I open up Chrome's dev tools and checkout the site's styling
+          to see how they did it. Doing this helps me see that there's never just one way to
+          do anything and I get to learn how other developer think in the process. It really
+          makes me realize just how much I don't know.`
+      },
+      {
+        heading: 'How I build a project',
+        text: `
+          Ok, I swear I do more than just make websites... Whenever I have an idea for a project,
+          (as idiotic as it may be), I jot it down and save it to a list of future projects.
+          The idea here is that there's no such thing as a bad idea. The way I see it, if you
+          learned something in the process, then that project has value. So, when I decide on
+          what to make, I start by planning out what the project should do. What's the core
+          functionality? Does it have a target audience? I map out the basic features so I
+          have something to build off of. If this project is something an end user is going to
+          be staring at, like a website, or anything with a UI, I think about how it should look.
+          Like I mentioned earlier, I love to steal, uh, I mean, borrow, ideas from other sites.
+          I might whip out my good pals pencil & paper and sketch something simple, crooked lines
+          and all. Alright, so I have the project idea, the functionality, and some mock-ups, next
+          comes the fun part: building it. I try not to just jump straight to my favorite framework
+          or programming language. Instead, I try to look at expanding my knowledge. Maybe there's
+          a hot new framework. Maybe I hear somewhere that language X is rising in popularity.
+          When the project is finished, I think about what could be better and try to improve upon it.
+          Maybe there's a database request I can try and optimize. Maybe there's a component I can
+          try and make more accessible. Maybe there are some tiny features that could be added.`
+      },
+      {
+        heading: 'What I learned',
+        text: `
+          There are no bad ideas, projects are important, and writing CSS is fun. Seriously.
+          I used to shy away from CSS because I didn't want to look up "how to center a div" for
+          the 1,000th time. After taking a bit of time to understand what CSS can do, it
+          actually piqued my interest. Projects are important too. It's not about showcasing
+          your skills or proving you can write Facebook in 10 lines of code, it's about what
+          you learn in the process. Making projects, I've learned how to design from scratch,
+          how to work with other developers, how to create REST APIs, how to deploy and host
+          applications, how to debug, how to work with databases, I mean, the list is endless.
+        `
       }
     ]
   }

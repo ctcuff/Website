@@ -25,7 +25,12 @@
           <a :href="projectData.links.github" target="_blank" rel="noopener noreferrer">
             Show me the code
           </a>
-          <a :href="projectData.links.website" target="_blank" rel="noopener noreferrer">
+          <a
+            v-if="projectData.links.website"
+            :href="projectData.links.website"
+            target="_blank"
+            rel="noopener noreferrer"
+          >
             Take me to the project
           </a>
         </div>
