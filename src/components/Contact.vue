@@ -161,7 +161,7 @@
     height: 1.5em;
     border-radius: 50%;
     background-color: black;
-    transform: translatex(-150%);
+    transform: translateX(-150%);
 
     @include breakpoint(md) {
       width: 2em;

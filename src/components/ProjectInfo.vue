@@ -29,7 +29,7 @@
 </template>
 
 <script>
-  import projectData from '@/project-info'
+  import { projectData } from '@/project-info'
 
   export default {
     data() {

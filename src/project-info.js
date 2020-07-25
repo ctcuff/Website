@@ -1,4 +1,31 @@
-export default [
+const projects = [
+  {
+    title: 'UCF Parking',
+    description: 'A website and API to keep track of parking spaces.',
+    backgroundImage: require('./assets/images/ucf-parking-fullscreen.png'),
+    foregroundImage: require('./assets/images/ucf-parking.png'),
+    imageAlt: 'UCF parking website screenshot',
+    link: '/project?index=0'
+  },
+  {
+    title: 'Live Code',
+    description: 'A site that lets people code together.',
+    backgroundImage: require('./assets/images/livecode-fullscreen.png'),
+    foregroundImage: require('./assets/images/livecode.png'),
+    imageAlt: 'Live code website screenshot',
+    link: '/project?index=1'
+  },
+  {
+    title: 'Dependency Visualizer',
+    description: "View a graph of a JavaScript package's dependencies from npm.",
+    backgroundImage: require('./assets/images/dependency-visualizer-fullscreen.png'),
+    foregroundImage: require('./assets/images/dependency-visualizer.png'),
+    imageAlt: 'Dependency visualizer website screenshot',
+    link: '/project?index=2'
+  }
+]
+
+const projectData = [
   {
     title: 'UCF Parking',
     image: {
@@ -153,3 +180,5 @@ export default [
     ]
   }
 ]
+
+export { projects, projectData }

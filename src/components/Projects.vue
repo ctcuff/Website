@@ -47,6 +47,7 @@
 </template>
 
 <script>
+  import { projects } from '@/project-info'
   import { gsap } from 'gsap'
 
   export default {
@@ -58,32 +59,7 @@
       isAnimating: false,
       xDown: null,
       yDown: null,
-      projects: [
-        {
-          title: 'UCF Parking',
-          description: 'A website and API to keep track of parking spaces.',
-          backgroundImage: require('../assets/images/ucf-parking-fullscreen.png'),
-          foregroundImage: require('../assets/images/ucf-parking.png'),
-          imageAlt: 'UCF parking website screenshot',
-          link: '/project?index=0'
-        },
-        {
-          title: 'Live Code',
-          description: 'A site that lets people code together.',
-          backgroundImage: require('../assets/images/livecode-fullscreen.png'),
-          foregroundImage: require('../assets/images/livecode.png'),
-          imageAlt: 'Live code website screenshot',
-          link: '/project?index=1'
-        },
-        {
-          title: 'Dependency Visualizer',
-          description: "View a graph of a JavaScript package's dependencies from npm.",
-          backgroundImage: require('../assets/images/dependency-visualizer-fullscreen.png'),
-          foregroundImage: require('../assets/images/dependency-visualizer.png'),
-          imageAlt: 'Dependency visualizer website screenshot',
-          link: '/project?index=2'
-        }
-      ]
+      projects
     }),
     methods: {
       onScroll(event) {
@@ -182,10 +158,7 @@
             0
           )
           .to(images, { opacity: 0, duration }, 0)
-          .add(() => {
-            this.changeIndex(direction)
-            gsap.set(text, { y: direction === 'UP' ? '100%' : '-100%' })
-          })
+          .add(() => this.changeIndex(direction))
           .to(
             text,
             {

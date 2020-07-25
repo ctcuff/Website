@@ -1,5 +1,13 @@
 <template>
   <div>
+    <!--
+      Preload fonts to prevent the flicker that can occur
+      when other pages are visited
+    -->
+    <div class="preload-fonts">
+      <span v-for="(font, index) in fonts" :key="index" :style="{ fontFamily: font }">
+      </span>
+    </div>
     <Navbar />
     <router-view></router-view>
   </div>
@@ -8,14 +16,34 @@
 <script>
   import Navbar from '@/components/Navbar'
   import debounce from '@/util/debounce'
+  import { projects, projectData } from '@/project-info'
 
   export default {
     components: {
       Navbar
     },
+    data: () => ({
+      fonts: ['AvenirNext', 'AvenirNext-Bold', 'Montserrat']
+    }),
     mounted() {
       this.updateViewport()
       window.addEventListener('resize', debounce(this.updateViewport, 250))
+
+      const projectImages = projects.reduce((acc, curr) => {
+        return acc.concat(curr.backgroundImage, curr.foregroundImage)
+      }, [])
+
+      const projectDataImages = projectData.reduce((acc, curr) => {
+        return acc.concat(curr.image.src)
+      }, [])
+
+      const allImages = [...projectImages, ...projectDataImages]
+
+      // Preload images so the browser can cache them
+      allImages.forEach(path => {
+        const image = new Image()
+        image.src = path
+      })
     },
     destroyed() {
       window.removeEventListener('resize', this.updateViewport)
@@ -29,3 +57,10 @@
     }
   }
 </script>
+
+<style lang="scss" scoped>
+  .preload-fonts {
+    position: absolute;
+    opacity: 0;
+  }
+</style>
