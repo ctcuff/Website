@@ -34,30 +34,5 @@
 </script>
 
 <style lang="scss" scoped>
-  @import '../scss/mixins/breakpoints';
-  @import '../scss/mixins/debug';
-  @import '../scss/mixins/fonts';
-
-  nav {
-    position: absolute;
-    display: grid;
-    width: 100%;
-    margin-top: 1.5em;
-    grid-template-columns: 1fr 2fr 1fr;
-    justify-items: center;
-    z-index: 2;
-    font-size: 0.8em;
-
-    @include breakpoint(lg) {
-      font-size: 1em;
-      margin-top: 3em;
-    }
-  }
-
-  .navbar__link {
-    text-decoration: none;
-    color: black;
-
-    @include font('AvenirNext');
-  }
+  @import '../scss/components/navbar';
 </style>

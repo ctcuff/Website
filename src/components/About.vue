@@ -22,8 +22,9 @@
               href="https://techrangers.cdl.ucf.edu/about.html"
               target="_blank"
               class="content__link"
+              rel="noopener noreferrer"
             >
-              <mark>Center for Distributed Learning.</mark>
+              Center for Distributed Learning.
             </a>
             In my free time, I love to play piano and clarinet.
           </p>
@@ -102,90 +103,5 @@
 </script>
 
 <style lang="scss" scoped>
-  @import '../scss/mixins/breakpoints';
-  @import '../scss/mixins/height';
-  @import '../scss/mixins/fonts';
-
-  .content {
-    display: flex;
-    flex-direction: column;
-    height: 100vh;
-
-    @include full-height;
-    @include font('AvenirNext');
-    @include breakpoint(sm) {
-      flex-direction: row;
-    }
-  }
-
-  .content__left,
-  .content__right {
-    flex: 1;
-    display: flex;
-    justify-content: center;
-  }
-
-  .content__left {
-    align-items: center;
-  }
-
-  .content__right {
-    @include breakpoint(sm) {
-      align-items: center;
-    }
-  }
-
-  .content__image {
-    width: 55%;
-    height: auto;
-    align-self: center;
-    user-select: none;
-    pointer-events: none;
-
-    @include breakpoint(sm) {
-      width: 70%;
-    }
-
-    @include breakpoint(lg) {
-      width: 80%;
-    }
-  }
-
-  .content__about-header {
-    font-size: 2em;
-    margin: 0;
-
-    @include font('AvenirNext-Bold');
-    @include breakpoint(lg) {
-      font-size: 3em;
-    }
-  }
-
-  // Utility class to give elements the effect
-  // of coming out of a container when animating
-  .content__wrapper {
-    overflow: hidden;
-  }
-
-  section {
-    margin: 0 15%;
-  }
-
-  p {
-    font-size: 0.9em;
-    line-height: 1.8em;
-
-    @include breakpoint(md) {
-      font-size: 1em;
-    }
-  }
-
-  .content__link {
-    text-decoration: none;
-    color: black;
-
-    mark {
-      background-color: rgba(0, 0, 255, 0.15);
-    }
-  }
+  @import '../scss/components/about';
 </style>

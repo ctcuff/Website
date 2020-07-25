@@ -59,8 +59,5 @@
 </script>
 
 <style lang="scss" scoped>
-  .preload-fonts {
-    position: absolute;
-    opacity: 0;
-  }
+  @import './scss/components/app';
 </style>

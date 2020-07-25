@@ -88,46 +88,5 @@
 </script>
 
 <style lang="scss" scoped>
-  @import '../scss/mixins/height';
-  @import '../scss/mixins/fonts';
-
-  .content {
-    display: flex;
-    justify-content: center;
-    align-items: center;
-    overflow: hidden;
-    flex-direction: column;
-
-    @include full-height;
-    @include font('AvenirNext');
-  }
-
-  .content__text {
-    margin: 0;
-    overflow: hidden;
-    width: 100%;
-  }
-
-  .content__text--name {
-    text-align: start;
-    font-size: 9vw;
-  }
-
-  .content__text--message {
-    text-align: center;
-    font-style: italic;
-  }
-
-  .content__text--contact {
-    position: absolute;
-    text-align: center;
-    bottom: 0;
-    margin-bottom: 1em;
-    color: black;
-    text-decoration: none;
-  }
-
-  .content__item {
-    margin: 0 4.3em;
-  }
+  @import '../scss/components/home';
 </style>
