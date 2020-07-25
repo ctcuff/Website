@@ -42,7 +42,7 @@
     position: absolute;
     display: grid;
     width: 100%;
-    margin-top: 1em;
+    margin-top: 1.5em;
     grid-template-columns: 1fr 2fr 1fr;
     justify-items: center;
     z-index: 2;

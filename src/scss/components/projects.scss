@@ -1,5 +1,5 @@
-@import '../scss/mixins/height';
-@import '../scss/mixins/fonts';
+@import '../mixins/height';
+@import '../mixins/fonts';
 
 .project {
   display: flex;
@@ -26,7 +26,7 @@
   &__description {
     margin-bottom: 32px;
     max-width: 300px;
-    color: #8e9093;
+    color: #5a5c63;
 
     & p {
       margin: 0;
@@ -54,7 +54,7 @@
       }
 
       &:hover::before {
-        width: 60px;
+        width: 45px;
       }
     }
   }

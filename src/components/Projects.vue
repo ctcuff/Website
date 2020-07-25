@@ -5,26 +5,26 @@
         <div class="project__title no-overflow">
           <h1 ref="projectTitle">{{ projects[activeItemIndex].title }}</h1>
         </div>
-        <div class="project__description">
+        <div class="project__description no-overflow">
           <p ref="projectDescription">{{ projects[activeItemIndex].description }}</p>
         </div>
         <div class="project__link no-overflow" ref="projectLink">
-          <a :href="projects[activeItemIndex].link">View details</a>
+          <router-link :to="projects[activeItemIndex].link">
+            View details
+          </router-link>
         </div>
       </div>
       <div class="project__image">
-        <div class="project__image--background no-overflow">
+        <div class="project__image--background no-overflow" ref="projectImageBackground">
           <img
             :src="projects[activeItemIndex].backgroundImage"
-            ref="projectImageBackground"
-            alt=""
+            :alt="projects[activeItemIndex].imageAlt"
           />
         </div>
-        <div class="project__image--foreground no-overflow">
+        <div class="project__image--foreground no-overflow" ref="projectImageForeground">
           <img
             :src="projects[activeItemIndex].foregroundImage"
-            alt=""
-            ref="projectImageForeground"
+            :alt="projects[activeItemIndex].imageAlt"
           />
         </div>
       </div>
@@ -32,9 +32,9 @@
     <div class="carousel">
       <ul ref="carouselList">
         <li
+          v-for="i in projects.length"
           class="carousel__item"
           :class="{ 'carousel__item--active': activeItemIndex === i - 1 }"
-          v-for="i in projects.length"
           :key="i"
           :title="projects[i - 1].title"
           :data-position="i - 1"
@@ -64,21 +64,24 @@
           description: 'A website and API to keep track of parking spaces.',
           backgroundImage: require('../assets/images/ucf-parking-fullscreen.png'),
           foregroundImage: require('../assets/images/ucf-parking.png'),
-          link: '/#/projects?q=UCF%20Parking'
+          imageAlt: 'UCF parking website screenshot',
+          link: '/project?index=0'
         },
         {
           title: 'Live Code',
           description: 'A site that lets people code together.',
           backgroundImage: require('../assets/images/livecode-fullscreen.png'),
           foregroundImage: require('../assets/images/livecode.png'),
-          link: '/#/projects?q=Live%20Code'
+          imageAlt: 'Live code website screenshot',
+          link: '/project?index=1'
         },
         {
           title: 'Dependency Visualizer',
           description: "View a graph of a JavaScript package's dependencies from npm.",
           backgroundImage: require('../assets/images/dependency-visualizer-fullscreen.png'),
           foregroundImage: require('../assets/images/dependency-visualizer.png'),
-          link: '/#/projects?q=Dependency%20Visualizer'
+          imageAlt: 'Dependency visualizer website screenshot',
+          link: '/project?index=2'
         }
       ]
     }),
@@ -86,8 +89,7 @@
       onScroll(event) {
         event.preventDefault()
 
-        // Prevents the scroll animation from firing
-        // too many times
+        // Prevents the scroll animation from firing too many times
         if (Date.now() - this.lastScrolled < 1200 || this.isAnimating) {
           return
         }
@@ -111,6 +113,7 @@
       },
       handleTouchStart(event) {
         const firstTouch = event.touches[0]
+
         this.xDown = firstTouch.clientX
         this.yDown = firstTouch.clientY
       },
@@ -141,6 +144,7 @@
           this.activeItemIndex += 1
         }
 
+        // Ensures the carousel can wrap around back to the beginning
         if (this.activeItemIndex === -1) {
           this.activeItemIndex = this.projects.length - 1
         }
@@ -157,7 +161,11 @@
         } = this.$refs
 
         const text = gsap.utils.toArray([projectTitle, projectDescription, projectLink])
-        const duration = 0.7
+        const images = gsap.utils.toArray([
+          projectImageForeground,
+          projectImageBackground
+        ])
+        const duration = 0.8
 
         this.isAnimating = true
 
@@ -173,9 +181,11 @@
             },
             0
           )
-          .to(projectImageForeground, { opacity: 0, duration }, 0)
-          .to(projectImageBackground, { opacity: 0, duration }, 0)
-          .add(() => this.changeIndex(direction))
+          .to(images, { opacity: 0, duration }, 0)
+          .add(() => {
+            this.changeIndex(direction)
+            gsap.set(text, { y: direction === 'UP' ? '100%' : '-100%' })
+          })
           .to(
             text,
             {
@@ -185,8 +195,7 @@
             },
             1
           )
-          .to(projectImageForeground, { opacity: 1 }, 1)
-          .to(projectImageBackground, { opacity: 1 }, 1)
+          .to(images, { opacity: 1 }, 1)
           .add(() => (this.isAnimating = false))
       }
     },

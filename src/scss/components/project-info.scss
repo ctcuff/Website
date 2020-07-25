@@ -1,0 +1,113 @@
+@import '../mixins/fonts';
+@import '../mixins/breakpoints';
+@import '../mixins/debug';
+
+.root {
+  @include font('AvenirNext');
+}
+
+.project-header {
+  display: flex;
+  flex-direction: column;
+  align-items: center;
+  justify-content: center;
+
+  h1 {
+    text-align: center;
+    font-size: 10vw;
+    margin: 1.7em 0 0 0;
+    color: #353535;
+
+    @include font('Montserrat');
+
+    @include breakpoint(md) {
+      margin: 1em 0 0 0;
+    }
+  }
+}
+
+.project-image {
+  width: 100%;
+  margin: 5% auto;
+
+  @include breakpoint(sm) {
+    width: 85%;
+  }
+
+  @include breakpoint(md) {
+    width: 70%;
+  }
+
+  img {
+    width: 100%;
+  }
+}
+
+.project-info {
+  margin: 0 auto 5em auto;
+  width: 85%;
+
+  @include breakpoint(lg) {
+    width: 75%;
+  }
+
+  @include breakpoint(xl) {
+    width: 50%;
+  }
+
+  .heading {
+    color: #353535;
+    margin: 0 0 1em 0;
+    font-size: 1em;
+    text-align: center;
+
+    @include font('AvenirNext-Bold');
+
+    @include breakpoint(md) {
+      font-size: 1.3em;
+    }
+  }
+
+  .details {
+    font-size: 1em;
+    color: #5a5c63;
+    line-height: 188%;
+  }
+}
+
+.project-links {
+  display: flex;
+  justify-content: space-between;
+
+  @include breakpoint(md) {
+    justify-content: space-evenly;
+  }
+
+  a {
+    text-align: center;
+    margin-top: 1em;
+    text-decoration: none;
+    color: #5a5c63;
+    position: relative;
+    font-size: 1em;
+
+    &::before {
+      content: '';
+      position: absolute;
+      height: 100%;
+      transform: scaleY(0.1);
+      transform-origin: bottom;
+      left: 0;
+      bottom: 0;
+      right: 0;
+      background-color: rgba(53, 53, 53, 0.2);
+      transition: transform 0.2s ease-in-out;
+    }
+
+    @include breakpoint(lg) {
+      &:hover::before {
+        transform: scaleY(1);
+      }
+    }
+  }
+}
