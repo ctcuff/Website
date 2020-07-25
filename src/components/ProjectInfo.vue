@@ -71,12 +71,12 @@
             ease: 'Power2.easeIn',
             duration: this.animationDuration
           },
-          0
+          0.4
         )
         .to(
           this.$refs.image,
           {
-            y: '40%',
+            y: '15%',
             opacity: 0,
             ease: 'Power2.easeIn',
             duration: this.animationDuration
@@ -111,7 +111,7 @@
       gsap.fromTo(
         this.$refs.image,
         {
-          y: '40%',
+          y: '15%',
           opacity: 0
         },
         {
