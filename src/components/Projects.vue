@@ -8,23 +8,31 @@
         <div class="project__description no-overflow">
           <p ref="projectDescription">{{ projects[activeItemIndex].description }}</p>
         </div>
-        <div class="project__link no-overflow" ref="projectLink">
-          <router-link :to="projects[activeItemIndex].link">
-            View details
-          </router-link>
+        <div class="project__link no-overflow">
+          <div ref="projectLink">
+            <router-link :to="projects[activeItemIndex].link">
+              View details
+            </router-link>
+          </div>
         </div>
       </div>
       <div class="project__image">
         <div class="project__image--background no-overflow" ref="projectImageBackground">
           <img
-            :src="projects[activeItemIndex].backgroundImage"
-            :alt="projects[activeItemIndex].imageAlt"
+            v-for="(project, index) in projects"
+            :key="index"
+            :src="project.backgroundImage"
+            :alt="project.imageAlt"
+            v-show="activeItemIndex === index"
           />
         </div>
         <div class="project__image--foreground no-overflow" ref="projectImageForeground">
           <img
-            :src="projects[activeItemIndex].foregroundImage"
-            :alt="projects[activeItemIndex].imageAlt"
+            v-for="(project, index) in projects"
+            :key="index"
+            :src="project.foregroundImage"
+            :alt="project.imageAlt"
+            v-show="activeItemIndex === index"
           />
         </div>
       </div>
@@ -147,19 +155,21 @@
           projectImageForeground,
           projectImageBackground
         ])
-        const duration = 0.8
+        const duration = 0.7
 
         // Used to prevent further animations if an
         // animation is already in progress
         this.isAnimating = true
 
+        // Adding will-change to the images before animation
+        // improves animation performance in other browsers
         gsap
           .timeline()
+          .add(() => gsap.set(images, { willChange: 'opacity' }))
           .to(
             text,
             {
               y: direction === 'UP' ? '-100%' : '100%',
-              opacity: 0,
               ease: 'power2.in',
               duration
             },
@@ -178,7 +188,6 @@
             text,
             {
               y: '0%',
-              opacity: 1,
               duration
             },
             1
@@ -186,10 +195,12 @@
           .to(
             images,
             {
-              opacity: 1
+              opacity: 1,
+              duration
             },
             1
           )
+          .add(() => gsap.set(images, { willChange: 'auto' }))
           .add(() => (this.isAnimating = false))
       }
     },
@@ -204,6 +215,8 @@
         root
       } = this.$refs
 
+      // Taken from _breakpoints.scss
+      const isMobile = window.innerWidth <= 576
       const text = gsap.utils.toArray([projectTitle, projectDescription, projectLink])
       const images = gsap.utils.toArray([projectImageBackground, projectImageForeground])
 
@@ -221,10 +234,11 @@
 
       gsap
         .timeline()
+        .add(() => gsap.set(images, { willChange: 'opacity' }))
         .fromTo(
           carouselList,
           {
-            x: '-100%',
+            x: isMobile ? '100%' : '-100%',
             opacity: 0
           },
           {
@@ -258,6 +272,7 @@
           },
           0
         )
+        .add(() => gsap.set(images, { willChange: 'auto' }))
     },
     beforeRouteLeave(to, from, next) {
       const {
@@ -276,6 +291,7 @@
       gsap
         .timeline()
         .eventCallback('onComplete', () => next())
+        .add(() => gsap.set(images, { willChange: 'opacity' }))
         .to(
           carouselList,
           {
@@ -305,6 +321,7 @@
           },
           0
         )
+        .add(() => gsap.set(images, { willChange: 'auto' }))
     },
     beforeDestroy() {
       const root = this.$refs.root

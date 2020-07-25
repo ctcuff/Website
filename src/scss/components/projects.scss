@@ -103,7 +103,6 @@
     font-size: 14px;
     position: relative;
     display: inline-block;
-    transition: transform 0.3s ease-in-out;
 
     &::before {
       content: '';
@@ -113,10 +112,15 @@
       vertical-align: middle;
       display: inline-block;
       margin-right: 16px;
-      transition: width 0.3s ease-in-out;
+
+      @include breakpoint(md) {
+        transition: width 0.3s ease-in-out;
+      }
     }
 
     @include breakpoint(md) {
+      transition: transform 0.3s ease-in-out;
+
       &:hover {
         transform: skew(-20deg);
         &::before {
@@ -137,6 +141,7 @@
   height: 100%;
   position: relative;
   display: none;
+  z-index: -1;
 
   @include breakpoint(sm) {
     display: flex;

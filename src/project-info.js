@@ -37,7 +37,7 @@ const projectData = [
   {
     title: 'UCF Parking',
     image: {
-      src: require('./assets/images/ucf-parking1.png'),
+      src: require('./assets/images/ucf-parking.png'),
       alt: 'UCF Parking Website'
     },
     links: {
