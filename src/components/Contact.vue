@@ -59,8 +59,8 @@
 
       gsap
         .to(rows, {
-          y: '-150%',
-          stagger: this.animationStagger,
+          y: '150%',
+          stagger: -this.animationStagger,
           duration: this.textAnimationDuration,
           ease: 'Power2.easeIn'
         })
