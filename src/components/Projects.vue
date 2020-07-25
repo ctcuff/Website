@@ -51,16 +51,22 @@
   import { gsap } from 'gsap'
 
   export default {
-    data: () => ({
-      animationDuration: 1,
-      scrollEvents: ['DOMMouseScroll', 'mousewheel', 'wheel'],
-      lastScrolled: Date.now(),
-      activeItemIndex: 0,
-      isAnimating: false,
-      xDown: null,
-      yDown: null,
-      projects
-    }),
+    data() {
+      // Grab the current project index that may have been
+      // passed from the '/projects' route
+      const index = this.$route.query && this.$route.query.index
+
+      return {
+        animationDuration: 1,
+        scrollEvents: ['DOMMouseScroll', 'mousewheel', 'wheel'],
+        lastScrolled: Date.now(),
+        activeItemIndex: parseInt(index) || 0,
+        isAnimating: false,
+        xDown: null,
+        yDown: null,
+        projects
+      }
+    },
     methods: {
       onScroll(event) {
         event.preventDefault()
@@ -143,6 +149,8 @@
         ])
         const duration = 0.8
 
+        // Used to prevent further animations if an
+        // animation is already in progress
         this.isAnimating = true
 
         gsap
@@ -157,7 +165,14 @@
             },
             0
           )
-          .to(images, { opacity: 0, duration }, 0)
+          .to(
+            images,
+            {
+              opacity: 0,
+              duration
+            },
+            0
+          )
           .add(() => this.changeIndex(direction))
           .to(
             text,
@@ -168,7 +183,13 @@
             },
             1
           )
-          .to(images, { opacity: 1 }, 1)
+          .to(
+            images,
+            {
+              opacity: 1
+            },
+            1
+          )
           .add(() => (this.isAnimating = false))
       }
     },
@@ -216,7 +237,7 @@
         .fromTo(
           text,
           {
-            y: '-100%',
+            y: '100%',
             opacity: 0
           },
           {
@@ -268,7 +289,7 @@
         .to(
           text,
           {
-            y: '-100%',
+            y: '100%',
             duration: this.animationDuration,
             opacity: 0,
             ease

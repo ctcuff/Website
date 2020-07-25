@@ -41,6 +41,8 @@
       text-decoration: none;
       font-size: 14px;
       position: relative;
+      display: inline-block;
+      transition: transform 0.3s ease-in-out;
 
       &::before {
         content: '';
@@ -53,8 +55,11 @@
         transition: width 0.3s ease-in-out;
       }
 
-      &:hover::before {
-        width: 45px;
+      &:hover {
+        transform: skew(-20deg);
+        &::before {
+          width: 45px;
+        }
       }
     }
   }
@@ -124,6 +129,7 @@
   align-items: center;
   height: 100%;
   margin-right: 5px;
+
   @include font('Avenir');
 
   ul {
