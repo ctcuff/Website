@@ -144,18 +144,10 @@
         this.targetElements.forEach(element => observer.observe(element))
       },
       animateElement(target) {
-        gsap.fromTo(
-          target,
-          {
-            opacity: 0,
-            y: '5%'
-          },
-          {
-            opacity: 1,
-            y: '0%',
-            duration: this.animationDuration
-          }
-        )
+        gsap.to(target, {
+          opacity: 1,
+          duration: this.animationDuration
+        })
       }
     }
   }

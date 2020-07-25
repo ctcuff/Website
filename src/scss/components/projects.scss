@@ -1,67 +1,80 @@
 @import '../mixins/height';
 @import '../mixins/fonts';
+@import '../mixins/debug';
+
+// Using custom breakpoints here since the styling
+// for this page is a bit more specific
+// prettier-ignore
+@mixin breakpoint($size) {
+  @if $size == sm {
+    @media (min-width: 600px) {
+      @content;
+    }
+  }
+
+  @else if $size == md {
+    @media (min-width: 850px) {
+      @content;
+    }
+  }
+
+  @else if $size == lg {
+    @media (min-width: 1300px) {
+      @content;
+    }
+  }
+}
 
 .project {
   display: flex;
-  flex-direction: row;
   width: 100%;
   overflow: hidden;
+  flex-direction: column-reverse;
+  padding: 0 10%;
 
   @include font('Avenir');
   @include full-height;
 
-  &__title {
-    color: #353535;
-    line-height: 52px;
-    margin-bottom: 32px;
+  @include breakpoint(sm) {
+    padding: 0;
+    flex-direction: row;
+  }
+}
 
-    h1 {
+.project__title {
+  color: #353535;
+  line-height: 52px;
+  margin-bottom: 32px;
+  max-width: 300px;
+
+  @include font('AvenirNext-Bold');
+
+  @include breakpoint(lg) {
+    max-width: 100%;
+  }
+
+  h1 {
+    font-size: 35px;
+    margin: 0;
+
+    @include breakpoint(md) {
       font-size: 45px;
-      margin: 0;
     }
-
-    @include font('AvenirNext-Bold');
   }
+}
 
-  &__description {
-    margin-bottom: 32px;
+.project__description {
+  margin-bottom: 32px;
+  max-width: 200px;
+  color: #5a5c63;
+
+  @include breakpoint(md) {
     max-width: 300px;
-    color: #5a5c63;
-
-    & p {
-      margin: 0;
-      line-height: 1.8;
-    }
   }
 
-  &__link {
-    a {
-      color: #353535;
-      font-weight: bold;
-      text-decoration: none;
-      font-size: 14px;
-      position: relative;
-      display: inline-block;
-      transition: transform 0.3s ease-in-out;
-
-      &::before {
-        content: '';
-        width: 20px;
-        height: 1px;
-        background-color: #000;
-        vertical-align: middle;
-        display: inline-block;
-        margin-right: 16px;
-        transition: width 0.3s ease-in-out;
-      }
-
-      &:hover {
-        transform: skew(-20deg);
-        &::before {
-          width: 45px;
-        }
-      }
-    }
+  & p {
+    margin: 0;
+    line-height: 1.8;
   }
 }
 
@@ -70,8 +83,48 @@
   width: 100%;
   height: 100%;
   flex-direction: column;
-  margin-left: 117px;
+  margin-left: 0;
   justify-content: center;
+
+  @include breakpoint(sm) {
+    margin-left: 75px;
+  }
+
+  @include breakpoint(md) {
+    margin-left: 100px;
+  }
+}
+
+.project__link {
+  a {
+    color: #353535;
+    font-weight: bold;
+    text-decoration: none;
+    font-size: 14px;
+    position: relative;
+    display: inline-block;
+    transition: transform 0.3s ease-in-out;
+
+    &::before {
+      content: '';
+      width: 20px;
+      height: 1px;
+      background-color: #000;
+      vertical-align: middle;
+      display: inline-block;
+      margin-right: 16px;
+      transition: width 0.3s ease-in-out;
+    }
+
+    @include breakpoint(md) {
+      &:hover {
+        transform: skew(-20deg);
+        &::before {
+          width: 45px;
+        }
+      }
+    }
+  }
 }
 
 .project__image {
@@ -83,7 +136,11 @@
   width: 100%;
   height: 100%;
   position: relative;
-  display: flex;
+  display: none;
+
+  @include breakpoint(sm) {
+    display: flex;
+  }
 
   img {
     width: auto;
@@ -105,11 +162,21 @@
 
 .project__image--foreground {
   display: flex;
-  height: 100%;
-  width: 54%;
   position: absolute;
-  top: 0;
   right: 0;
+  width: 100%;
+  top: 5%;
+  height: 50%;
+
+  @include breakpoint(sm) {
+    width: 50%;
+    top: 0;
+    height: 100%;
+  }
+
+  @include breakpoint(md) {
+    width: 54%;
+  }
 
   img {
     position: absolute;
@@ -123,12 +190,18 @@
 
 .carousel {
   position: fixed;
-  left: 0;
-  top: 0;
   display: flex;
   align-items: center;
   height: 100%;
   margin-right: 5px;
+  top: 20%;
+  right: 10px;
+
+  @include breakpoint(sm) {
+    top: 0;
+    left: 0;
+    right: auto;
+  }
 
   @include font('Avenir');
 
@@ -185,60 +258,5 @@
   &::after {
     opacity: 0;
     transform: translateX(13px);
-  }
-}
-
-@media (max-width: 1300px) {
-  .project__title {
-    max-width: 300px;
-  }
-}
-
-@media (max-width: 850px) {
-  .project__image--foreground {
-    width: 50%;
-    height: 100%;
-    top: 0;
-  }
-
-  .project__info {
-    height: 100%;
-    margin-left: 100px;
-  }
-
-  .project__title > h1 {
-    font-size: 35px;
-  }
-
-  .project__description {
-    max-width: 200px;
-  }
-}
-
-@media (max-width: 600px) {
-  .project__info {
-    height: 100%;
-    margin-left: 0;
-  }
-
-  .project {
-    flex-direction: column-reverse;
-    padding: 0 10%;
-  }
-
-  .project__image--foreground {
-    width: 100%;
-    top: 5%;
-    height: 50%;
-  }
-
-  .project__image--background {
-    display: none;
-  }
-
-  .carousel {
-    top: 20%;
-    right: 10px;
-    left: unset;
   }
 }

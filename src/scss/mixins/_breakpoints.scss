@@ -3,13 +3,7 @@
 
 // prettier-ignore
 @mixin breakpoint($size) {
-  @if $size == xs {
-    @media (max-width: 575px) {
-      @content;
-    }
-  }
-
-  @else if $size == sm {
+  @if $size == sm {
     @media (min-width: 576px) {
       @content;
     }

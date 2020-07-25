@@ -3,9 +3,7 @@
 // Small mixin that changes the background color
 // of an element so it's breakpoint can be visualized
 @mixin DEBUG_background-color {
-  @include breakpoint(xs) {
-    background-color: lightgray;
-  }
+  background-color: lightgray;
 
   @include breakpoint(sm) {
     background-color: orange;
