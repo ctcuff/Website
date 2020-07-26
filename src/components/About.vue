@@ -37,8 +37,6 @@
 <script>
   import { gsap } from 'gsap'
 
-  const timeline = gsap.timeline({ paused: true })
-
   export default {
     data: () => ({
       animationDuration: 0.8
@@ -46,12 +44,13 @@
     beforeRouteLeave(to, from, next) {
       const timelineOpts = {
         opacity: 0,
-        ease: 'Power2.easeIn',
+        ease: 'power1.in',
         duration: this.animationDuration,
         y: '100%'
       }
 
-      timeline
+      gsap
+        .timeline()
         .to(this.$refs.aboutText, timelineOpts, 0)
         .to(this.$refs.aboutHeader, timelineOpts, 0)
         .to(

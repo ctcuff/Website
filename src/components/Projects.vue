@@ -190,7 +190,8 @@
             text,
             {
               y: '0%',
-              duration
+              duration,
+              ease: 'power1.out'
             },
             1
           )
@@ -286,7 +287,7 @@
 
       const text = gsap.utils.toArray([projectTitle, projectDescription, projectLink])
       const images = gsap.utils.toArray([projectImageBackground, projectImageForeground])
-      const ease = 'Power2.easeIn'
+      const ease = 'power2.in'
 
       gsap
         .timeline()

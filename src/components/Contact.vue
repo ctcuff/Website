@@ -62,7 +62,7 @@
           y: '150%',
           stagger: -this.animationStagger,
           duration: this.textAnimationDuration,
-          ease: 'Power2.easeIn'
+          ease: 'power2.in'
         })
         .eventCallback('onComplete', () => next())
     },
@@ -102,7 +102,7 @@
         gsap.to(event.target.children[0].firstElementChild, {
           x: '-150%',
           duration: 0.5,
-          ease: 'Power2.easeIn'
+          ease: 'power2.in'
         })
       }
     }

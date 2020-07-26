@@ -30,7 +30,7 @@
           {
             opacity: 0,
             duration: this.animationDuration,
-            ease: 'Power2.easeIn',
+            ease: 'power2.in',
             y: '-150%',
             stagger: this.animationStagger
           },
@@ -42,7 +42,7 @@
             opacity: 0,
             duration: this.animationDuration,
             y: '150%',
-            ease: 'Power2.easeIn'
+            ease: 'power2.in'
           },
           0
         )

@@ -73,7 +73,7 @@
           {
             y: '100%',
             opacity: 0,
-            ease: 'Power2.easeIn',
+            ease: 'power2.in',
             duration: this.animationDuration
           },
           0.3
@@ -83,7 +83,7 @@
           {
             y: '15%',
             opacity: 0,
-            ease: 'Power2.easeIn',
+            ease: 'power2.in',
             duration: this.animationDuration
           },
           0
@@ -100,32 +100,35 @@
     mounted() {
       this.targetElements = document.querySelectorAll('[data-animate]')
 
-      gsap.fromTo(
-        this.$refs.header,
-        {
-          y: '100%',
-          opacity: 0
-        },
-        {
-          y: '0%',
-          opacity: 1,
-          duration: 1.4
-        }
-      )
-
-      gsap.fromTo(
-        this.$refs.image,
-        {
-          y: '15%',
-          opacity: 0
-        },
-        {
-          y: '0%',
-          opacity: 1,
-          delay: 0.3,
-          duration: 1.2
-        }
-      )
+      gsap
+        .timeline()
+        .fromTo(
+          this.$refs.header,
+          {
+            y: '100%',
+            opacity: 0
+          },
+          {
+            y: '0%',
+            opacity: 1,
+            duration: 1.4,
+            ease: 'power2.out'
+          }
+        )
+        .fromTo(
+          this.$refs.image,
+          {
+            y: '15%',
+            opacity: 0
+          },
+          {
+            y: '0%',
+            opacity: 1,
+            duration: 1.2,
+            ease: 'power2.out'
+          },
+          0.3
+        )
 
       this.initObserver()
     },
