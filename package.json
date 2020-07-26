@@ -6,7 +6,7 @@
     "scripts": {
         "dev": "vue-cli-service serve --port 3000",
         "build": "vue-cli-service build",
-        "deploy": "gh-pages -d dist -b master",
+        "deploy": "yarn build && gh-pages -d dist -b master",
         "lint": "eslint './src/**/*{.js,.vue}'",
         "format": "yarn format:vue && yarn format:scss",
         "format:vue": "prettier --write './src/**/*{.js,.vue}'",
