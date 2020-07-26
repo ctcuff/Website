@@ -32,7 +32,7 @@
   export default {
     data: () => ({
       mounted: false,
-      textAnimationDuration: 1,
+      textAnimationDuration: 0.8,
       animationStagger: 0.15,
       links: [
         {

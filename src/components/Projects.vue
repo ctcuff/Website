@@ -65,7 +65,7 @@
       const index = this.$route.query && this.$route.query.index
 
       return {
-        animationDuration: 1,
+        animationDuration: 0.8,
         scrollEvents: ['DOMMouseScroll', 'mousewheel', 'wheel'],
         lastScrolled: Date.now(),
         activeItemIndex: parseInt(index) || 0,

@@ -60,7 +60,7 @@
 
       return {
         projectData: projectData[index] || projectData[0],
-        animationDuration: 1,
+        animationDuration: 0.8,
         index
       }
     },
@@ -76,7 +76,7 @@
             ease: 'Power2.easeIn',
             duration: this.animationDuration
           },
-          0.4
+          0.3
         )
         .to(
           this.$refs.image,

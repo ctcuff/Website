@@ -41,7 +41,7 @@
 
   export default {
     data: () => ({
-      animationDuration: 1
+      animationDuration: 0.8
     }),
     beforeRouteLeave(to, from, next) {
       const timelineOpts = {

@@ -96,6 +96,8 @@
 }
 
 .project__link {
+  $transition: transform 0.25s ease-in-out;
+
   a {
     color: #353535;
     font-weight: bold;
@@ -103,6 +105,7 @@
     font-size: 14px;
     position: relative;
     display: inline-block;
+    transition: $transition;
 
     &::before {
       content: '';
@@ -112,19 +115,15 @@
       vertical-align: middle;
       display: inline-block;
       margin-right: 16px;
-
-      @include breakpoint(md) {
-        transition: width 0.3s ease-in-out;
-      }
+      transition: $transition;
+      transform-origin: right;
     }
 
-    @include breakpoint(md) {
-      transition: transform 0.3s ease-in-out;
-
+    @include breakpoint(lg) {
       &:hover {
-        transform: skew(-20deg);
+        transform: translateX(20%) skew(-15deg);
         &::before {
-          width: 45px;
+          transform: scaleX(5);
         }
       }
     }
