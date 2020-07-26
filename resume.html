@@ -12,27 +12,40 @@
     body {
       margin-top: 32px;
     }
+
     hr {
-      margin: 32px 0 32px 0;
+      margin: 32px 0;
     }
-    /* prettier-ignore*/
-    p, li, ul, a {
+
+    p,
+    li,
+    ul,
+    a {
       font-size: 18px;
     }
+
     li {
-      margin: 16px 0 16px 0;
+      margin: 8px 0;
     }
+
     h2:not(#education) {
       margin-top: 32px;
     }
+
+    small {
+      word-spacing: 2px;
+    }
+
     .header:not(h1) {
       font-size: 32px;
       margin-bottom: 8px;
     }
+
     #contact-info > * {
       margin-right: 32px;
-      font-size: 19px;
+      font-size: 18px;
     }
+
     .indent {
       margin-left: 16px;
     }
@@ -53,7 +66,6 @@
         <a href="https://www.linkedin.com/in/cameron-cuff-126405161/" class="text-muted">
           Linkedin
         </a>
-        <a href="tel:+1-904-233-8541" class="text-muted">(904)-233-8541</a>
       </div>
       <hr />
       <h2 class="display-4 header" id="education">Education</h2>
@@ -64,27 +76,11 @@
       <hr />
       <h2 class="display-4 header">Skills</h2>
       <p class="indent">
-        Java, Python, Javascript, HTML, CSS, Git, Node.js, React.js, Vue.js
+        Javascript, Python, Java, HTML, CSS, Git, NodeJS, React, Vue, MongoDB
       </p>
       <hr />
       <h2 class="display-4 header">Work Experience</h2>
       <div class="indent">
-        <p>
-          Android Developer
-          <small>
-            | University of North Florida | February 2018 – September 2018
-          </small>
-        </p>
-        <ul>
-          <li>
-            Worked with a student and professor to develop an Android app for
-            another professor. I was charged with making GET and POST requests
-            to a JSON API developed by a fellow professor.
-          </li>
-          <li>
-            Built in Android studio using Java.
-          </li>
-        </ul>
         <p>
           Web Applications Developer
           <small>
@@ -93,16 +89,34 @@
         </p>
         <ul>
           <li>
-            Added new endpoints to an existing Python API maintaining test coverage of
-            100%.
+            Worked on a Python API that allows faculty and staff to programmatically
+            access grades, assignments, users, and other attributes for their courses.
           </li>
           <li>
-            Contributed to an open source React application that assists instructors
-            in developing rich and interactive course content for students.
+            Contributed to an open source Learning Management System that assists
+            instructors in developing rich and interactive course content for students.
           </li>
           <li>
-            Collaborated with teammates to resolve issues across multiple
-            projects.
+            Helped to ensure test coverage of 100% is maintained throughout development.
+          </li>
+        </ul>
+        <p>
+          Software Engineering Intern
+          <small>
+            | Visa | May 2020 – July 2020
+          </small>
+        </p>
+        <ul>
+          <li>
+            Pitched a business proposal to executives that accelerates the movement
+            towards a cashless society.
+          </li>
+          <li>
+            Worked in a team to build a website using the MERN stack. Incorporates Visa
+            payment APIs to help merchants transition to online payments.
+          </li>
+          <li>
+            Participated in daily team Scrum meeting to ensure project deadlines were met on time.
           </li>
         </ul>
       </div>
@@ -112,13 +126,12 @@
         <a href="https://github.com/ctcuff/UCFParking-API">UCFParking-API</a>
         <ul>
           <li>
-            Designed an API/website that returns a JSON response containing
-            information about each parking garage. Data is automatically added
-            to a database every hour and can be visualized with a line graph.
+            Designed an API and website that returns a JSON response containing information
+            about each parking garage. Data is automatically added to a database every
+            hour and can be visualized with a line graph.
           </li>
           <li>
-            Hosted on Heroku built with Python (Flask), Vue, JavaScript, HTML,
-            CSS, and a MongoDB database
+            Hosted on Heroku built with Python, Vue, JavaScript, Docker, and a MongoDB database.
           </li>
         </ul>
       </div>
@@ -126,12 +139,12 @@
         <a href="https://github.com/ctcuff/Tweet-Tracker">Tweet-Tracker</a>
         <ul>
           <li>
-            Built a website that tracks the occurrences of a given keyword on
-            Twitter in real time using web sockets
+            Built a website that tracks the occurrences of a given keyword on Twitter in
+            real time using web sockets.
           </li>
           <li>
-            Hosted on Heroku with a backend in Python (Flask), frontend built
-            using React.js, Redux, CSS, JavaScript, and TypeScript
+            Hosted on Heroku with a backend in Python, frontend built using React,
+            Redux, JavaScript, and TypeScript.
           </li>
         </ul>
       </div>
@@ -139,13 +152,12 @@
         <a href="https://github.com/ctcuff/MotionPy">MotionPy</a>
         <ul>
           <li>
-            A motion detection system running on a Raspberry Pi 3. When motion
-            is detected, a picture is saved and a notification is sent to an
-            Android app.
+            A motion detection system running on a Raspberry Pi 3. When motion is
+            detected, a picture is saved and a notification is sent to an Android app.
           </li>
           <li>
-            Server is running on a Raspberry Pi 3 using Python (Flask), Android
-            app built using Java and Kotlin, images saved to a Firebase database
+            Server is running on a Raspberry Pi 3 using Python, Android app built using
+            Java and Kotlin, images saved to a Firebase database.
           </li>
         </ul>
       </div>
