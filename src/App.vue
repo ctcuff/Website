@@ -17,6 +17,7 @@
   import Navbar from '@/components/Navbar'
   import debounce from '@/util/debounce'
   import { projects, projectData } from '@/project-info'
+  import profileImage from '@/assets/images/profile-pixel.png'
 
   export default {
     components: {
@@ -37,7 +38,7 @@
         return acc.concat(curr.image.src)
       }, [])
 
-      const allImages = [...projectImages, ...projectDataImages]
+      const allImages = [...projectImages, ...projectDataImages, profileImage]
 
       // Preload images so the browser can cache them
       allImages.forEach(path => {
