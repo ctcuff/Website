@@ -65,6 +65,8 @@
       const index = this.$route.query && this.$route.query.index
 
       return {
+        // Used to determine the animation direction of the carousel
+        isMobile: window.innerWidth <= 600,
         animationDuration: 0.8,
         scrollEvents: ['DOMMouseScroll', 'mousewheel', 'wheel'],
         lastScrolled: Date.now(),
@@ -215,8 +217,6 @@
         root
       } = this.$refs
 
-      // Taken from _breakpoints.scss
-      const isMobile = window.innerWidth <= 576
       const text = gsap.utils.toArray([projectTitle, projectDescription, projectLink])
       const images = gsap.utils.toArray([projectImageBackground, projectImageForeground])
 
@@ -238,7 +238,7 @@
         .fromTo(
           carouselList,
           {
-            x: isMobile ? '100%' : '-100%',
+            x: this.isMobile ? '100%' : '-100%',
             opacity: 0
           },
           {
@@ -295,7 +295,7 @@
         .to(
           carouselList,
           {
-            x: '-100%',
+            x: this.isMobile ? '100%' : '-100%',
             duration: this.animationDuration,
             opacity: 0,
             ease
