@@ -1,11 +1,9 @@
 <template>
   <div class="content">
-    <section class="content__item">
-      <p class="content__text content__text--name" data-splitting>Cameron Cuff</p>
-      <p class="content__text content__text--message">
-        I make things sometimes.
-      </p>
-    </section>
+    <p class="content__text content__text--name" data-splitting>Cameron Cuff</p>
+    <p class="content__text content__text--message">
+      I make things sometimes.
+    </p>
     <router-link to="/contact" class="content__text--contact" ref="contactLink">
       Contact
     </router-link>

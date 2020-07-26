@@ -10,10 +10,10 @@
     </div>
     <div class="content__right">
       <section>
-        <div class="content__wrapper">
+        <div class="no-overflow">
           <h1 class="content__about-header" ref="aboutHeader">About Me</h1>
         </div>
-        <div class="content__wrapper">
+        <div class="no-overflow">
           <p class="content__about-text" ref="aboutText">
             I won't bore you with my life story so here's the jist: I'm a senior at UCF
             studying Computer Science. I currently work as a Web Applications Developer

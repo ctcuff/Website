@@ -15,10 +15,10 @@
   align-items: center;
   margin: 0.5em 0;
 
-  @supports (-webkit-text-stroke: 1px black) {
+  @supports (-webkit-text-stroke: 1px #000) {
     &:hover {
       .contact__link {
-        color: black;
+        color: #000;
       }
     }
   }
@@ -27,7 +27,7 @@
 .circle--outer {
   width: 2em;
   height: 2em;
-  border: 1px solid black;
+  border: 1px solid #000;
   border-radius: 50%;
   margin-right: 2em;
   display: flex;
@@ -48,7 +48,7 @@
   width: 1.5em;
   height: 1.5em;
   border-radius: 50%;
-  background-color: black;
+  background-color: #000;
   transform: translateX(-150%);
 
   @include breakpoint(md) {
@@ -64,11 +64,11 @@
 .contact__link {
   font-size: 2.5em;
   margin: 0;
-  color: black;
+  color: #000;
   text-decoration: none;
 
-  @supports (-webkit-text-stroke: 1px black) {
-    -webkit-text-stroke: 1px black;
+  @supports (-webkit-text-stroke: 1px #000) {
+    -webkit-text-stroke: 1px #000;
     transition: color 0.5s ease-in-out;
     color: transparent;
     text-decoration: none;

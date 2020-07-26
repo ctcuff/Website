@@ -1,6 +1,5 @@
 @import '../mixins/fonts';
 @import '../mixins/breakpoints';
-@import '../mixins/debug';
 
 .root {
   @include font('AvenirNext');

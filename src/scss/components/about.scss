@@ -51,18 +51,13 @@
 .content__about-header {
   font-size: 2em;
   margin: 0;
+  color: #353535;
 
   @include font('AvenirNext-Bold');
 
   @include breakpoint(lg) {
     font-size: 3em;
   }
-}
-
-// Utility class to give elements the effect
-// of coming out of a container when animating
-.content__wrapper {
-  overflow: hidden;
 }
 
 section {
@@ -80,6 +75,6 @@ p {
 
 .content__link {
   text-decoration: none;
-  color: black;
+  color: #000;
   background-color: rgba(0, 0, 255, 0.15);
 }

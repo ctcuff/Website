@@ -6,6 +6,11 @@
   box-sizing: inherit;
 }
 
+::selection {
+  background: #353535;
+  color: #fff;
+}
+
 html {
   // Prevents font scaling on iOS devices
   // when it's rotated
@@ -19,6 +24,8 @@ body {
   overflow-x: hidden;
 }
 
+// Utility class to give elements the effect
+// of coming out of a container when animating
 .no-overflow {
   overflow: hidden;
 }
