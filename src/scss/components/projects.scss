@@ -22,6 +22,10 @@
       @content;
     }
   }
+
+  @else {
+    @error 'Invalid breakpoint: #{$size}';
+  }
 }
 
 .project {
@@ -42,38 +46,52 @@
 
 .project__title {
   color: var(--heading-color);
-  line-height: 52px;
-  margin-bottom: 32px;
-  max-width: 300px;
+  margin-bottom: 16px;
+  max-width: 90%;
 
   @include font('AvenirNext-Bold');
+
+  @include breakpoint(md) {
+    margin-bottom: 32px;
+  }
 
   @include breakpoint(lg) {
     max-width: 100%;
   }
 
   h1 {
-    font-size: 35px;
+    font-size: 1.5em;
     margin: 0;
 
     @include breakpoint(md) {
-      font-size: 45px;
+      font-size: 2em;
+    }
+
+    @include breakpoint(lg) {
+      font-size: 2.8em;
     }
   }
 }
 
 .project__description {
-  margin-bottom: 32px;
-  max-width: 200px;
+  margin-top: 0.5em;
+  margin-bottom: 1.5em;
+  max-width: 90%;
   color: var(--text-color);
 
+  @include breakpoint(sm) {
+    margin-top: 0;
+    max-width: 60%;
+  }
+
   @include breakpoint(md) {
-    max-width: 300px;
+    margin-bottom: 32px;
   }
 
   & p {
     margin: 0;
     line-height: 1.8;
+    font-size: 1em;
   }
 }
 
@@ -86,11 +104,11 @@
   justify-content: center;
 
   @include breakpoint(sm) {
-    margin-left: 75px;
+    margin-left: 60px;
   }
 
   @include breakpoint(md) {
-    margin-left: 100px;
+    margin-left: 87px;
   }
 }
 
@@ -101,7 +119,7 @@
     color: var(--heading-color);
     font-weight: bold;
     text-decoration: none;
-    font-size: 14px;
+    font-size: 0.8em;
     position: relative;
     display: inline-block;
     transition: $transition;
@@ -118,6 +136,10 @@
       transform-origin: right;
     }
 
+    @include breakpoint(md) {
+      font-size: 0.9em;
+    }
+
     @include breakpoint(lg) {
       &:hover {
         transform: translateX(20%) skew(-15deg);
@@ -131,7 +153,11 @@
 
 .project__image {
   width: 43%;
-  height: 100%;
+  height: 60%;
+
+  @include breakpoint(sm) {
+    height: 100%;
+  }
 }
 
 .project__image--background {
@@ -197,7 +223,7 @@
   align-items: center;
   height: 100%;
   margin-right: 5px;
-  top: 20%;
+  top: 18%;
   right: 10px;
 
   @include breakpoint(sm) {

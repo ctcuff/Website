@@ -157,7 +157,7 @@
           projectImageForeground,
           projectImageBackground
         ])
-        const duration = 0.7
+        const duration = 0.5
 
         // Used to prevent further animations if an
         // animation is already in progress
