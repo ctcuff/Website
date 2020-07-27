@@ -26,4 +26,8 @@
       @content;
     }
   }
+
+  @else {
+    @error 'Invalid breakpoint: #{$size}';
+  }
 }

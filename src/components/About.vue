@@ -81,6 +81,7 @@
           opacity: 1,
           duration: this.animationDuration,
           y: '0%',
+          ease: 'power1.out',
           stagger: 0.2
         }
       )

@@ -2,9 +2,6 @@
 // height of the browser's interface (this is a problem
 // on mobile devices)
 @mixin full-height {
-  // Fallback for devices that might not
-  // support custom CSS properties
   height: 100vh;
-  // height: -webkit-fill-available;
   height: calc(var(--vh, 1vh) * 100);
 }

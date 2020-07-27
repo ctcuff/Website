@@ -20,19 +20,20 @@
 .content__text--name {
   font-size: 10vw;
   letter-spacing: 2px;
-  color: #353535;
+  color: var(--heading-color);
 
   @include font('AvenirNext-Bold');
 }
 
-.content__text--contact {
+.content__link {
   position: absolute;
   bottom: 0;
   margin-bottom: 1em;
   text-decoration: none;
+  color: var(--heading-color);
 
   &:active,
   &:visited {
-    color: #000;
+    color: var(--heading-color);
   }
 }

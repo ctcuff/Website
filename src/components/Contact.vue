@@ -33,7 +33,7 @@
     data: () => ({
       mounted: false,
       textAnimationDuration: 0.8,
-      animationStagger: 0.15,
+      animationStagger: 0.1,
       links: [
         {
           text: 'GitHub',
@@ -54,7 +54,6 @@
       ]
     }),
     beforeRouteLeave(to, from, next) {
-      this.mounted = false
       const rows = document.querySelectorAll('.contact__row')
 
       gsap
@@ -64,23 +63,25 @@
           duration: this.textAnimationDuration,
           ease: 'power2.in'
         })
+        .eventCallback('onStart', () => (this.mounted = false))
         .eventCallback('onComplete', () => next())
     },
     mounted() {
-      this.mounted = true
       const rows = document.querySelectorAll('.contact__row')
 
-      gsap.fromTo(
-        rows,
-        {
-          y: '150%'
-        },
-        {
-          y: '0%',
-          stagger: this.animationStagger,
-          duration: this.textAnimationDuration
-        }
-      )
+      gsap
+        .fromTo(
+          rows,
+          {
+            y: '150%'
+          },
+          {
+            y: '0%',
+            stagger: this.animationStagger,
+            duration: this.textAnimationDuration
+          }
+        )
+        .eventCallback('onComplete', () => (this.mounted = true))
     },
     methods: {
       onRowMouseEnter(event) {

@@ -41,7 +41,7 @@
 }
 
 .project__title {
-  color: #353535;
+  color: var(--heading-color);
   line-height: 52px;
   margin-bottom: 32px;
   max-width: 300px;
@@ -65,7 +65,7 @@
 .project__description {
   margin-bottom: 32px;
   max-width: 200px;
-  color: #5a5c63;
+  color: var(--text-color);
 
   @include breakpoint(md) {
     max-width: 300px;
@@ -98,7 +98,7 @@
   $transition: transform 0.25s ease-in-out;
 
   a {
-    color: #353535;
+    color: var(--heading-color);
     font-weight: bold;
     text-decoration: none;
     font-size: 14px;
@@ -235,7 +235,7 @@
   &::after {
     content: '';
     width: 13px;
-    background-color: #353535;
+    background-color: var(--heading-color);
     height: 1px;
     transform-origin: right;
     display: inline-block;

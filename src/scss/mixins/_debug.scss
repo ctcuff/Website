@@ -1,23 +1,69 @@
 @import 'breakpoints';
+@import 'fonts';
 
-// Small mixin that changes the background color
-// of an element so it's breakpoint can be visualized
-@mixin DEBUG_background-color {
-  background-color: lightgray;
+// Small mixin that adds a colored bar to the page
+// so breakpoints can be easily visualized
+// prettier-ignore
+@mixin DEBUG_screen-size($position: bottom) {
+  @warn "Don't use this in a production environment!";
 
-  @include breakpoint(sm) {
-    background-color: orange;
-  }
+  &::before {
+    content: 'xs';
+    position: fixed;
+    overflow: hidden;
+    text-align: center;
+    background-color: lightgray;
 
-  @include breakpoint(md) {
-    background-color: lightskyblue;
-  }
+    @if $position == top {
+      top: 0;
+      right: 0;
+      left: 0;
+    }
 
-  @include breakpoint(lg) {
-    background-color: lightgreen;
-  }
+    @else if $position == right {
+      top: 0;
+      right: 0;
+      bottom: 0;
+      writing-mode: vertical-rl;
+    }
 
-  @include breakpoint(xl) {
-    background-color: lightcoral;
+    @else if $position == bottom {
+      right: 0;
+      bottom: 0;
+      left: 0;
+    }
+
+    @else if $position == left {
+      left: 0;
+      bottom: 0;
+      top: 0;
+      writing-mode: vertical-rl;
+    }
+
+    @else {
+      @error 'Invalid position #{$position}';
+    }
+
+    @include font('consolas');
+
+    @include breakpoint(sm) {
+      background-color: orange;
+      content: 'sm';
+    }
+
+    @include breakpoint(md) {
+      background-color: lightskyblue;
+      content: 'md';
+    }
+
+    @include breakpoint(lg) {
+      background-color: lightgreen;
+      content: 'lg';
+    }
+
+    @include breakpoint(xl) {
+      background-color: lightcoral;
+      content: 'xl';
+    }
   }
 }

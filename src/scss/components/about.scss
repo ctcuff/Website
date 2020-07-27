@@ -2,6 +2,10 @@
 @import '../mixins/height';
 @import '../mixins/fonts';
 
+section {
+  margin: 0 15%;
+}
+
 .content {
   display: flex;
   flex-direction: column;
@@ -51,7 +55,7 @@
 .content__about-header {
   font-size: 2em;
   margin: 0;
-  color: #353535;
+  color: var(--heading-color);
 
   @include font('AvenirNext-Bold');
 
@@ -60,13 +64,10 @@
   }
 }
 
-section {
-  margin: 0 15%;
-}
-
-p {
+.content__about-text {
   font-size: 0.9em;
   line-height: 1.8em;
+  color: var(--text-color);
 
   @include breakpoint(md) {
     font-size: 1em;
@@ -75,6 +76,6 @@ p {
 
 .content__link {
   text-decoration: none;
-  color: #000;
+  color: var(--text-color);
   background-color: rgba(0, 0, 255, 0.15);
 }
