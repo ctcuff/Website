@@ -1,11 +1,12 @@
 @import 'breakpoints';
 @import 'fonts';
 
+@warn "Don't use this in a production environment!";
+
 // Small mixin that adds a colored bar to the page
 // so breakpoints can be easily visualized
 // prettier-ignore
 @mixin DEBUG_screen-size($position: bottom) {
-  @warn "Don't use this in a production environment!";
 
   &::before {
     content: 'xs';
@@ -65,5 +66,11 @@
       background-color: lightcoral;
       content: 'xl';
     }
+  }
+}
+
+@mixin DEBUG_outline($color: red) {
+  & * {
+    outline: 1px solid $color !important;
   }
 }
