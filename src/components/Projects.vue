@@ -92,7 +92,7 @@
         this.lastScrolled = Date.now()
       },
       onKeyDown(event) {
-        if (event.repeat) {
+        if (event.repeat || this.isAnimating) {
           return
         }
 
