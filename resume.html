@@ -8,89 +8,47 @@
       href="https://stackpath.bootstrapcdn.com/bootstrap/4.3.1/css/bootstrap.min.css"
     />
   </head>
-  <style>
-    body {
-      margin-top: 32px;
-    }
-
-    hr {
-      margin: 32px 0;
-    }
-
-    p,
-    li,
-    ul,
-    a {
-      font-size: 18px;
-    }
-
-    li {
-      margin: 8px 0;
-    }
-
-    h2:not(#education) {
-      margin-top: 32px;
-    }
-
-    small {
-      word-spacing: 2px;
-    }
-
-    .header:not(h1) {
-      font-size: 32px;
-      margin-bottom: 8px;
-    }
-
-    #contact-info > * {
-      margin-right: 32px;
-      font-size: 18px;
-    }
-
-    .indent {
-      margin-left: 16px;
-    }
-  </style>
+  <link rel="stylesheet" href="./resume.css" />
   <body>
     <div class="container">
-      <h1 class="display-4 header">Cameron Cuff</h1>
-      <div id="contact-info">
-        <a href="mailto:dev.ctcuff@gmail.com" class="text-muted">
+      <h1 class="header">Cameron Cuff</h1>
+      <div class="contact-info-row">
+        <a href="mailto:dev.ctcuff@gmail.com" class="link">
           dev.ctcuff@gmail.com
         </a>
-        <a href="https://ctcuff.github.io/" class="text-muted">
+        <a href="https://ctcuff.github.io/" class="link">
           ctcuff.github.io
         </a>
-        <a href="https://github.com/ctcuff" class="text-muted">
+        <a href="https://github.com/ctcuff" class="link">
           GitHub
         </a>
-        <a href="https://www.linkedin.com/in/cameron-cuff-126405161/" class="text-muted">
+        <a href="https://www.linkedin.com/in/cameron-cuff-126405161/" class="link">
           Linkedin
         </a>
       </div>
       <hr />
-      <h2 class="display-4 header" id="education">Education</h2>
+      <h2 class="header">Education</h2>
       <div class="indent">
         <p>University of Central Florida | B.S. Computer Science</p>
         <p>Expected Graduation Date: Fall 2021</p>
       </div>
       <hr />
-      <h2 class="display-4 header">Skills</h2>
-      <p class="indent">
+      <h2 class="header">Skills</h2>
+      <p class="indent skills">
         Javascript, Python, Java, HTML, CSS, Git, NodeJS, React, Vue, MongoDB
       </p>
       <hr />
-      <h2 class="display-4 header">Work Experience</h2>
+      <h2 class="header">Work Experience</h2>
       <div class="indent">
-        <p>
-          Web Applications Developer
-          <small>
-            | UCF Center for Distributed Learning | September 2019 - Present
-          </small>
-        </p>
+        <div class="flex-row">
+          <p class="job-info">Web Applications Developer - UCF Center for Distributed Learning</p>
+          <p class="job-info">September 2019 - Present</p>
+        </div>
+
         <ul>
           <li>
             Worked on a Python API that allows faculty and staff to programmatically
-            access grades, assignments, users, and other attributes for their courses.
+            access grades, assignments, users, and other resources for their courses.
           </li>
           <li>
             Contributed to an open source Learning Management System that assists
@@ -100,12 +58,12 @@
             Helped to ensure test coverage of 100% is maintained throughout development.
           </li>
         </ul>
-        <p>
-          Software Engineering Intern
-          <small>
-            | Visa | May 2020 – July 2020
-          </small>
-        </p>
+
+        <div class="flex-row">
+          <p class="job-info">Software Engineering Intern - Visa</p>
+          <p class="job-info">May 2020 – July 2020</p>
+        </div>
+
         <ul>
           <li>
             Pitched a business proposal to executives that accelerates the movement
@@ -116,40 +74,48 @@
             payment APIs to help merchants transition to online payments.
           </li>
           <li>
-            Participated in daily team Scrum meeting to ensure project deadlines were met on time.
+            Participated in daily team Scrum meetings to ensure project deadlines were met
+            on time.
           </li>
         </ul>
       </div>
       <hr />
-      <h2 class="display-4 header" id="projects">Projects</h2>
+      <h2 class="header">Projects</h2>
       <div class="indent">
-        <a href="https://github.com/ctcuff/UCFParking-API">UCFParking-API</a>
+        <a href="https://github.com/ctcuff/UCFParking-API" class="link">
+          UCFParking-API
+        </a>
         <ul>
           <li>
-            Designed an API and website that returns a JSON response containing information
-            about each parking garage. Data is automatically added to a database every
-            hour and can be visualized with a line graph.
+            Designed an API and website that returns a JSON response containing
+            information about each parking garage. Data is automatically added to a
+            database every hour and can be visualized with a line graph.
           </li>
           <li>
-            Hosted on Heroku built with Python, Vue, JavaScript, Docker, and a MongoDB database.
+            Hosted on Heroku built with Python, Vue, JavaScript, Docker, and a MongoDB
+            database.
           </li>
         </ul>
       </div>
       <div class="indent">
-        <a href="https://github.com/ctcuff/Tweet-Tracker">Tweet-Tracker</a>
+        <a href="https://github.com/ctcuff/LiveCode" class="link">
+          Live Code
+        </a>
         <ul>
           <li>
-            Built a website that tracks the occurrences of a given keyword on Twitter in
-            real time using web sockets.
+            A website that allows multiple users to write code online collaboratively
+            in real time using sockets.
           </li>
           <li>
-            Hosted on Heroku with a backend in Python, frontend built using React,
-            Redux, JavaScript, and TypeScript.
+            Hosted on GitHub pages and Heroku with a backend in NodeJS. Utilizes Vue,
+            JavaScript, and Google Firebase authentication.
           </li>
         </ul>
       </div>
       <div class="indent">
-        <a href="https://github.com/ctcuff/MotionPy">MotionPy</a>
+        <a href="https://github.com/ctcuff/MotionPy" class="link">
+          MotionPy
+        </a>
         <ul>
           <li>
             A motion detection system running on a Raspberry Pi 3. When motion is
