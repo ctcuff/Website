@@ -1,0 +1,83 @@
+@font-face {
+  font-family: 'AvenirNext';
+  src: url(../src/assets/fonts/AvenirNextLTPro-Regular.otf);
+}
+
+@font-face {
+  font-family: 'AvenirNext-Bold';
+  src: url(../src/assets/fonts/AvenirNextLTPro-Bold.otf);
+}
+
+@media print {
+  * {
+      /* Preserves color when saving to PDF */
+    -webkit-print-color-adjust: exact;
+  }
+}
+
+html {
+  --text-color: #000;
+  /* --text-color: #6f6f6f; */
+}
+
+body {
+  font-family: 'AvenirNext' !important;
+  margin-top: 32px;
+  color: var(--text-color) !important;
+}
+
+hr {
+  margin: 32px 0;
+}
+
+p,
+li,
+ul,
+a {
+  font-size: 18px;
+}
+
+p,
+li {
+  color: #000;
+}
+
+li {
+  margin: 8px 0;
+}
+
+small {
+  word-spacing: 2px;
+}
+
+.header {
+  font-weight: 800;
+}
+
+.link {
+  color: var(--text-color);
+  text-decoration: underline;
+}
+
+.contact-info-row * {
+  margin-right: 32px;
+}
+
+.flex-row {
+    display: flex;
+    align-items: baseline;
+    justify-content: space-between;
+}
+
+.indent {
+  margin-left: 16px;
+}
+
+.skills {
+  word-spacing: 5px;
+}
+
+.job-info {
+  color: #000;
+  font-weight: bold;
+}
