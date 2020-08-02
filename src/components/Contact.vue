@@ -4,7 +4,7 @@
       <div v-for="link in links" :key="link.url">
         <div class="no-overflow">
           <div class="contact__row">
-            <div class="circle--outer">
+            <div class="circle--outer no-overflow">
               <div class="circle--inner"></div>
             </div>
             <a

@@ -1,6 +1,8 @@
 <template>
   <div class="content">
-    <p class="content__text content__text--name" data-splitting>Cameron Cuff</p>
+    <p class="content__text content__text--name no-overflow" data-splitting>
+      Cameron Cuff
+    </p>
     <div class="no-overflow">
       <p class="content__text" ref="message">
         I make things sometimes.

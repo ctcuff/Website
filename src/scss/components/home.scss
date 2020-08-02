@@ -5,7 +5,6 @@
   display: flex;
   justify-content: center;
   align-items: center;
-  overflow: hidden;
   flex-direction: column;
 
   @include full-height;
@@ -14,7 +13,6 @@
 
 .content__text {
   margin: 0;
-  overflow: hidden;
 }
 
 .content__text--name {

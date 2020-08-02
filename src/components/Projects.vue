@@ -1,7 +1,7 @@
 <template>
   <div ref="root">
-    <div class="project">
-      <div class="project__info no-overflow">
+    <div class="project no-overflow">
+      <div class="project__info">
         <div class="project__title no-overflow">
           <h1 ref="projectTitle">{{ projects[activeItemIndex].title }}</h1>
         </div>
@@ -17,7 +17,7 @@
         </div>
       </div>
       <div class="project__image">
-        <div class="project__image--background no-overflow" ref="projectImageBackground">
+        <div class="project__image--background" ref="projectImageBackground">
           <img
             v-for="(project, index) in projects"
             :key="index"
@@ -26,7 +26,7 @@
             v-show="activeItemIndex === index"
           />
         </div>
-        <div class="project__image--foreground no-overflow" ref="projectImageForeground">
+        <div class="project__image--foreground" ref="projectImageForeground">
           <img
             v-for="(project, index) in projects"
             :key="index"
