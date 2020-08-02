@@ -110,7 +110,7 @@
         this.yDown = firstTouch.clientY
       },
       handleTouchMove(event) {
-        if (!this.xDown || !this.yDown) {
+        if (this.isAnimating || !this.xDown || !this.yDown) {
           return
         }
 
