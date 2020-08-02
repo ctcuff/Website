@@ -1,13 +1,13 @@
 @import '../mixins/breakpoints';
 @import '../mixins/fonts';
+@import '../mixins/height';
 
 .contact {
   display: flex;
   justify-content: center;
-  height: 100%;
-  width: 100%;
-  position: absolute;
   align-items: center;
+
+  @include full-height;
 }
 
 .contact__row {
@@ -20,6 +20,14 @@
       .contact__link {
         color: #000;
       }
+    }
+  }
+
+  &:hover {
+    .circle--inner {
+      // The enter transition
+      transition: transform 0.25s ease-out;
+      transform: translateX(0);
     }
   }
 }
@@ -55,6 +63,8 @@
   border-radius: 50%;
   background-color: #000;
   transform: translateX(-150%);
+  // The exit transition
+  transition: transform 0.45s cubic-bezier(0.55, 0.055, 0.675, 0.19);
 
   @include breakpoint(md) {
     width: 2em;
@@ -65,10 +75,6 @@
     width: 2.5em;
     height: 2.5em;
   }
-}
-
-.contact__row-wrapper {
-  overflow: hidden;
 }
 
 .contact__link {
@@ -84,14 +90,6 @@
   }
 
   @include font('AvenirNext-Bold');
-
-  // @include breakpoint(sm) {
-  //   font-size: 2.3em;
-  // }
-
-  // @include breakpoint(md) {
-  //   font-size: 2.8em;
-  // }
 
   @include breakpoint(lg) {
     font-size: 4em;

@@ -2,12 +2,8 @@
   <div class="contact">
     <div>
       <div v-for="link in links" :key="link.url">
-        <div class="contact__row-wrapper">
-          <div
-            class="contact__row"
-            @mouseenter="onRowMouseEnter"
-            @mouseleave="onRowMouseLeave"
-          >
+        <div class="no-overflow">
+          <div class="contact__row">
             <div class="circle--outer">
               <div class="circle--inner"></div>
             </div>
@@ -31,7 +27,6 @@
 
   export default {
     data: () => ({
-      mounted: false,
       textAnimationDuration: 0.8,
       animationStagger: 0.1,
       links: [
@@ -63,49 +58,22 @@
           duration: this.textAnimationDuration,
           ease: 'power2.in'
         })
-        .eventCallback('onStart', () => (this.mounted = false))
         .eventCallback('onComplete', () => next())
     },
     mounted() {
       const rows = document.querySelectorAll('.contact__row')
 
-      gsap
-        .fromTo(
-          rows,
-          {
-            y: '150%'
-          },
-          {
-            y: '0%',
-            stagger: this.animationStagger,
-            duration: this.textAnimationDuration
-          }
-        )
-        .eventCallback('onComplete', () => (this.mounted = true))
-    },
-    methods: {
-      onRowMouseEnter(event) {
-        // Prevents the hover animation when this component is exiting
-        if (!this.mounted) {
-          return
+      gsap.fromTo(
+        rows,
+        {
+          y: '150%'
+        },
+        {
+          y: '0%',
+          stagger: this.animationStagger,
+          duration: this.textAnimationDuration
         }
-
-        // Animates the inner circle
-        gsap.to(event.target.children[0].firstElementChild, {
-          x: '0%',
-          duration: 0.25
-        })
-      },
-      onRowMouseLeave(event) {
-        if (!this.mounted) {
-          return
-        }
-        gsap.to(event.target.children[0].firstElementChild, {
-          x: '-150%',
-          duration: 0.5,
-          ease: 'power2.in'
-        })
-      }
+      )
     }
   }
 </script>
