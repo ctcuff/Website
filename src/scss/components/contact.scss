@@ -26,7 +26,7 @@
   &:hover {
     .circle--inner {
       // The enter transition
-      transition: transform 0.25s ease-out;
+      transition: transform 0.3s ease-out;
       transform: translateX(0);
     }
   }
@@ -63,7 +63,7 @@
   background-color: #000;
   transform: translateX(-150%);
   // The exit transition
-  transition: transform 0.45s cubic-bezier(0.55, 0.055, 0.675, 0.19);
+  transition: transform 0.5s cubic-bezier(0.55, 0.055, 0.675, 0.19);
 
   @include breakpoint(md) {
     width: 2em;
