@@ -292,3 +292,34 @@
     transform: translateX(13px);
   }
 }
+
+.carousel__scroll-indicator {
+  margin: 4em 0 0 0.4em;
+  font-size: 0.7em;
+  position: absolute;
+  user-select: none;
+  transform: rotate(90deg);
+
+  &::before {
+    content: '';
+    height: 1px;
+    width: 100px;
+    background-color: #000;
+    position: absolute;
+    top: 50%;
+    left: 100%;
+    transform-origin: left;
+    margin-left: 12px;
+    animation: scale 1.8s cubic-bezier(0.67, 0, 0.24, 1.01) infinite alternate;
+  }
+}
+
+@keyframes scale {
+  0% {
+    transform: scaleX(0);
+  }
+
+  100% {
+    transform: scaleX(1);
+  }
+}

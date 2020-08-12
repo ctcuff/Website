@@ -11,7 +11,7 @@
         <div class="project__link no-overflow">
           <div ref="projectLink">
             <router-link :to="projects[activeItemIndex].link">
-              View details
+              Read case study
             </router-link>
           </div>
         </div>
@@ -49,6 +49,9 @@
         >
           <span>{{ `${i}`.padStart(2, 0) }}</span>
         </li>
+        <p class="carousel__scroll-indicator" ref="scrollIndicator">
+          {{ isMobile ? 'Swipe' : 'Scroll' }}
+        </p>
       </ul>
     </div>
   </div>
@@ -57,6 +60,9 @@
 <script>
   import { projects } from '@/project-info'
   import { gsap } from 'gsap'
+  import debounce from '../util/debounce'
+
+  const MOBILE_BREAKPOINT = 600
 
   export default {
     data() {
@@ -66,7 +72,7 @@
 
       return {
         // Used to determine the animation direction of the carousel
-        isMobile: window.innerWidth <= 600,
+        isMobile: window.innerWidth <= MOBILE_BREAKPOINT,
         animationDuration: 0.8,
         scrollEvents: ['DOMMouseScroll', 'mousewheel', 'wheel'],
         lastScrolled: Date.now(),
@@ -89,6 +95,7 @@
         const direction = event.deltaY < 0 ? 'UP' : 'DOWN'
 
         this.animateTransition(direction)
+        this.hideScrollIndicator()
         this.lastScrolled = Date.now()
       },
       onKeyDown(event) {
@@ -102,6 +109,9 @@
         } else if (event.keyCode === 40 || event.keyCode === 39) {
           this.animateTransition('DOWN')
         }
+      },
+      onResize() {
+        debounce(() => (this.isMobile = window.innerWidth <= MOBILE_BREAKPOINT), 200)()
       },
       handleTouchStart(event) {
         const firstTouch = event.touches[0]
@@ -124,6 +134,7 @@
           // yDiff < 0 is a swipe down
           const direction = yDiff > 0 ? 'DOWN' : 'UP'
           this.animateTransition(direction)
+          this.hideScrollIndicator()
         }
 
         this.xDown = null
@@ -142,6 +153,14 @@
         }
 
         this.activeItemIndex %= this.projects.length
+      },
+      hideScrollIndicator() {
+        gsap.to(this.$refs.scrollIndicator, {
+          x: this.isMobile ? '100%' : '-100%',
+          opacity: 0,
+          ease: 'power2.in',
+          duration: 1
+        })
       },
       animateTransition(direction) {
         const {
@@ -222,6 +241,7 @@
       const images = gsap.utils.toArray([projectImageBackground, projectImageForeground])
 
       window.addEventListener('keydown', this.onKeyDown)
+      window.addEventListener('resize', this.onResize)
       root.addEventListener('touchstart', this.handleTouchStart)
       root.addEventListener('touchmove', this.handleTouchMove)
 
@@ -328,6 +348,7 @@
       const root = this.$refs.root
 
       window.removeEventListener('keydown', this.onKeyDown)
+      window.removeEventListener('resize', this.onResize)
       root.removeEventListener('touchstart', this.handleTouchStart)
       root.removeEventListener('touchmove', this.handleTouchMove)
 
