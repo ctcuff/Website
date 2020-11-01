@@ -2,8 +2,8 @@
   <div class="content">
     <div class="content__left">
       <img
-        src="../assets/images/profile-pixel.png"
-        alt="pixelated profile"
+        src="../assets/images/profile.svg"
+        alt="profile"
         ref="profileImage"
         class="content__image"
       />
@@ -57,7 +57,6 @@
           this.$refs.profileImage,
           {
             opacity: 0,
-            scale: 0.9,
             duration: this.animationDuration,
             delay: 0.2
           },
@@ -89,12 +88,10 @@
       gsap.fromTo(
         this.$refs.profileImage,
         {
-          opacity: 0,
-          scale: 0.9
+          opacity: 0
         },
         {
           opacity: 1,
-          scale: 1,
           duration: this.animationDuration
         }
       )

@@ -36,11 +36,11 @@
         },
         {
           text: 'LinkedIn',
-          url: 'https://www.linkedin.com/in/cameron-cuff-126405161/'
+          url: 'https://www.linkedin.com/in/~cameron/'
         },
         {
           text: 'Resume',
-          url: '../cuff_resume.pdf'
+          url: '../cameron_cuff_resume.pdf'
         },
         {
           text: 'Email',

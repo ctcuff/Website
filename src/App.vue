@@ -17,7 +17,7 @@
   import Navbar from '@/components/Navbar'
   import debounce from '@/util/debounce'
   import { projects, projectData } from '@/project-info'
-  import profileImage from '@/assets/images/profile-pixel.png'
+  import profileImage from '@/assets/images/profile.svg'
 
   export default {
     components: {

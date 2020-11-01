@@ -49,6 +49,11 @@ section {
   @include breakpoint(lg) {
     width: 80%;
   }
+
+  @include breakpoint(xl) {
+    width: 92%;
+    align-self: flex-end;
+  }
 }
 
 .content__about-header {
