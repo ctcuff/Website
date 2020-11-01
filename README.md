@@ -7,7 +7,7 @@ This site's been through a few transformations. I generally try to redesign the 
 - [Revision I. (terminal theme)](https://github.com/ctcuff/ctcuff.github.io/tree/terminal-theme)
 - [Revision II. (React version of original)](https://github.com/ctcuff/ctcuff.github.io/tree/develop)
 - [Revision III. (Vue redesign)](https://github.com/ctcuff/ctcuff.github.io/tree/vue)
-- [Revision VI. (Current)](https://github.com/ctcuff/ctcuff.github.io/tree/dev/2020)
+- [Revision IV. (Current)](https://github.com/ctcuff/ctcuff.github.io/tree/dev/2020)
 
 If for some reason you'd like to build this yourself, run:
 1. `yarn`
