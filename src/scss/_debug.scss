@@ -1,0 +1,20 @@
+@warn "Don't use this in a production environment!";
+
+// Outlines every element on the page
+@mixin DEBUG_outline($color: red) {
+  & * {
+    outline: 1px solid $color !important;
+  }
+}
+
+// Adds columns to the page to make centering
+// and positioning elements easier
+@mixin DEBUG_grid($cols: 12, $color: #b8b6b5) {
+  height: 100%;
+  background-size: calc((100vw / #{$cols}) + 1px);
+  background-image: linear-gradient(
+    to right,
+    transparent calc(100vw / #{$cols}),
+    $color calc(100vw / #{$cols})
+  );
+}

@@ -1,0 +1,30 @@
+@import url('https://fonts.googleapis.com/css2?family=Archivo+Black&display=swap');
+@import url('https://fonts.googleapis.com/css2?family=Archivo:wght@400;500;600&display=swap');
+@import './variables';
+
+html {
+  // Prevents font scaling on iOS devices
+  // when it's rotated
+  -webkit-text-size-adjust: 100%;
+}
+
+body {
+  margin: 0;
+  font-family: 'Archivo', Arial, Helvetica, sans-serif;
+  background-color: $bg-color;
+  color: $text-color;
+}
+
+h1 {
+  font-family: 'Archivo Black', Arial, Helvetica, sans-serif;
+}
+
+a {
+  color: #b0a2ff;
+}
+
+// Utility class to give elements the effect
+// of coming out of a container when animating
+.no-overflow {
+  overflow: hidden;
+}

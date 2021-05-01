@@ -2,7 +2,7 @@ import Vue from 'vue'
 import App from './App'
 import router from './router'
 import CSSPlugin from 'gsap/CSSPlugin'
-import './scss/global.scss'
+import './scss/index.scss'
 import 'splitting/dist/splitting.css'
 import 'splitting/dist/splitting-cells.css'
 
