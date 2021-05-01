@@ -1,0 +1,192 @@
+@import './variables';
+
+p {
+  margin: 0;
+  align-self: center;
+  justify-self: center;
+  font-size: 1.3em;
+  font-weight: 400;
+  -webkit-font-smoothing: antialiased;
+}
+
+h1 {
+  letter-spacing: 2px;
+  font-size: 9vw;
+  margin: 0;
+}
+
+.heading-container,
+.text-container {
+  position: relative;
+  height: 100%;
+  display: flex;
+  align-items: center;
+  justify-content: center;
+  overflow: hidden;
+}
+
+.curtain {
+  position: absolute;
+  background-color: $text-color;
+  top: 0;
+  bottom: 0;
+  left: 0;
+  right: 0;
+}
+
+.text-container {
+  &[data-hover-enabled='true']:not(.welcome-message) {
+    cursor: pointer;
+  }
+
+  .curtain {
+    // This is where the curtain transition will end
+    transform-origin: top;
+    transition: transform cubic-bezier(0.16, 1, 0.3, 1) 0.6s;
+    transform: scaleY(0);
+    z-index: -1;
+  }
+
+  p {
+    transition: color ease-in-out 0.2s, transform cubic-bezier(0.16, 1, 0.3, 1) 0.8s,
+      opacity cubic-bezier(0.16, 1, 0.3, 1) 0.6s;
+    z-index: 1;
+    transform: translateY(-100%);
+    // Important: need to set the text to 0 opacity initially so that
+    // it doesn't show when the page first loads
+    opacity: 0;
+  }
+
+  .text-secondary {
+    position: absolute;
+    transform: rotate(45deg);
+    transform-origin: left;
+    opacity: 0;
+  }
+
+  &[data-hover-enabled='true']:not(.welcome-message):hover {
+    .curtain {
+      // This is where the curtain transition will start
+      transform-origin: bottom;
+      transform: scaleY(1);
+    }
+
+    .text,
+    .text-secondary {
+      color: $bg-color;
+    }
+
+    .text {
+      opacity: 0 !important;
+      transform: translateY(-100%) rotate(-45deg) !important;
+    }
+
+    .text-secondary {
+      opacity: 1;
+      transform: translateY(-100%) rotate(0deg);
+    }
+  }
+}
+
+.no-overflow {
+  position: relative;
+}
+
+.container {
+  height: 100vh;
+  display: grid;
+  grid-template-columns: 1fr 2fr;
+  grid-template-rows: repeat(3, 1fr);
+  grid-template-areas:
+    'about      cameron'
+    'projects   welcome'
+    'contact    cuff';
+}
+
+.first-name {
+  grid-area: cameron;
+  justify-content: flex-start;
+
+  h1 {
+    margin-left: 32px;
+  }
+}
+
+.last-name {
+  grid-area: cuff;
+  justify-content: flex-end;
+
+  h1 {
+    margin-right: 32px;
+  }
+}
+
+.about {
+  grid-area: about;
+}
+
+.projects {
+  grid-area: projects;
+}
+
+.contacts {
+  grid-area: contact;
+}
+
+.welcome-message {
+  grid-area: welcome;
+}
+
+.emoji {
+  font-size: 1.5em;
+  vertical-align: middle;
+  animation: wave 2.5s infinite alternate;
+  animation-delay: 1.5s;
+  transform-origin: 70% 70%;
+  display: inline-block;
+  margin-left: 8px;
+}
+
+.grid-line {
+  position: absolute;
+  background-color: transparentize($text-color, 0.6);
+
+  &[data-top],
+  &[data-bottom] {
+    left: 0;
+    right: 0;
+    height: 1px;
+    transform: scaleX(0);
+  }
+
+  &[data-top] {
+    transform-origin: left;
+    top: calc(100vh / 3);
+  }
+
+  &[data-bottom] {
+    top: calc((100vh / 3) * 2);
+    transform-origin: right;
+  }
+
+  &[data-right] {
+    transform: scaleY(0);
+    transform-origin: top;
+    top: 0;
+    bottom: 0;
+    right: calc((100vw / 3) * 2);
+    width: 1px;
+  }
+}
+
+// prettier-ignore
+@keyframes wave {
+  0% { transform: rotate( 0deg) }
+  10% { transform: rotate(14.0deg) }  
+  20% { transform: rotate(-8.0deg) }
+  30% { transform: rotate(14.0deg) }
+  40% { transform: rotate(-4.0deg) }
+  50% { transform: rotate(10deg) }
+  60% { transform: rotate(0deg) } 
+  100% { transform: rotate(0deg) }
+}
