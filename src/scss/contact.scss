@@ -1,0 +1,129 @@
+@import 'variables';
+
+.link {
+  font-family: 'Martel Sans', Arial, Helvetica, sans-serif;
+  font-weight: 900;
+  text-decoration: none;
+  margin: 0;
+  writing-mode: vertical-lr;
+  transform: rotate(180deg);
+  font-size: 6em;
+  margin-bottom: 100px;
+  z-index: 2;
+  transition: color $ease-expo 0.6s, -webkit-text-stroke $ease-expo 0.6s;
+  user-select: none;
+  cursor: pointer;
+  color: $text-color;
+
+  &[data-hover-enabled='true']:hover {
+    -webkit-text-stroke: 1px $bg-color;
+    color: transparent;
+  }
+
+  :visited {
+    color: $text-color;
+  }
+}
+
+.close-btn {
+  position: absolute;
+  background-color: transparent;
+  border: none;
+  color: $text-color;
+  width: 32px;
+  height: 32px;
+  z-index: 3;
+  right: 32px;
+  top: 16px;
+  cursor: pointer;
+
+  svg {
+    transition: stroke 0.6s $ease-expo;
+    stroke: currentColor;
+    stroke-width: 2px;
+    stroke-linecap: round;
+  }
+
+  &.hovered svg {
+    stroke: $bg-color;
+  }
+}
+
+.container {
+  display: grid;
+  height: 100vh;
+  grid-template-columns: repeat(4, 1fr);
+  grid-template-rows: 1fr;
+  align-items: flex-end;
+  justify-items: center;
+  overflow: hidden;
+}
+
+.text-container {
+  display: flex;
+  height: 100%;
+  width: 100%;
+  justify-content: center;
+  position: relative;
+  align-items: flex-end;
+  overflow: hidden;
+  // cursor: pointer;
+
+  // &:hover {
+  //   .curtain {
+  //     transform: scaleX(0.5);
+  //   }
+
+  //   .link {
+  //     -webkit-text-stroke: 1px $bg-color;
+  //     color: transparent;
+  //   }
+  // }
+}
+
+.grid-line {
+  position: absolute;
+  background-color: transparentize($text-color, 0.6);
+  width: 1px;
+  top: 0;
+  bottom: 0;
+  transform-origin: bottom;
+
+  &:nth-child(2) {
+    left: 25vw;
+  }
+
+  &:nth-child(3) {
+    left: 50vw;
+  }
+
+  &:nth-child(4) {
+    left: 75vw;
+  }
+}
+
+.curtain {
+  position: absolute;
+  top: 0;
+  bottom: 0;
+  width: 100%;
+  background-color: $text-color;
+}
+
+.curtain--left,
+.curtain--right {
+  transform: scaleX(0);
+}
+
+.curtain--bottom {
+  transform-origin: bottom;
+  transform: scaleY(0);
+}
+
+.curtain--left {
+  transform-origin: left;
+}
+
+.curtain--right {
+  transform-origin: right;
+}

@@ -10,29 +10,33 @@
     "lint": "eslint './src/**/*{.js,.vue}'",
     "format": "yarn format:vue && yarn format:scss",
     "format:vue": "prettier --write './src/**/*{.js,.vue}'",
-    "format:scss": "prettier --write './src/**/*.scss'"
+    "format:scss": "prettier --write './src/**/*.scss'",
+    "precommit": "lint-staged",
+    "prepare": "husky install"
   },
   "dependencies": {
-    "core-js": "^2.6.5",
-    "gsap": "^3.3.4",
+    "core-js": "^3.18.2",
+    "gsap": "^3.8.0",
+    "locomotive-scroll": "^4.1.2",
     "splitting": "^1.0.6",
-    "vue": "^2.6.10",
-    "vue-router": "^3.1.2"
+    "virtual-scroll": "^2.1.1",
+    "vue": "^2.6.14",
+    "vue-router": "^3.5.2"
   },
   "devDependencies": {
-    "@vue/cli-plugin-babel": "^3.10.0",
-    "@vue/cli-plugin-eslint": "^3.10.0",
-    "@vue/cli-service": "^3.10.0",
+    "@vue/cli-plugin-babel": "^4.5.13",
+    "@vue/cli-plugin-eslint": "^4.5.13",
+    "@vue/cli-service": "^4.5.13",
     "babel-eslint": "^10.0.1",
-    "eslint": "^5.16.0",
-    "eslint-plugin-vue": "^5.0.0",
-    "gh-pages": "^2.1.1",
-    "husky": "^4.2.5",
-    "lint-staged": "^10.2.11",
-    "node-sass": "^4.12.0",
-    "prettier": "^2.0.5",
-    "sass-loader": "^7.2.0",
-    "vue-template-compiler": "^2.6.10"
+    "eslint": "7.32.0",
+    "eslint-plugin-vue": "^7.19.1",
+    "gh-pages": "^3.2.3",
+    "husky": "^7.0.2",
+    "lint-staged": "^11.2.2",
+    "node-sass": "4.12.0",
+    "prettier": "^2.4.1",
+    "sass-loader": "7.2.0",
+    "vue-template-compiler": "^2.6.14"
   },
   "husky": {
     "hooks": {

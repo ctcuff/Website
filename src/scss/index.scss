@@ -1,7 +1,14 @@
-@import url('https://fonts.googleapis.com/css2?family=Archivo+Black&display=swap');
+// @import url('https://fonts.googleapis.com/css2?family=Archivo+Black&display=swap');
+@import url('https://fonts.googleapis.com/css2?family=Martel+Sans:wght@900&display=swap');
 // @import url('https://fonts.googleapis.com/css2?family=Archivo:wght@400;500;600&display=swap');
-@import url('https://fonts.googleapis.com/css2?family=Martel:wght@300;400&display=swap');
+@import url('https://fonts.googleapis.com/css2?family=Martel:wght@300;400;900&display=swap');
 @import './variables';
+
+html,
+body {
+  height: 100%;
+  width: 100%;
+}
 
 html {
   // Prevents font scaling on iOS devices
@@ -14,10 +21,11 @@ body {
   font-family: 'Martel', Arial, Helvetica, sans-serif;
   background-color: $bg-color;
   color: $text-color;
+  overscroll-behavior-y: none;
 }
 
 h1 {
-  font-family: 'Archivo Black', Arial, Helvetica, sans-serif;
+  font-family: 'Martel Sans', Arial, Helvetica, sans-serif;
 }
 
 a {

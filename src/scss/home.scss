@@ -1,4 +1,4 @@
-@import './variables';
+@import 'variables';
 
 p {
   margin: 0;
@@ -42,14 +42,14 @@ h1 {
   .curtain {
     // This is where the curtain transition will end
     transform-origin: top;
-    transition: transform cubic-bezier(0.16, 1, 0.3, 1) 0.6s;
+    transition: transform $ease-expo 0.6s;
     transform: scaleY(0);
     z-index: -1;
   }
 
   p {
-    transition: color ease-in-out 0.2s, transform cubic-bezier(0.16, 1, 0.3, 1) 0.8s,
-      opacity cubic-bezier(0.16, 1, 0.3, 1) 0.6s;
+    transition: color ease-in-out 0.2s, transform $ease-expo 0.8s,
+      opacity $ease-expo 0.6s;
     z-index: 1;
     transform: translateY(-100%);
     // Important: need to set the text to 0 opacity initially so that

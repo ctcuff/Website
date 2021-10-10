@@ -65,7 +65,7 @@
 
     mounted() {
       const lineDuration = 1.5
-      const curtainDuration = 0.7
+      const curtainDuration = 0.85
 
       gsap
         .timeline({ delay: 0.4 })
@@ -145,7 +145,7 @@
             delay: curtainDuration + 1.2
           }
         )
-        .add(() => (this.isAnimationFinished = true), curtainDuration + 1)
+        .add(() => (this.isAnimationFinished = true), curtainDuration + 1.4)
     }
   }
 </script>
