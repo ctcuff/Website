@@ -13,7 +13,7 @@
         <div class="horizontal" ref="scrollContainer">
           <div role="feed" class="cards">
             <div class="sample-card" v-for="(src, index) in images" :key="index">
-              <img :src="src" alt="">
+              <img :src="src" alt="" />
             </div>
           </div>
         </div>
@@ -23,6 +23,7 @@
 </template>
 
 <script>
+  /* eslint-disable no-unused-vars */
   // import LocomotiveScroll from 'locomotive-scroll'
   import VirtualScroll from 'virtual-scroll'
 
