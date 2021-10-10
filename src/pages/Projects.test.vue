@@ -23,7 +23,6 @@
 </template>
 
 <script>
-  /* eslint-disable no-unused-vars */
   // import LocomotiveScroll from 'locomotive-scroll'
   import VirtualScroll from 'virtual-scroll'
 
