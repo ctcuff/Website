@@ -1,3 +1,10 @@
-$bg-color: hsl(273, 100%, 10%);
-$text-color: hsl(273, 100%, 94%);
+:root {
+  // Using a CSS var instead of an SCSS var here
+  // so that the color can be changed easily in the
+  // dev console
+  --hue: 33deg;
+}
+
+$bg-color: hsl(var(--hue), 100%, 15%);
+$text-color: hsl(var(--hue), 100%, 90%);
 $ease-expo: cubic-bezier(0.16, 1, 0.3, 1);
