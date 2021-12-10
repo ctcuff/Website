@@ -6,9 +6,10 @@ This site's been through a few transformations. I generally try to redesign the 
 - [Original (jQuery and Bootstrap)](https://github.com/ctcuff/ctcuff.github.io/tree/vanilla-js)
 - [Revision I. (terminal theme)](https://github.com/ctcuff/ctcuff.github.io/tree/terminal-theme)
 - [Revision II. (React version of original)](https://github.com/ctcuff/ctcuff.github.io/tree/develop)
-- [Revision III. (Vue redesign)](https://github.com/ctcuff/ctcuff.github.io/tree/vue)
-- [Revision IV. (Current)](https://github.com/ctcuff/ctcuff.github.io/tree/dev/2020)
+- [Revision III. (Vue redesign Mk I - An Exercise in Layout)](https://github.com/ctcuff/ctcuff.github.io/tree/vue)
+- [Revision IV. (Vue redesign Mk II - Experiments in Animation)](https://github.com/ctcuff/ctcuff.github.io/tree/dev/2020)
+- [Revision V. (Vue redesign Mk III - Designing With Variable Fonts)](https://github.com/ctcuff/ctcuff.github.io/)
 
 If for some reason you'd like to build this yourself, run:
-1. `yarn`
-2. `yarn dev`
+1. `yarn` to install dependencies
+2. `yarn dev` to start the development server

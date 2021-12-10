@@ -7,7 +7,7 @@
     "build": "vue-cli-service build",
     "lint": "eslint \"./src/**/*{.ts,.js,.vue}\"",
     "deploy": "yarn build && gh-pages -d dist -b master",
-    "dev": "vue-cli-service serve --port 3000",
+    "dev": "vue-cli-service serve --port 3000 --open",
     "format": "yarn format:vue && yarn format:scss",
     "format:scss": "prettier --write \"./src/**/*.scss\"",
     "format:vue": "prettier --write \"./src/**/*{.ts,.js,.vue}\"",
