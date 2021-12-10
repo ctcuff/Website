@@ -6,21 +6,11 @@
   bottom: 0;
   left: 0;
   right: 0;
-  background-color: $text-color;
   align-items: center;
   overflow: hidden;
-
-  &:nth-child(odd) {
-    background-color: $bg-color;
-
-    .curtain__text {
-      color: $text-color;
-    }
-  }
 }
 
 .curtain__inner {
-  color: $bg-color;
   display: flex;
   justify-content: center;
   align-items: center;

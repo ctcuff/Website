@@ -1,9 +1,10 @@
+import './class-component-hooks'
+import './scss/index.scss'
 import Vue from 'vue'
 import App from './App.vue'
 import router from './router'
 // @ts-ignore
 import CSSPlugin from 'gsap/CSSPlugin'
-import './scss/index.scss'
 
 // Needed to make sure animations work in production
 // see https://github.com/greensock/GreenSock-JS/issues/285#issuecomment-433729632

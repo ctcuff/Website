@@ -1,7 +1,7 @@
 <template>
   <div class="curtain">
     <div class="curtain__inner" ref="curtainInner">
-      <h1 class="curtain__text">{{ text }}</h1>
+      <h1 class="curtain__text" v-if="text && !!text.trim()">{{ text }}</h1>
     </div>
   </div>
 </template>
@@ -11,7 +11,7 @@
 
   @Component
   export default class Curtain extends Vue {
-    @Prop({ required: true, type: String }) readonly text!: string
+    @Prop({ type: String }) readonly text!: string
   }
 </script>
 

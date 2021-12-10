@@ -9,11 +9,9 @@
   src: url('../assets/fonts/Anybody[slnt\,wdth\,wght].woff2') format('woff2-variations');
 }
 
-html,
-body {
-  height: 100%;
-  width: 100%;
-  transition: color 500ms ease-in-out, background-color 200ms ease-in-out;
+*::selection {
+  color: $bg-color;
+  background-color: $text-color;
 }
 
 html {
@@ -26,7 +24,7 @@ body {
   margin: 0;
   background-color: $bg-color;
   color: $text-color;
-  overscroll-behavior-y: none;
+  overscroll-behavior: none;
 }
 
 h1,
