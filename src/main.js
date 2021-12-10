@@ -3,8 +3,6 @@ import App from './App'
 import router from './router'
 import CSSPlugin from 'gsap/CSSPlugin'
 import './scss/index.scss'
-import 'splitting/dist/splitting.css'
-import 'splitting/dist/splitting-cells.css'
 
 // Needed to make sure animations work in production
 // see https://github.com/greensock/GreenSock-JS/issues/285#issuecomment-433729632
