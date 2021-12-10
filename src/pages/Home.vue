@@ -1,7 +1,10 @@
 <template>
   <div class="container">
-    <div class="name-container">
+    <div class="name-container no-overflow">
       <h1 class="name">Cameron Cuff</h1>
+    </div>
+    <div class="tagline no-overflow">
+      <p class="tagline__text">Software Engineer</p>
     </div>
     <div class="links">
       <div class="link-container no-overflow">
@@ -19,24 +22,29 @@
   </div>
 </template>
 
-<script>
+<script lang="ts">
+  import { Component, Vue } from 'vue-property-decorator'
   import gsap from 'gsap'
   import Curtain from '../components/Curtain.vue'
 
-  export default {
+  @Component({
     components: {
       Curtain
-    },
+    }
+  })
+  export default class Home extends Vue {
     mounted() {
-      const animationOpts = {
+      const animationOpts: gsap.TweenVars = {
         duration: 1,
-        stagger: -2,
-        delay: 2,
+        // Controls how long the first curtain shows
+        delay: 1.2,
+        // Controls how long other curtains show
+        stagger: -2.7,
         ease: 'expo.out'
       }
 
-      gsap
-        .timeline()
+      const curtainTimeline = gsap
+        .timeline({ paused: true })
         .to(
           '.curtain',
           {
@@ -53,6 +61,23 @@
           },
           0
         )
+
+      const textTimeline = gsap
+        .timeline({ paused: true })
+        .fromTo(
+          '.tagline__text',
+          {
+            y: '100%',
+            opacity: 0
+          },
+          {
+            y: '0%',
+            opacity: 1,
+            ease: 'expo.out',
+            duration: 2
+          },
+          0
+        )
         .fromTo(
           '.link',
           {
@@ -63,8 +88,24 @@
             ease: 'expo.out',
             duration: 2,
             stagger: 0.2
-          }
+          },
+          0
         )
+        .fromTo(
+          '.name',
+          {
+            y: '-100%'
+          },
+          {
+            y: '0%',
+            ease: 'expo.out',
+            duration: 2
+          },
+          0
+        )
+
+      curtainTimeline.play()
+      textTimeline.play().delay(curtainTimeline.duration() - 0.5)
     }
   }
 </script>

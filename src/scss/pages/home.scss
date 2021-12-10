@@ -4,8 +4,10 @@
   height: 100%;
   display: grid;
   grid-template-columns: 1fr 1fr;
-  grid-template-rows: 1fr 1fr;
+  grid-template-rows: 2fr 2fr;
   padding-left: 5em;
+  padding-bottom: 1em;
+  box-sizing: border-box;
 }
 
 .name-container {
@@ -22,13 +24,26 @@
   transition: font-variation-settings 500ms $ease-expo;
 }
 
+.tagline {
+  grid-column: 2 / 2;
+  grid-row: 2 / 2;
+  display: flex;
+  justify-content: flex-end;
+  align-items: flex-end;
+}
+
+.tagline__text {
+  font-size: 2.6vw;
+  margin: 0 1em 0 0;
+  font-variation-settings: 'wdth' 120;
+}
+
 .links {
   display: flex;
   flex-direction: column;
   justify-content: flex-end;
   grid-column: 1 / 1;
   grid-row: 2 / 2;
-  margin-bottom: 1em;
 }
 
 .link {

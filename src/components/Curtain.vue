@@ -6,14 +6,12 @@
   </div>
 </template>
 
-<script>
-  export default {
-    props: {
-      text: {
-        type: String,
-        required: true
-      }
-    }
+<script lang="ts">
+  import { Component, Vue, Prop } from 'vue-property-decorator'
+
+  @Component
+  export default class Curtain extends Vue {
+    @Prop({ required: true, type: String }) readonly text!: string
   }
 </script>
 

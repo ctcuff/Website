@@ -3,13 +3,16 @@
   "env": {
     "node": true
   },
-  "extends": ["plugin:vue/essential", "eslint:recommended"],
+  "parserOptions": {
+    "parser": "@typescript-eslint/parser"
+  },
+  "extends": ["plugin:vue/essential", "eslint:recommended", "@vue/typescript"],
   "overrides": [
     {
-      "files": ["*.vue", "*.js"],
+      "files": ["*.vue", "*.ts"],
       "rules": {
         "semi": ["error", "never"],
-        "no-console": "error",
+        "no-console": "warn",
         "no-unused-vars": [
           "error",
           {
@@ -21,11 +24,11 @@
         "no-var": "error",
         "object-curly-spacing": ["error", "always"],
         "no-alert": "error",
-        "no-prototype-builtins": "off"
+        "no-prototype-builtins": "off",
+        "comma-dangle": ["error", "never"],
+        "arrow-parens": ["error", "as-needed"],
+        "@typescript-eslint/no-use-before-define": ["error"]
       }
     }
-  ],
-  "parserOptions": {
-    "parser": "babel-eslint"
-  }
+  ]
 }

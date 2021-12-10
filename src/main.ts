@@ -1,6 +1,7 @@
 import Vue from 'vue'
-import App from './App'
+import App from './App.vue'
 import router from './router'
+// @ts-ignore
 import CSSPlugin from 'gsap/CSSPlugin'
 import './scss/index.scss'
 
