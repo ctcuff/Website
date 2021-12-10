@@ -5,12 +5,12 @@
   "homepage": "https://ctcuff.github.io/ctcuff.github.io",
   "scripts": {
     "build": "vue-cli-service build",
-    "lint": "eslint \"./src/**/*{.js,.vue}\"",
+    "lint": "eslint \"./src/**/*{.ts,.js,.vue}\"",
     "deploy": "yarn build && gh-pages -d dist -b master",
     "dev": "vue-cli-service serve --port 3000",
     "format": "yarn format:vue && yarn format:scss",
     "format:scss": "prettier --write \"./src/**/*.scss\"",
-    "format:vue": "prettier --write \"./src/**/*{.js,.vue}\"",
+    "format:vue": "prettier --write \"./src/**/*{.ts,.js,.vue}\"",
     "precommit": "lint-staged",
     "prepare": "husky install"
   },
@@ -58,10 +58,10 @@
     }
   },
   "lint-staged": {
-    "./src/**/*{.js,.vue}": [
+    "./src/**/*{.ts,.js,.vue}": [
       "yarn lint"
     ],
-    "./src/**/*{.scss,.js,.vue}": [
+    "./src/**/*{.scss,.ts,.js,.vue}": [
       "yarn format"
     ]
   }
