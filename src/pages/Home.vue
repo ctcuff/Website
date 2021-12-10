@@ -65,20 +65,6 @@
       const textTimeline = gsap
         .timeline({ paused: true })
         .fromTo(
-          '.tagline__text',
-          {
-            y: '100%',
-            opacity: 0
-          },
-          {
-            y: '0%',
-            opacity: 1,
-            ease: 'expo.out',
-            duration: 2
-          },
-          0
-        )
-        .fromTo(
           '.link',
           {
             y: '100%'
@@ -102,6 +88,20 @@
             duration: 2
           },
           0
+        )
+        .fromTo(
+          '.tagline__text',
+          {
+            y: '100%',
+            opacity: 0
+          },
+          {
+            y: '0%',
+            opacity: 1,
+            ease: 'expo.out',
+            duration: 2
+          },
+          0.8
         )
 
       curtainTimeline.play()

@@ -1,4 +1,4 @@
-@import './variables';
+@import './partials/variables';
 
 @font-face {
   // This is a variable font with the following axes:
@@ -33,10 +33,6 @@ h1,
 h2,
 p {
   font-family: 'Anybody', Arial, Helvetica, sans-serif;
-}
-
-a {
-  color: #b0a2ff;
 }
 
 // Utility class to give elements the effect
