@@ -1,0 +1,28 @@
+@import '../partials/variables';
+
+section {
+  width: 70%;
+  margin: 3em auto;
+}
+
+.title {
+  font-family: 'Epilogue-Italic';
+  font-size: 6em;
+  text-align: center;
+  font-weight: normal;
+  font-variation-settings: 'wght' 700;
+  margin-bottom: 0.5em;
+}
+
+.description {
+  font-family: 'Epilogue';
+  font-size: 2em;
+  line-height: 1.5;
+  font-variation-settings: 'wght' 250;
+  margin: 0 1em;
+}
+
+.about-curtain {
+  background-color: $text-color;
+  color: $bg-color;
+}
