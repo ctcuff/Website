@@ -19,7 +19,7 @@
     </div>
     <Curtain text="Welcome to my portfolio." />
     <Curtain text="Hello." />
-    <Curtain :text="transitionCurtainText" class="about-curtain transition-curtain" />
+    <Curtain :text="transitionText" class="transition-curtain" />
   </div>
 </template>
 
@@ -38,31 +38,31 @@
   })
   export default class Home extends Vue {
     @State private fromPath!: RouterState['fromPath']
+    @State private transitionText!: RouterState['transitionText']
     @Mutation private setFromPath!: (route: RouterState['fromPath']) => void
-    private transitionCurtainText = ''
+    @Mutation private setTransitionText!: (route: RouterState['transitionText']) => void
 
     beforeRouteLeave(to: Route, from: Route, next: NavigationGuardNext) {
       const duration = 1.1
-      const toPath = to.path.replace('/', '')
 
-      this.transitionCurtainText = `This is the ${toPath} section.`
+      switch (to.path) {
+        case '/about':
+          this.setTransitionText('The about section.')
+          break
+        case '/projects':
+          this.setTransitionText('The projects section.')
+          break
+        case '/contact':
+          this.setTransitionText('The contact section.')
+          break
+        default:
+          throw new Error(`Unregistered route transition ${to.path}`)
+      }
 
       gsap
         .timeline()
         .fromTo(
-          '.about-curtain',
-          {
-            y: '-100%'
-          },
-          {
-            y: '0%',
-            duration,
-            ease: Expo.easeOut
-          },
-          0
-        )
-        .fromTo(
-          '.about-curtain .curtain__inner',
+          '.transition-curtain',
           {
             y: '100%'
           },
@@ -73,6 +73,20 @@
           },
           0
         )
+        .fromTo(
+          '.transition-curtain .curtain__inner',
+          {
+            y: '-100%'
+          },
+          {
+            y: '0%',
+            duration,
+            ease: Expo.easeOut
+          },
+          0
+        )
+        // Slight hack to delay the timeline for a bit
+        .to({}, { duration: 0.35 })
         .eventCallback('onComplete', () => {
           this.setFromPath('home')
           next()

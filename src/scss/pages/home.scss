@@ -68,7 +68,7 @@
   }
 
   &:hover {
-    font-variation-settings: 'wght' 100, 'wdth' 150, 'slnt' 0;
+    font-variation-settings: 'wght' 200, 'wdth' 150, 'slnt' 0;
   }
 }
 
@@ -82,7 +82,7 @@
   color: $bg-color;
 }
 
-.about-curtain {
+.transition-curtain {
   transform: translateY(100%);
   background-color: $text-color;
   color: $bg-color;

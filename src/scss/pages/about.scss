@@ -1,28 +1,52 @@
 @import '../partials/variables';
 
-section {
-  width: 70%;
-  margin: 3em auto;
+.container {
+  height: 100vh;
 }
 
-.title {
+.content {
+  width: 70%;
+  margin: 3em auto 5em auto;
+
+  &:first-child {
+    margin-top: 6em;
+  }
+}
+
+.content__title {
   font-family: 'Epilogue-Italic';
-  font-size: 6em;
+  font-size: 5em;
   text-align: center;
   font-weight: normal;
   font-variation-settings: 'wght' 700;
+  margin-top: 0;
   margin-bottom: 0.5em;
 }
 
-.description {
+.content__description {
   font-family: 'Epilogue';
-  font-size: 2em;
+  font-size: 1.3em;
   line-height: 1.5;
-  font-variation-settings: 'wght' 250;
-  margin: 0 1em;
+  font-variation-settings: 'wght' 200;
+  margin: 0 4em;
 }
 
 .about-curtain {
   background-color: $text-color;
   color: $bg-color;
+}
+
+.transition-curtain {
+  background-color: $text-color;
+  transform: translateY(100%);
+}
+
+.blank-curtain {
+  background-color: $bg-color;
+  transform: translateY(100%);
+}
+
+.svg-container {
+  display: flex;
+  justify-content: center;
 }

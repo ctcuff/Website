@@ -62,3 +62,13 @@ p {
 .no-overflow {
   overflow: hidden;
 }
+
+.scrollbar-track-y {
+  background: transparent !important;
+  width: 6px !important;
+}
+
+.scrollbar-thumb-y {
+  width: 6px !important;
+  background-color: $text-color !important;
+}

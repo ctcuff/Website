@@ -2,7 +2,7 @@
   // Using a CSS var instead of an SCSS var here
   // so that the color can be changed easily in the
   // dev console
-  --hue: 33deg;
+  --hue: 275deg;
 }
 
 $bg-color: hsl(var(--hue), 100%, 15%);
