@@ -27,7 +27,7 @@ export type RouterState = {
   /**
    * The path the current route previously came from
    */
-  fromPath: null | 'home' | 'about'
+  fromPath: null | 'home' | 'about' | 'contact' | 'projects'
   /**
    * Mostly used between transitions. Keeps track of the text that shows
    * on the curtains between route transitions

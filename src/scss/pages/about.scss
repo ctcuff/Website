@@ -13,21 +13,75 @@
   }
 }
 
+.content--experience {
+  margin-top: 10em;
+  position: relative;
+  display: flex;
+  flex-direction: column;
+}
+
+.job__title,
 .content__title {
-  font-family: 'Epilogue-Italic';
-  font-size: 5em;
-  text-align: center;
   font-weight: normal;
   font-variation-settings: 'wght' 700;
   margin-top: 0;
   margin-bottom: 0.5em;
 }
 
+.content__title {
+  text-align: center;
+  font-family: 'Epilogue-Italic';
+  font-size: 5em;
+}
+
+.job {
+  margin: 3em 0 20em 0;
+  width: 60%;
+
+  * {
+    font-family: 'Epilogue';
+  }
+
+  &:last-child {
+    margin-bottom: 3em;
+  }
+
+  &:nth-child(odd) {
+    align-self: flex-start;
+  }
+
+  &:nth-child(even) {
+    align-self: flex-end;
+  }
+}
+
+.job__role,
+.job__description {
+  font-variation-settings: 'wght' 300;
+}
+
+.job__title {
+  font-size: 2.5em;
+
+  &:first-child {
+    margin-top: 2em;
+  }
+}
+
+.job__role {
+  font-size: 1.3em;
+}
+
+.job__description {
+  font-size: 1.2em;
+  line-height: 1.5;
+}
+
 .content__description {
   font-family: 'Epilogue';
   font-size: 1.3em;
   line-height: 1.5;
-  font-variation-settings: 'wght' 200;
+  font-variation-settings: 'wght' 300;
   margin: 0 4em;
 }
 
@@ -49,4 +103,20 @@
 .svg-container {
   display: flex;
   justify-content: center;
+
+  svg {
+    position: absolute;
+  }
+
+  path {
+    stroke-width: 2;
+  }
+}
+
+.squiggle {
+  opacity: 0.4;
+}
+
+.squiggle--background {
+  opacity: 0.05;
 }

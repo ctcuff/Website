@@ -17,7 +17,13 @@
 
   @Component
   export default class App extends Vue {
-    private fonts = ['Anybody', 'Epilogue', 'Epilogue-Italic', 'Imbue']
+    private fonts = [
+      'Anybody',
+      'Anybody-ExtraBold',
+      'Epilogue',
+      'Epilogue-Italic',
+      'Imbue'
+    ]
 
     debounce(callback: Function, wait = 20) {
       let timeout = 0

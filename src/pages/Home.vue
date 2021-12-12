@@ -18,7 +18,7 @@
       </div>
     </div>
     <Curtain text="Welcome to my portfolio." />
-    <Curtain text="Hello." />
+    <Curtain text="Hello." class="start-curtain" />
     <Curtain :text="transitionText" class="transition-curtain" />
   </div>
 </template>
@@ -50,7 +50,7 @@
           this.setTransitionText('The about section.')
           break
         case '/projects':
-          this.setTransitionText('The projects section.')
+          this.setTransitionText('So you wanna see some code?')
           break
         case '/contact':
           this.setTransitionText('The contact section.')
@@ -99,19 +99,30 @@
         // Controls how long the first curtain shows
         delay: 1.5,
         // Controls how long other curtains show
-        stagger: -2.5,
+        stagger: -2.2,
         ease: Expo.easeOut
       }
 
       const curtainTimeline = gsap
         .timeline({ paused: true })
+        .fromTo(
+          '.start-curtain .curtain__text',
+          {
+            opacity: 0
+          },
+          {
+            opacity: 1,
+            duration: 1.2,
+            delay: 0.5
+          }
+        )
         .to(
           '.curtain:not(.transition-curtain)',
           {
             y: '-100%',
             ...animationOpts
           },
-          0
+          0.5
         )
         .to(
           '.curtain:not(.transition-curtain) .curtain__inner',
@@ -119,7 +130,7 @@
             y: '100%',
             ...animationOpts
           },
-          0
+          0.5
         )
 
       const textTimeline = gsap
@@ -173,7 +184,7 @@
         textTimeline.play().delay(curtainTimeline.duration() - 0.5)
       } else {
         curtainTimeline.totalProgress(1).kill()
-        textTimeline.play().delay(0.5)
+        textTimeline.play().delay(0.2)
       }
     }
   }

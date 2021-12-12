@@ -6,7 +6,7 @@
   // wdth -> [50, 150]
   // slnt -> [-10, 0]
   font-family: 'Anybody';
-  src: url('../assets/fonts/Anybody.woff2') format('woff2-variations');
+  src: url('../assets/fonts/variable/Anybody.woff2') format('woff2-variations');
 }
 
 @font-face {
@@ -14,7 +14,7 @@
   // wght -> [100, 900]
   // opsz -> [10, 100]
   font-family: 'Imbue';
-  src: url('../assets/fonts/Imbue.ttf') format('truetype');
+  src: url('../assets/fonts/variable/Imbue.ttf') format('truetype');
 }
 
 @font-face {
@@ -22,7 +22,7 @@
   // wght -> [100, 900]
   // slnt -> [-12, 0]
   font-family: 'Epilogue';
-  src: url('../assets/fonts/Epilogue.woff2') format('woff2-variations');
+  src: url('../assets/fonts/variable/Epilogue.woff2') format('woff2-variations');
 }
 
 @font-face {
@@ -30,7 +30,12 @@
   // wght -> [100, 900]
   // slnt -> [-12, 0]
   font-family: 'Epilogue-Italic';
-  src: url('../assets/fonts/Epilogue-Italic.woff2') format('woff2-variations');
+  src: url('../assets/fonts/variable/Epilogue-Italic.woff2') format('woff2-variations');
+}
+
+@font-face {
+  font-family: 'Anybody-ExtraBold';
+  src: url('../assets/fonts/static/Anybody-ExtraBold.woff2') format('woff2');
 }
 
 *::selection {
