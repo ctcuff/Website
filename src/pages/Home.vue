@@ -47,13 +47,13 @@
 
       switch (to.path) {
         case '/about':
-          this.setTransitionText('The about section.')
+          this.setTransitionText('The part where I ramble.')
           break
         case '/projects':
           this.setTransitionText('So you wanna see some code?')
           break
         case '/contact':
-          this.setTransitionText('The contact section.')
+          this.setTransitionText("Let's get in touch.")
           break
         default:
           throw new Error(`Unregistered route transition ${to.path}`)
@@ -184,7 +184,7 @@
         textTimeline.play().delay(curtainTimeline.duration() - 0.5)
       } else {
         curtainTimeline.totalProgress(1).kill()
-        textTimeline.play().delay(0.2)
+        textTimeline.play()
       }
     }
   }

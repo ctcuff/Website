@@ -12,28 +12,26 @@
           my freshman year.
         </p>
       </section>
-      <section class="content content--experience">
+      <section class="content content--experience" ref="experienceSection">
         <h2 class="content__title">Work Experience</h2>
         <div class="svg-container" ref="svgContainer">
           <svg
             width="100%"
             height="100%"
-            viewBox="0 0 812 2437"
+            viewBox="0 0 628 1044"
             fill="none"
             xmlns="http://www.w3.org/2000/svg"
           >
             <path
               ref="svgPath"
-              d="M55.9963 3C55.9963 3 1208.71 692.436 417.184 805C-374.339 917.564 330.36 1229 330.36 1229C330.36 1229 803.664 1382.68 808.955 1527C811.418 1594.18 712.474 1659.33 417.184 1706C-512.48 1852.95 417.184 2434 417.184 2434"
-              stroke="currentColor"
+              d="M415 3.5C415 3.5 949.617 253.396 310.498 323.5C-328.62 393.604 215.999 608 299.998 653.5C383.998 699 906.659 948.984 155.998 1040.5"
               stroke-linecap="round"
               class="squiggle"
               :stroke-dashoffset="strokeDashOffset"
               :stroke-dasharray="svgPathLength"
             />
             <path
-              d="M55.9963 3C55.9963 3 1208.71 692.436 417.184 805C-374.339 917.564 330.36 1229 330.36 1229C330.36 1229 803.664 1382.68 808.955 1527C811.418 1594.18 712.474 1659.33 417.184 1706C-512.48 1852.95 417.184 2434 417.184 2434"
-              stroke="currentColor"
+              d="M415 3.5C415 3.5 949.617 253.396 310.498 323.5C-328.62 393.604 215.999 608 299.998 653.5C383.998 699 906.659 948.984 155.998 1040.5"
               stroke-linecap="round"
               class="squiggle--background"
             />
@@ -68,12 +66,12 @@
           <h3 class="job__title">Microsoft</h3>
           <p class="job__role">Software Engineering Intern | May 2021 - August 2021</p>
           <p class="job__description">
-            Lorem, ipsum dolor sit amet consectetur adipisicing elit. Voluptatibus ratione
-            neque, soluta minima, quia recusandae eaque quis porro blanditiis
-            exercitationem iusto, odit eius! Corporis distinctio saepe quibusdam
-            temporibus dolor! Modi commodi asperiores dolor, quae tempore beatae velit
-            unde laboriosam magnam. Soluta deleniti consectetur iure nesciunt illum? Aut,
-            esse! Beatae, illo.
+            I worked under the Office Voice team to make improvements to dictation in
+            Microsoft Word. I implemented a proof-of-concept project that aimed to make
+            speech-to-text functionality more accessible, less resource heavy, and cost
+            efficient. I also worked on a hackathon project that won second place which
+            brought speech-to-text into VS Code using native C++ modules, you can check
+            out the code on my GitHub profile!
           </p>
         </div>
       </section>
@@ -85,6 +83,7 @@
 </template>
 
 <script lang="ts">
+  /* eslint-disable */
   import gsap, { Expo } from 'gsap'
   import { Component, Ref, Vue } from 'vue-property-decorator'
   import Curtain from '../components/Curtain.vue'
@@ -107,6 +106,7 @@
     @Ref() private readonly svgPath!: SVGPathElement
     @Ref() private readonly svgContainer!: HTMLDivElement
     @Ref() private readonly rootContainer!: HTMLDivElement
+    @Ref() private readonly experienceSection!: HTMLElement
     private controller!: ScrollMagic.Controller
     private svgPathLength: number = 0
     private strokeDashOffset: number = 0
@@ -150,7 +150,7 @@
 
       const scene = new ScrollMagic.Scene({
         triggerElement: this.svgContainer,
-        duration: '240%'
+        duration: this.experienceSection.offsetHeight * 0.95
       })
         .on('progress', (event: ScrollMagic.Event<ScrollMagic.EventType>) => {
           const progress = event.target.progress()

@@ -35,7 +35,7 @@
 }
 
 .job {
-  margin: 3em 0 20em 0;
+  margin: 3em 0 8em 0;
   width: 60%;
 
   * {
@@ -105,18 +105,20 @@
   justify-content: center;
 
   svg {
+    padding-top: 7em;
     position: absolute;
   }
 
   path {
     stroke-width: 2;
+    stroke: currentColor;
   }
 }
 
 .squiggle {
-  opacity: 0.4;
+  opacity: 0.35;
 }
 
 .squiggle--background {
-  opacity: 0.05;
+  opacity: 0;
 }

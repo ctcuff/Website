@@ -55,7 +55,7 @@
       },
       {
         text: 'LinkedIn',
-        url: 'https://www.linkedin.com/in/~cameron/'
+        url: 'https://www.linkedin.com/in/~cam/'
       },
       {
         text: 'Resume',
