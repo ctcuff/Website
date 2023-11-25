@@ -1,8 +1,11 @@
 @import '../mixins/fonts';
 @import '../mixins/breakpoints';
+@import '../mixins/height';
 
 .root {
   @include font('AvenirNext');
+  // Necessary to get the smooth scrollbar to show
+  height: 100vh;
 }
 
 [data-animate] {
@@ -144,6 +147,7 @@
     font-size: 1em;
     display: inline-block;
     transition: transform 0.25s ease-in-out;
+    margin-bottom: 3em;
 
     @include font('AvenirNext-Bold');
 

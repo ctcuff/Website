@@ -15,18 +15,10 @@
         </div>
         <div class="no-overflow">
           <p class="content__about-text" ref="aboutText">
-            I won't bore you with my life story so here's the jist: I'm a senior at UCF
-            studying Computer Science. I currently work as a Web Applications Developer
-            for the
-            <a
-              href="https://techrangers.cdl.ucf.edu/about.html"
-              target="_blank"
-              class="content__link"
-              rel="noopener noreferrer"
-            >
-              Center for Distributed Learning.
-            </a>
-            In my free time, I like to play piano and work on side projects.
+            I was born at a very young age... Ok, I won't bore you with
+            my life story so here's the jist: I'm a Florida native currently working as a
+            software engineer at Microsoft. In my free time, I like to play piano and tenor
+            sax and occasionally bake.
           </p>
         </div>
       </section>

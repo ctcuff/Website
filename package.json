@@ -16,6 +16,7 @@
         "core-js": "^2.6.5",
         "gsap": "^3.3.4",
         "intersection-observer": "^0.11.0",
+        "smooth-scrollbar": "^8.8.4",
         "splitting": "^1.0.6",
         "vue": "^2.6.10",
         "vue-router": "^3.1.2"

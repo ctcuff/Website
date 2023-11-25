@@ -49,6 +49,7 @@
   import 'intersection-observer'
   import { gsap } from 'gsap'
   import { projects } from '@/project-info'
+  import ScrollBar from 'smooth-scrollbar'
 
   export default {
     data() {
@@ -67,7 +68,10 @@
     beforeRouteLeave(_to, _from, next) {
       gsap
         .timeline()
-        .eventCallback('onComplete', () => next())
+        .eventCallback('onComplete', () => {
+          ScrollBar.destroyAll()
+          next()
+        })
         .to(
           this.$refs.header,
           {
@@ -99,6 +103,7 @@
     },
     mounted() {
       this.targetElements = document.querySelectorAll('[data-animate]')
+      ScrollBar.init(document.querySelector('.app'))
 
       gsap
         .timeline()
@@ -135,7 +140,6 @@
     methods: {
       initObserver() {
         const opts = {
-          root: this.$refs.root,
           margin: '0px',
           threshold: 0.5
         }

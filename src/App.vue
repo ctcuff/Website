@@ -1,5 +1,5 @@
 <template>
-  <div>
+  <div ref="root" class="app">
     <!--
       Preload fonts to prevent the flicker that can occur
       when other pages are visited
@@ -24,16 +24,18 @@
       Navbar
     },
     data: () => ({
-      fonts: ['AvenirNext', 'AvenirNext-Bold', 'Montserrat', 'Anybody']
+      fonts: ['AvenirNext', 'AvenirNext-Bold', 'Montserrat']
     }),
     mounted() {
       this.updateViewport()
       window.addEventListener('resize', debounce(this.updateViewport, 250))
 
       // Preload images so the browser can cache them
-      const projectImages = projects.reduce((acc, curr) => {
-        return acc.concat(curr.backgroundImage, curr.foregroundImage, curr.data.image.src)
-      }, [])
+      const projectImages = projects.reduce(
+        (acc, curr) =>
+          acc.concat(curr.backgroundImage, curr.foregroundImage, curr.data.image.src),
+        []
+      )
 
       const allImages = [...projectImages, profileImage]
 
