@@ -21,7 +21,7 @@
   export default {
     data: () => ({
       animationDuration: 1,
-      animationStagger: 0.03
+      animationStagger: 0.06
     }),
     beforeRouteLeave(to, from, next) {
       const text = document.querySelectorAll('.content__text .word > .char')

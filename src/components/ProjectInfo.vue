@@ -48,7 +48,7 @@
   // Polyfill
   import 'intersection-observer'
   import { gsap } from 'gsap'
-  import { projectData } from '@/project-info'
+  import { projects } from '@/project-info'
 
   export default {
     data() {
@@ -59,12 +59,12 @@
       }
 
       return {
-        projectData: projectData[index] || projectData[0],
+        projectData: projects[index].data || projects[0].data,
         animationDuration: 0.8,
         index
       }
     },
-    beforeRouteLeave(to, from, next) {
+    beforeRouteLeave(_to, _from, next) {
       gsap
         .timeline()
         .eventCallback('onComplete', () => next())

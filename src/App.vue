@@ -16,7 +16,7 @@
 <script>
   import Navbar from '@/components/Navbar'
   import debounce from '@/util/debounce'
-  import { projects, projectData } from '@/project-info'
+  import { projects } from '@/project-info'
   import profileImage from '@/assets/images/profile.svg'
 
   export default {
@@ -24,23 +24,19 @@
       Navbar
     },
     data: () => ({
-      fonts: ['AvenirNext', 'AvenirNext-Bold', 'Montserrat']
+      fonts: ['AvenirNext', 'AvenirNext-Bold', 'Montserrat', 'Anybody']
     }),
     mounted() {
       this.updateViewport()
       window.addEventListener('resize', debounce(this.updateViewport, 250))
 
-      const projectImages = projects.reduce((acc, curr) => {
-        return acc.concat(curr.backgroundImage, curr.foregroundImage)
-      }, [])
-
-      const projectDataImages = projectData.reduce((acc, curr) => {
-        return acc.concat(curr.image.src)
-      }, [])
-
-      const allImages = [...projectImages, ...projectDataImages, profileImage]
-
       // Preload images so the browser can cache them
+      const projectImages = projects.reduce((acc, curr) => {
+        return acc.concat(curr.backgroundImage, curr.foregroundImage, curr.data.image.src)
+      }, [])
+
+      const allImages = [...projectImages, profileImage]
+
       allImages.forEach(path => {
         const image = new Image()
         image.src = path

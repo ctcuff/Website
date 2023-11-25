@@ -66,7 +66,7 @@
 
   export default {
     data() {
-      // Grab the current project index that may have been
+      // Grab the current project id that may have been
       // passed from the '/projects' route
       const index = this.$route.query && this.$route.query.index
 
@@ -141,6 +141,8 @@
         this.yDown = null
       },
       changeIndex(direction) {
+        // eslint-disable-next-line no-console
+        console.log('HERE')
         if (direction === 'UP') {
           this.activeItemIndex -= 1
         } else {

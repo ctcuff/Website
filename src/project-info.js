@@ -1,46 +1,7 @@
-const projects = [
-  {
-    title: 'Git Browser',
-    description: 'A new way to view GitHub repositories.',
-    backgroundImage: require('./assets/images/git-browser-fullscreen.png'),
-    foregroundImage: require('./assets/images/git-browser.png'),
-    imageAlt: 'Git Browser website screenshot'
-  },
-  {
-    title: 'UCF Parking',
-    description: 'A website and API to keep track of parking spaces.',
-    backgroundImage: require('./assets/images/ucf-parking-fullscreen.png'),
-    foregroundImage: require('./assets/images/ucf-parking.png'),
-    imageAlt: 'UCF parking website screenshot'
-  },
-  {
-    title: 'Dependency Visualizer',
-    description: "View a graph of a JavaScript package's dependencies from npm.",
-    backgroundImage: require('./assets/images/dependency-visualizer-fullscreen.png'),
-    foregroundImage: require('./assets/images/dependency-visualizer.png'),
-    imageAlt: 'Dependency visualizer website screenshot'
-  },
-  {
-    title: 'Portfolio',
-    description: 'This very website and how I approach projects.',
-    backgroundImage: require('./assets/images/portfolio-fullscreen.png'),
-    foregroundImage: require('./assets/images/portfolio.png'),
-    imageAlt: 'Portfolio website screenshot'
-  },
-  {
-    title: 'Live Code',
-    description: 'A site that lets people code together.',
-    backgroundImage: require('./assets/images/livecode-fullscreen.png'),
-    foregroundImage: require('./assets/images/livecode.png'),
-    imageAlt: 'Live code website screenshot'
-  }
-]
-
-projects.forEach((project, index) => (project.link = `/project?index=${index}`))
-
 const projectData = [
   {
     title: 'Git Browser',
+    id: 'git-browser',
     image: {
       src: require('./assets/images/git-browser.png'),
       alt: 'Git Browser Website'
@@ -111,6 +72,7 @@ const projectData = [
   },
   {
     title: 'UCF Parking',
+    id: 'ucf-parking',
     image: {
       src: require('./assets/images/ucf-parking.png'),
       alt: 'UCF Parking Website'
@@ -162,6 +124,7 @@ const projectData = [
   },
   {
     title: 'Dependency Visualizer',
+    id: 'dependency-visualizer',
     image: {
       src: require('./assets/images/dependency-visualizer.png'),
       alt: 'Dependency visualizer website'
@@ -213,6 +176,7 @@ const projectData = [
   },
   {
     title: 'Portfolio',
+    id: 'portfolio',
     image: {
       src: require('./assets/images/portfolio.png'),
       alt: 'Portfolio website'
@@ -288,6 +252,7 @@ const projectData = [
   },
   {
     title: 'Live Code',
+    id: 'live-code',
     image: {
       src: require('./assets/images/livecode.png'),
       alt: 'Live code website'
@@ -336,7 +301,73 @@ const projectData = [
           I did have to Google "How to center a div" a few times... cut me some slack ok...`
       }
     ]
+  },
+  {
+    title: 'Font Preview',
+    id: 'font-preview',
+    image: {
+      src: require('./assets/images/vscode-font-viewer.png'),
+      alt: 'VS Code font preview extension screenshot'
+    },
+    links: {
+      github: 'https://github.com/ctcuff/vscode-font-preview',
+      website: 'https://marketplace.visualstudio.com/items?itemName=ctcuff.font-preview'
+    },
+    sections: []
   }
 ]
 
-export { projects, projectData }
+const projects = [
+  {
+    title: 'Font Preview',
+    description: 'Preview fonts without leaving VS Code.',
+    backgroundImage: require('./assets/images/vscode-font-preview-fullscreen.png'),
+    foregroundImage: require('./assets/images/vscode-font-viewer.png'),
+    imageAlt: 'VS Code font preview extension screenshot',
+    data: projectData.find(data => data.id === 'font-preview')
+  },
+  {
+    title: 'UCF Parking',
+    description: 'A website and API to keep track of parking spaces.',
+    backgroundImage: require('./assets/images/ucf-parking-fullscreen.png'),
+    foregroundImage: require('./assets/images/ucf-parking.png'),
+    imageAlt: 'UCF parking website screenshot',
+    data: projectData.find(data => data.id === 'ucf-parking')
+  },
+  {
+    title: 'Portfolio',
+    description: 'This very website and how I approach projects.',
+    backgroundImage: require('./assets/images/portfolio-fullscreen.png'),
+    foregroundImage: require('./assets/images/portfolio.png'),
+    imageAlt: 'Portfolio website screenshot',
+    data: projectData.find(data => data.id === 'portfolio')
+  },
+  {
+    title: 'Dependency Visualizer',
+    description: "View a graph of a JavaScript package's dependencies from npm.",
+    backgroundImage: require('./assets/images/dependency-visualizer-fullscreen.png'),
+    foregroundImage: require('./assets/images/dependency-visualizer.png'),
+    imageAlt: 'Dependency visualizer website screenshot',
+    data: projectData.find(data => data.id === 'dependency-visualizer')
+  },
+  {
+    title: 'Git Browser',
+    description: 'A new way to view GitHub repositories.',
+    backgroundImage: require('./assets/images/git-browser-fullscreen.png'),
+    foregroundImage: require('./assets/images/git-browser.png'),
+    imageAlt: 'Git Browser website screenshot',
+    data: projectData.find(data => data.id === 'git-browser')
+  },
+  {
+    title: 'Live Code',
+    description: 'A site that lets people code together.',
+    backgroundImage: require('./assets/images/livecode-fullscreen.png'),
+    foregroundImage: require('./assets/images/livecode.png'),
+    imageAlt: 'Live code website screenshot',
+    data: projectData.find(data => data.id === 'live-code')
+  }
+]
+
+projects.forEach((project, index) => (project.link = `/project?index=${index}`))
+
+export { projects }
