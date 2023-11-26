@@ -141,8 +141,6 @@
         this.yDown = null
       },
       changeIndex(direction) {
-        // eslint-disable-next-line no-console
-        console.log('HERE')
         if (direction === 'UP') {
           this.activeItemIndex -= 1
         } else {

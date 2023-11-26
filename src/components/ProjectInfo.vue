@@ -1,9 +1,7 @@
 <template>
   <div class="root">
     <header class="project-header">
-      <div class="no-overflow">
-        <h1 ref="header">{{ projectData.title }}</h1>
-      </div>
+      <h1 class="no-overflow" ref="header" data-splitting>{{ projectData.title }}</h1>
     </header>
     <div class="project-image no-overflow">
       <img :src="projectData.image.src" :alt="projectData.image.alt" ref="image" />
@@ -50,6 +48,7 @@
   import { gsap } from 'gsap'
   import { projects } from '@/project-info'
   import ScrollBar from 'smooth-scrollbar'
+  import splitting from 'splitting'
 
   export default {
     data() {
@@ -66,6 +65,8 @@
       }
     },
     beforeRouteLeave(_to, _from, next) {
+      const headerText = this.$refs.header.querySelectorAll('.word > .char')
+
       gsap
         .timeline()
         .eventCallback('onComplete', () => {
@@ -73,14 +74,15 @@
           next()
         })
         .to(
-          this.$refs.header,
+          headerText,
           {
             y: '100%',
             opacity: 0,
             ease: 'power2.in',
-            duration: this.animationDuration
+            duration: 1,
+            stagger: 0.06
           },
-          0.3
+          0
         )
         .to(
           this.$refs.image,
@@ -102,13 +104,20 @@
         )
     },
     mounted() {
+      splitting()
       this.targetElements = document.querySelectorAll('[data-animate]')
-      ScrollBar.init(document.querySelector('.app'))
+
+      // Value comes from _breakpoints.scss
+      if (window.innerWidth >= 992) {
+        ScrollBar.init(document.querySelector('.app'))
+      }
+
+      const headerText = this.$refs.header.querySelectorAll('.word > .char')
 
       gsap
         .timeline()
         .fromTo(
-          this.$refs.header,
+          headerText,
           {
             y: '100%',
             opacity: 0
@@ -117,8 +126,10 @@
             y: '0%',
             opacity: 1,
             duration: 1.4,
-            ease: 'power2.out'
-          }
+            ease: 'power2.out',
+            stagger: 0.06
+          },
+          0
         )
         .fromTo(
           this.$refs.image,

@@ -90,7 +90,7 @@ const projectData = [
           parking space. Thankfully, we have a website that shows students how full each garage is.
           The problem: it doesn't show past days, and there's no public API for it. UCF Parking is a
           website (and API) that allows anyone to see how full each of UCF's 7 garages were at the top
-          of each hour. With over 13,000 data points, it's now easier that ever to determine where
+          of each hour. With over 40,000 data points, it's now easier that ever to determine where
           to park.`
       },
       {
