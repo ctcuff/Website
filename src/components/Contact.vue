@@ -22,33 +22,41 @@
   </div>
 </template>
 
-<script>
+<script lang="ts">
   import { gsap } from 'gsap'
+  import Vue from 'vue'
+  import Component from 'vue-class-component'
+  import { NavigationGuardNext, Route } from 'vue-router'
 
-  export default {
-    data: () => ({
-      textAnimationDuration: 0.8,
-      animationStagger: 0.1,
-      links: [
-        {
-          text: 'GitHub',
-          url: 'https://github.com/ctcuff'
-        },
-        {
-          text: 'LinkedIn',
-          url: 'https://www.linkedin.com/in/~cameron/'
-        },
-        {
-          text: 'Resume',
-          url: '../cameron_cuff_resume.pdf'
-        },
-        {
-          text: 'Email',
-          url: 'mailto:dev.ctcuff@gmail.com'
-        }
-      ]
-    }),
-    beforeRouteLeave(to, from, next) {
+  type Link = {
+    text: string
+    url: string
+  }
+
+  @Component
+  export default class Contact extends Vue {
+    textAnimationDuration = 0.8
+    animationStagger = 0.1
+    links: Link[] = [
+      {
+        text: 'GitHub',
+        url: 'https://github.com/ctcuff'
+      },
+      {
+        text: 'LinkedIn',
+        url: 'https://www.linkedin.com/in/~cameron/'
+      },
+      {
+        text: 'Resume',
+        url: '../cameron_cuff_resume.pdf'
+      },
+      {
+        text: 'Email',
+        url: 'mailto:dev.ctcuff@gmail.com'
+      }
+    ]
+
+    beforeRouteLeave(_to: Route, _from: Route, next: NavigationGuardNext) {
       const rows = document.querySelectorAll('.contact__row')
 
       gsap
@@ -59,7 +67,8 @@
           ease: 'power2.in'
         })
         .eventCallback('onComplete', () => next())
-    },
+    }
+
     mounted() {
       const rows = document.querySelectorAll('.contact__row')
 

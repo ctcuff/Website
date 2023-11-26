@@ -1,4 +1,33 @@
-const projectData = [
+type ProjectSection = {
+  heading: string
+  text: string
+}
+
+type ProjectData = {
+  title: string
+  id: string
+  image: {
+    src: string
+    alt: string
+  }
+  links: {
+    github?: string
+    website?: string
+  }
+  sections: ProjectSection[]
+}
+
+type Project = {
+  title: string
+  description: string
+  backgroundImage: string
+  foregroundImage: string
+  imageAlt: string
+  data: ProjectData
+  link: string
+}
+
+const projectData: ProjectData[] = [
   {
     title: 'Git Browser',
     id: 'git-browser',
@@ -324,7 +353,7 @@ const projects = [
     backgroundImage: require('./assets/images/vscode-font-preview-fullscreen.png'),
     foregroundImage: require('./assets/images/vscode-font-viewer.png'),
     imageAlt: 'VS Code font preview extension screenshot',
-    data: projectData.find(data => data.id === 'font-preview')
+    data: projectData.find(data => data.id === 'font-preview')!
   },
   {
     title: 'UCF Parking',
@@ -332,7 +361,7 @@ const projects = [
     backgroundImage: require('./assets/images/ucf-parking-fullscreen.png'),
     foregroundImage: require('./assets/images/ucf-parking.png'),
     imageAlt: 'UCF parking website screenshot',
-    data: projectData.find(data => data.id === 'ucf-parking')
+    data: projectData.find(data => data.id === 'ucf-parking')!
   },
   {
     title: 'Portfolio',
@@ -340,7 +369,7 @@ const projects = [
     backgroundImage: require('./assets/images/portfolio-fullscreen.png'),
     foregroundImage: require('./assets/images/portfolio.png'),
     imageAlt: 'Portfolio website screenshot',
-    data: projectData.find(data => data.id === 'portfolio')
+    data: projectData.find(data => data.id === 'portfolio')!
   },
   {
     title: 'Dependency Visualizer',
@@ -348,7 +377,7 @@ const projects = [
     backgroundImage: require('./assets/images/dependency-visualizer-fullscreen.png'),
     foregroundImage: require('./assets/images/dependency-visualizer.png'),
     imageAlt: 'Dependency visualizer website screenshot',
-    data: projectData.find(data => data.id === 'dependency-visualizer')
+    data: projectData.find(data => data.id === 'dependency-visualizer')!
   },
   {
     title: 'Git Browser',
@@ -356,7 +385,7 @@ const projects = [
     backgroundImage: require('./assets/images/git-browser-fullscreen.png'),
     foregroundImage: require('./assets/images/git-browser.png'),
     imageAlt: 'Git Browser website screenshot',
-    data: projectData.find(data => data.id === 'git-browser')
+    data: projectData.find(data => data.id === 'git-browser')!
   },
   {
     title: 'Live Code',
@@ -364,10 +393,10 @@ const projects = [
     backgroundImage: require('./assets/images/livecode-fullscreen.png'),
     foregroundImage: require('./assets/images/livecode.png'),
     imageAlt: 'Live code website screenshot',
-    data: projectData.find(data => data.id === 'live-code')
+    data: projectData.find(data => data.id === 'live-code')!
   }
-]
+] as Project[]
 
-projects.forEach((project, index) => (project.link = `/project?index=${index}`))
+projects.forEach((project, index) => ((project as Project).link = `/project?index=${index}`))
 
 export { projects }

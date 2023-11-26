@@ -1,9 +1,9 @@
 import Vue from 'vue'
-import Router from 'vue-router'
-import Home from '@/components/Home'
-import About from '@/components/About'
-import Projects from '@/components/Projects'
-import Contact from '@/components/Contact'
+import Router, { NavigationGuardNext, Route } from 'vue-router'
+import Home from '@/components/Home.vue'
+import About from '@/components/About.vue'
+import Projects from '@/components/Projects.vue'
+import Contact from '@/components/Contact.vue'
 import ProjectInfo from '@/components/ProjectInfo.vue'
 
 Vue.use(Router)
@@ -36,7 +36,7 @@ const router = new Router({
   ]
 })
 
-router.beforeEach((to, from, next) => {
+router.beforeEach((to: Route, _from: Route, next: NavigationGuardNext<Vue>) => {
   if (noOverflowRoutes.includes(to.path)) {
     document.body.classList.add('no-overflow')
   } else {

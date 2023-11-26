@@ -1,6 +1,9 @@
+import 'vue-class-component/hooks'
+import './class-component-hooks'
 import Vue from 'vue'
-import App from './App'
+import App from './components/App.vue'
 import router from './router'
+// @ts-ignore
 import CSSPlugin from 'gsap/CSSPlugin'
 import './scss/global.scss'
 import 'splitting/dist/splitting.css'
@@ -8,7 +11,7 @@ import 'splitting/dist/splitting-cells.css'
 
 // Needed to make sure animations work in production
 // see https://github.com/greensock/GreenSock-JS/issues/285#issuecomment-433729632
-// eslint-disable-next-line no-unused-vars
+// eslint-disable-next-line @typescript-eslint/no-unused-vars
 const _ = CSSPlugin
 
 Vue.config.productionTip = false

@@ -1,43 +1,49 @@
 {
-    "root": true,
-    "env": {
-        "node": true
-    },
-    "extends": [
-        "plugin:vue/essential",
-        "eslint:recommended"
-    ],
-    "overrides": [
-        {
-            "files": [
-                "*.vue",
-                "*.js"
-            ],
-            "rules": {
-                "semi": [
-                    "error",
-                    "never"
-                ],
-                "no-console": "error",
-                "no-unused-vars": [
-                    "error",
-                    {
-                        "args":"after-used"
-                    }
-                ],
-                "no-mixed-spaces-and-tabs": "error",
-                "no-trailing-spaces": "error",
-                "no-var": "error",
-                "object-curly-spacing": [
-                    "error",
-                    "always"
-                ],
-                "no-alert": "error",
-                "no-prototype-builtins": "off"
-            }
-        }
-    ],
-    "parserOptions":{
-        "parser":"babel-eslint"
+  "root": true,
+  "env": {
+    "node": true
+  },
+  "parserOptions": {
+    "parser": "@typescript-eslint/parser"
+  },
+  "extends": [
+    "plugin:vue/essential",
+    "eslint:recommended",
+    "@vue/typescript"
+  ],
+  "overrides": [
+    {
+      "files": [
+        "*.vue",
+        "*.js",
+        "*.ts"
+      ],
+      "rules": {
+        "semi": [
+          "error",
+          "never"
+        ],
+        "no-console": "warn",
+        // Disabled to let TypeScript handle unused variable checking.
+        // Otherwise, ESLint would report unused variables in a type's
+        // function callback declaration
+        "no-unused-vars": "off",
+        "no-mixed-spaces-and-tabs": "error",
+        "no-trailing-spaces": "error",
+        "no-var": "error",
+        "object-curly-spacing": [
+          "error",
+          "always"
+        ],
+        "no-alert": "error",
+        "no-prototype-builtins": "off",
+        "@typescript-eslint/no-unused-vars": [
+          "error",
+          {
+            "args": "after-used"
+          }
+        ]
+      }
     }
+  ]
 }

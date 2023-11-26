@@ -12,10 +12,17 @@
   </nav>
 </template>
 
-<script>
+<script lang="ts">
   import { gsap } from 'gsap'
+  import Vue from 'vue'
+  import Component from 'vue-class-component'
 
-  export default {
+  @Component
+  export default class Navbar extends Vue {
+    $refs!: {
+      navbar: HTMLElement
+    }
+
     mounted() {
       gsap.fromTo(
         this.$refs.navbar,

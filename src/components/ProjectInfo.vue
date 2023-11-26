@@ -35,36 +35,38 @@
       </div>
     </section>
     <div class="all-projects-link" data-animate>
-      <router-link :to="`/projects?index=${index}`">
+      <router-link :to="`/projects?index=${projectIndex}`">
         Back to all projects
       </router-link>
     </div>
   </div>
 </template>
 
-<script>
+<script lang="ts">
   // Polyfill
   import 'intersection-observer'
   import { gsap } from 'gsap'
   import { projects } from '@/project-info'
   import ScrollBar from 'smooth-scrollbar'
   import splitting from 'splitting'
+  import Component from 'vue-class-component'
+  import Vue from 'vue'
+  import { NavigationGuardNext, Route } from 'vue-router'
 
-  export default {
-    data() {
-      let index = this.$route.query && this.$route.query.index
+  @Component
+  export default class ProjectInfo extends Vue {
+    $refs!: {
+      header: HTMLHeadingElement,
+      image: HTMLImageElement,
+      links: HTMLElement
+    }
 
-      if (index) {
-        index = parseInt(this.$route.query.index)
-      }
+    animationDuration = 0.8
+    projectIndex = parseInt((this.$route.query.index as string | null) || '') || 0
+    projectData = projects[this.projectIndex].data
+    targetElements: Element[] = []
 
-      return {
-        projectData: projects[index].data || projects[0].data,
-        animationDuration: 0.8,
-        index
-      }
-    },
-    beforeRouteLeave(_to, _from, next) {
+    beforeRouteLeave(_to: Route, _from: Route, next: NavigationGuardNext) {
       const headerText = this.$refs.header.querySelectorAll('.word > .char')
 
       gsap
@@ -102,14 +104,40 @@
           },
           0
         )
-    },
+    }
+
+    initObserver() {
+      const opts = {
+        margin: '0px',
+        threshold: 0.5
+      }
+
+      const observer = new IntersectionObserver((entries, observer) => {
+        entries.forEach(entry => {
+          if (entry.intersectionRatio > 0) {
+            this.animateElement(entry.target)
+            observer.unobserve(entry.target)
+          }
+        })
+      }, opts)
+
+      this.targetElements.forEach(element => observer.observe(element))
+    }
+
+    animateElement(target: Element) {
+      gsap.to(target, {
+        opacity: 1,
+        duration: this.animationDuration
+      })
+    }
+
     mounted() {
       splitting()
-      this.targetElements = document.querySelectorAll('[data-animate]')
+      this.targetElements = Array.from(document.querySelectorAll('[data-animate]'))
 
       // Value comes from _breakpoints.scss
       if (window.innerWidth >= 992) {
-        ScrollBar.init(document.querySelector('.app'))
+        ScrollBar.init(document.querySelector('.app')! as HTMLElement)
       }
 
       const headerText = this.$refs.header.querySelectorAll('.word > .char')
@@ -147,31 +175,6 @@
         )
 
       this.initObserver()
-    },
-    methods: {
-      initObserver() {
-        const opts = {
-          margin: '0px',
-          threshold: 0.5
-        }
-
-        const observer = new IntersectionObserver((entries, observer) => {
-          entries.forEach(entry => {
-            if (entry.intersectionRatio > 0) {
-              this.animateElement(entry.target)
-              observer.unobserve(entry.target)
-            }
-          })
-        }, opts)
-
-        this.targetElements.forEach(element => observer.observe(element))
-      },
-      animateElement(target) {
-        gsap.to(target, {
-          opacity: 1,
-          duration: this.animationDuration
-        })
-      }
     }
   }
 </script>

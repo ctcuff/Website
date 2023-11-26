@@ -15,10 +15,10 @@
         </div>
         <div class="no-overflow">
           <p class="content__about-text" ref="aboutText">
-            I was born at a very young age... Ok, I won't bore you with
-            my life story so here's the jist: I'm a Florida native currently working as a
-            software engineer at Microsoft. In my free time, I like to play piano and tenor
-            sax and occasionally bake.
+            I was born at a very young age... Ok, I won't bore you with my life story so
+            here's the jist: I'm a Florida native currently working as a software engineer
+            at Microsoft. In my free time, I like to play piano and tenor sax and
+            occasionally bake.
           </p>
         </div>
       </section>
@@ -26,14 +26,23 @@
   </div>
 </template>
 
-<script>
+<script lang="ts">
   import { gsap } from 'gsap'
+  import Vue from 'vue'
+  import Component from 'vue-class-component'
+  import { NavigationGuardNext, Route } from 'vue-router'
 
-  export default {
-    data: () => ({
-      animationDuration: 0.8
-    }),
-    beforeRouteLeave(to, from, next) {
+  @Component
+  export default class About extends Vue {
+    $refs!: {
+      profileImage: HTMLImageElement,
+      aboutHeader: HTMLHeadingElement,
+      aboutText: HTMLParagraphElement
+    }
+
+    animationDuration = 0.8
+
+    beforeRouteLeave(_to: Route, _from: Route, next: NavigationGuardNext) {
       const timelineOpts = {
         opacity: 0,
         ease: 'power1.in',
@@ -43,6 +52,7 @@
 
       gsap
         .timeline()
+        .eventCallback('onComplete', () => next())
         .to(this.$refs.aboutText, timelineOpts, 0)
         .to(this.$refs.aboutHeader, timelineOpts, 0)
         .to(
@@ -54,9 +64,9 @@
           },
           0
         )
-        .eventCallback('onComplete', () => next())
         .play(0)
-    },
+    }
+
     mounted() {
       const aboutContent = document.querySelectorAll(
         '.content__about-header, .content__about-text'
@@ -79,9 +89,7 @@
 
       gsap.fromTo(
         this.$refs.profileImage,
-        {
-          opacity: 0
-        },
+        { opacity: 0 },
         {
           opacity: 1,
           duration: this.animationDuration

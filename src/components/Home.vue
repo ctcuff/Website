@@ -14,17 +14,26 @@
   </div>
 </template>
 
-<script>
+<script lang="ts">
+  import Vue from 'vue'
+  import splitting from 'splitting'
   import { gsap } from 'gsap'
-  import Splitting from 'splitting'
+  import Component from 'vue-class-component'
+  import { NavigationGuardNext, Route } from 'vue-router'
 
-  export default {
-    data: () => ({
-      animationDuration: 1,
-      animationStagger: 0.06
-    }),
-    beforeRouteLeave(to, from, next) {
+  @Component
+  export default class Home extends Vue {
+    $refs!: {
+      contactLink: Vue,
+      message: HTMLParagraphElement
+    }
+
+    animationDuration = 1
+    animationStagger = 0.06
+
+    beforeRouteLeave(_to: Route, _from: Route, next: NavigationGuardNext) {
       const text = document.querySelectorAll('.content__text .word > .char')
+
       gsap
         .timeline()
         .to(
@@ -59,9 +68,10 @@
           0
         )
         .eventCallback('onComplete', () => next())
-    },
+    }
+
     mounted() {
-      Splitting()
+      splitting()
       const text = document.querySelectorAll('.content__text .word > .char')
 
       gsap
