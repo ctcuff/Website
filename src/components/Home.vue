@@ -1,8 +1,8 @@
 <template>
   <div class="content">
-    <p class="content__text content__text--name no-overflow" data-splitting>
+    <h1 class="content__text content__text--name no-overflow" data-splitting>
       Cameron Cuff
-    </p>
+    </h1>
     <div class="no-overflow">
       <p class="content__text" ref="message">
         I make things sometimes.
@@ -24,7 +24,7 @@
   @Component
   export default class Home extends Vue {
     $refs!: {
-      contactLink: Vue,
+      contactLink: Vue
       message: HTMLParagraphElement
     }
 

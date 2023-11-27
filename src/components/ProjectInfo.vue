@@ -1,5 +1,5 @@
 <template>
-  <div class="root">
+  <div class="root" ref="root" data-simplebar>
     <header class="project-header">
       <h1 class="no-overflow" ref="header" data-splitting>{{ projectData.title }}</h1>
     </header>
@@ -47,7 +47,6 @@
   import 'intersection-observer'
   import { gsap } from 'gsap'
   import { projects } from '@/project-info'
-  import ScrollBar from 'smooth-scrollbar'
   import splitting from 'splitting'
   import Component from 'vue-class-component'
   import Vue from 'vue'
@@ -56,29 +55,30 @@
   @Component
   export default class ProjectInfo extends Vue {
     $refs!: {
-      header: HTMLHeadingElement,
-      image: HTMLImageElement,
+      header: HTMLHeadingElement
+      image: HTMLImageElement
       links: HTMLElement
+      root: HTMLDivElement
     }
 
+    /**
+     * Used to apply a fade transition to any element with the [data-animate] attribute
+     */
+    targetElements: Element[] = []
     animationDuration = 0.8
     projectIndex = parseInt((this.$route.query.index as string | null) || '') || 0
     projectData = projects[this.projectIndex].data
-    targetElements: Element[] = []
 
     beforeRouteLeave(_to: Route, _from: Route, next: NavigationGuardNext) {
       const headerText = this.$refs.header.querySelectorAll('.word > .char')
 
       gsap
         .timeline()
-        .eventCallback('onComplete', () => {
-          ScrollBar.destroyAll()
-          next()
-        })
+        .eventCallback('onComplete', () => next())
         .to(
           headerText,
           {
-            y: '100%',
+            y: '-100%',
             opacity: 0,
             ease: 'power2.in',
             duration: 1,
@@ -134,11 +134,6 @@
     mounted() {
       splitting()
       this.targetElements = Array.from(document.querySelectorAll('[data-animate]'))
-
-      // Value comes from _breakpoints.scss
-      if (window.innerWidth >= 992) {
-        ScrollBar.init(document.querySelector('.app')! as HTMLElement)
-      }
 
       const headerText = this.$refs.header.querySelectorAll('.word > .char')
 

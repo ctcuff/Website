@@ -397,6 +397,8 @@ const projects = [
   }
 ] as Project[]
 
-projects.forEach((project, index) => ((project as Project).link = `/project?index=${index}`))
+projects.forEach(
+  (project, index) => ((project as Project).link = `/project?index=${index}`)
+)
 
 export { projects }

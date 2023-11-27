@@ -35,8 +35,8 @@
   @Component
   export default class About extends Vue {
     $refs!: {
-      profileImage: HTMLImageElement,
-      aboutHeader: HTMLHeadingElement,
+      profileImage: HTMLImageElement
+      aboutHeader: HTMLHeadingElement
       aboutText: HTMLParagraphElement
     }
 

@@ -196,23 +196,28 @@
       const text = gsap.utils.toArray([projectTitle, projectDescription, projectLink])
       const images = gsap.utils.toArray([projectImageForeground, projectImageBackground])
       const duration = 0.5
-
-      this.isAnimating = true
+      const textStagger = 0.1
 
       // Adding will-change to the images before animation
       // improves animation performance in other browsers
       gsap
         .timeline()
-        .add(() => gsap.set(images, { willChange: 'opacity' }))
+        .add(() => {
+          this.isAnimating = true
+        })
+        .set(images, { willChange: 'opacity' })
         .to(
           text,
           {
-            y: direction === 'UP' ? '-100%' : '100%',
+            duration,
+            y: direction === 'UP' ? '100%' : '-100%',
             ease: 'power2.in',
-            duration
+            stagger: textStagger * (direction === 'UP' ? -1 : 1),
+            opacity: 0
           },
           0
         )
+        .set(text, { y: direction === 'UP' ? '-100%' : '100%' })
         .to(
           images,
           {
@@ -225,11 +230,13 @@
         .to(
           text,
           {
-            y: '0%',
             duration,
-            ease: 'power1.out'
+            y: '0%',
+            ease: 'power1.out',
+            stagger: textStagger * (direction === 'UP' ? -1 : 1),
+            opacity: 1
           },
-          1
+          1 + textStagger
         )
         .to(
           images,
@@ -237,10 +244,12 @@
             opacity: 1,
             duration
           },
-          1
+          1 + textStagger
         )
-        .add(() => gsap.set(images, { willChange: 'auto' }))
-        .add(() => (this.isAnimating = false))
+        .set(images, { willChange: 'auto' })
+        .add(() => {
+          this.isAnimating = false
+        })
     }
 
     beforeRouteLeave(_to: Route, _from: Route, next: NavigationGuardNext) {

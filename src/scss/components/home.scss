@@ -11,6 +11,10 @@
   @include font('AvenirNext');
 }
 
+p.content__text {
+  color: var(--text-color);
+}
+
 .content__text {
   margin: 0;
 }
