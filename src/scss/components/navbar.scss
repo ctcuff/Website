@@ -1,5 +1,6 @@
 @import '../mixins/breakpoints';
 @import '../mixins/fonts';
+@import '../mixins/colors';
 
 .navbar {
   position: absolute;
@@ -13,7 +14,7 @@
 
   @include breakpoint(lg) {
     font-size: 1em;
-    margin-top: 3em;
+    margin-top: 2.5em;
   }
 }
 
@@ -21,7 +22,7 @@
   @include font('AvenirNext');
 
   text-decoration: none;
-  color: var(--text-color);
+  color: $text-color;
   position: relative;
   overflow: hidden;
 

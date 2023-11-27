@@ -1,5 +1,6 @@
 @import '../mixins/height';
 @import '../mixins/fonts';
+@import '../mixins/colors';
 
 .content {
   display: flex;
@@ -12,7 +13,7 @@
 }
 
 p.content__text {
-  color: var(--text-color);
+  color: $text-color;
 }
 
 .content__text {
@@ -22,7 +23,7 @@ p.content__text {
 .content__text--name {
   font-size: 10vw;
   letter-spacing: 2px;
-  color: var(--heading-color);
+  color: $heading-color;
 
   @include font('AvenirNext-Bold');
 }
@@ -32,11 +33,11 @@ p.content__text {
   bottom: 0;
   margin-bottom: 1em;
   text-decoration: none;
-  color: var(--heading-color);
+  color: $heading-color;
 
   &:active,
   &:visited {
-    color: var(--heading-color);
+    color: $heading-color;
   }
 
   &::before {
