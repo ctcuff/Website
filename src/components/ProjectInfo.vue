@@ -113,22 +113,18 @@
       }
 
       const observer = new IntersectionObserver((entries, observer) => {
-        entries.forEach(entry => {
-          if (entry.intersectionRatio > 0) {
-            this.animateElement(entry.target)
-            observer.unobserve(entry.target)
+        entries.forEach(({ intersectionRatio, target }) => {
+          if (intersectionRatio > 0) {
+            gsap.to(target, {
+              opacity: 1,
+              duration: this.animationDuration
+            })
+            observer.unobserve(target)
           }
         })
       }, opts)
 
       this.targetElements.forEach(element => observer.observe(element))
-    }
-
-    animateElement(target: Element) {
-      gsap.to(target, {
-        opacity: 1,
-        duration: this.animationDuration
-      })
     }
 
     mounted() {

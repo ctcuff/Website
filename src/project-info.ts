@@ -120,7 +120,8 @@ const projectData: ProjectData[] = [
           The problem: it doesn't show past days, and there's no public API for it. UCF Parking is a
           website (and API) that allows anyone to see how full each of UCF's 7 garages were at the top
           of each hour. With over 40,000 data points, it's now easier that ever to determine where
-          to park.`
+          to park.
+        `
       },
       {
         heading: 'How it works',
@@ -133,7 +134,8 @@ const projectData: ProjectData[] = [
           Every hour, Heroku runs a command that tells a Python server to scrape UCF's
           website. The data it scrapes is saved as JSON into a MongoDB database. Vue comes
           along, asks that Python server for some data, and displays it with some fancy
-          charts.`
+          charts.
+        `
       },
       {
         heading: 'What I learned',
@@ -147,7 +149,8 @@ const projectData: ProjectData[] = [
           platform. I learned about their monitoring system and was able to reduce my
           project's memory usage and response time because of it. They even offer continuous
           integration and deployment, so pushing the next version of my site is as easy as
-          pushing to a branch on GitHub.`
+          pushing to a branch on GitHub.
+        `
       }
     ]
   },
@@ -173,7 +176,8 @@ const projectData: ProjectData[] = [
           lets you view a graph of every dependency a package relies on. It also
           shows you the stats of said package (assuming they're available). Did you know
           that "is-number" has been downloaded 126,000,000 times? And to think I barely passed
-          my math class...`
+          my math class...
+        `
       },
       {
         heading: 'How it works',
@@ -187,7 +191,8 @@ const projectData: ProjectData[] = [
           unclean stack and put it on another stack to dry. When there are no more dirty dishes,
           what you have left is a stack of clean dishes. Using a graphing library, each dependency
           is saved as parent node and child nodes. This allows every dependency to be rendered
-          with lines pointing to what packages rely on each other.`
+          with lines pointing to what packages rely on each other.
+        `
       },
       {
         heading: 'What I learned',
@@ -199,7 +204,8 @@ const projectData: ProjectData[] = [
           for network requests and a graph to display dependencies. Another problem I faced was making
           sure I didn't keep making the same request. To solve this, I implemented my own cache using
           the browser's local storage. This way, once a request has been made, subsequent look-ups
-          become much faster. This project was ultimately a huge lesson in writing efficient code.`
+          become much faster. This project was ultimately a huge lesson in writing efficient code.
+        `
       }
     ]
   },
@@ -228,7 +234,8 @@ const projectData: ProjectData[] = [
           redesigned the site, ditched Bootstrap, and decided to go with vanilla CSS/SCSS
           for everything (that's the screenshot you see above). Today, I'm still using Vue,
           but I continue to style the site from scratch. I think it gives me a much better
-          appreciation for CSS and gets those creative juices flowing.`
+          appreciation for CSS and gets those creative juices flowing.
+        `
       },
       {
         heading: 'The approach',
@@ -241,7 +248,8 @@ const projectData: ProjectData[] = [
           When I get stuck, I open up Chrome's dev tools and checkout the site's styling
           to see how they did it. Doing this helps me see that there's never just one way to
           do anything and I get to learn how other developers think in the process. It
-          makes me realize just how much I don't know.`
+          makes me realize just how much I don't know.
+        `
       },
       {
         heading: 'How I build a project',
@@ -262,7 +270,8 @@ const projectData: ProjectData[] = [
           a hot new framework. Maybe I hear somewhere that language X is rising in popularity.
           When the project is finished, I think about what could be better and try to improve upon it.
           Maybe there's a database request I can try and optimize. Maybe there's a component I can
-          try and make more accessible. Maybe there are some tiny features that could be added.`
+          try and make more accessible. Maybe there are some tiny features that could be added.
+        `
       },
       {
         heading: 'What I learned',
@@ -294,13 +303,14 @@ const projectData: ProjectData[] = [
       {
         heading: 'Write code together',
         text: `
-        Imagine this: you've got your coding interview scheduled. It's online. You're
-        excited because you finally get to showcase your coding skills. The time comes.
-        You get the link. You open up the website... and you're asked to write
-        code on Google Docs... yikes... Wouldn't it be nice to write code in your browser,
-        like you do with VSCode? Well fear not! LiveCode is a website that lets you write
-        code with other people. Just sign in, connect to a workspace, and code like you
-        never even left your text editor.`
+          Imagine this: you've got your coding interview scheduled. It's online. You're
+          excited because you finally get to showcase your coding skills. The time comes.
+          You get the link. You open up the website... and you're asked to write
+          code on Google Docs... yikes... Wouldn't it be nice to write code in your browser,
+          like you do with VSCode? Well fear not! LiveCode is a website that lets you write
+          code with other people. Just sign in, connect to a workspace, and code like you
+          never even left your text editor.
+        `
       },
       {
         heading: 'How it works',
@@ -314,7 +324,8 @@ const projectData: ProjectData[] = [
           entire content of the editor on every keystroke, all the text in the editor is only
           broadcast when a user first joins. Subsequent broadcasts contain only new characters
           inserted and the line number/position of those characters. This equates to a better user
-          experience and less data transferred.`
+          experience and less data transferred.
+        `
       },
       {
         heading: 'What I learned',
@@ -327,7 +338,8 @@ const projectData: ProjectData[] = [
           how to implement Firebase security rules, preventing outside users from accessing
           information they shouldn't have access to. Because a large part of the project was front
           end, I learned a ton about material components, color, and responsive design. Yes,
-          I did have to Google "How to center a div" a few times... cut me some slack ok...`
+          I did have to Google "How to center a div" a few times... cut me some slack ok...
+        `
       }
     ]
   },
@@ -342,7 +354,68 @@ const projectData: ProjectData[] = [
       github: 'https://github.com/ctcuff/vscode-font-preview',
       website: 'https://marketplace.visualstudio.com/items?itemName=ctcuff.font-preview'
     },
-    sections: []
+    sections: [
+      {
+        heading: 'Is comic sans really that bad?',
+        text: `
+          This answer is yes, but at least now you're able to prove it without ever leaving
+          VS Code! Font Preview is an extension that allows you to view information about
+          a font such as a list of glyphs included, different font features, licensing information
+          and much more. The extension also allows you to dynamically toggle font features
+          and view those changes in real time. This is extremely useful for variable fonts
+          because it allows you to craft the perfect mixture of slant, weight, and strength (assuming
+          the font you're previewing supports that). The extension currently supports OTF, TTF, TTC,
+          WOFF, and WOFF2 font files up to 30 MB.
+        `
+      },
+      {
+        heading: 'How it works',
+        text: `
+          This project was actually created because of a discovery I found when making my Git Browser
+          project. I was looking for a way to display font files in the browser when I read that it could
+          actually be converted to a base64 string and displayed as a font face using CSS. That was an
+          interesting discovery but I wanted to bring that functionality into VS Code somehow. The solution
+          was to render a React application inside VS Code using the WebView API and essentially do exactly
+          what I did in the browser but in the editor instead. The benefit of this setup is that the code
+          that powers the extension and the code the code that runs the React application can live in the
+          same place yet still be separate enough to not compete with each other. In order for the extension
+          to load a font, the webview makes a request to the extension side to grab the font, encode it,
+          the display it in CSS.`
+      },
+      {
+        heading: 'Interesting challenges, interesting solutions',
+        text: `
+          Difficult or easy, every project has road blocks and this was extension certainly no exception.
+          One of the first issues I encountered was that a user had trouble loading a 16 MB font file.
+          This was because I was loading the font on the extension side, decoding it to a base64 string,
+          then sending that massive string to the webview using postMessage() causing the webview to freeze.
+          The solution was to instead load the font on the webview side. Sounds crazy because I just
+          said that loading large font files caused freezing right? Well, web workers to the rescue! In
+          the new implementation, the webview makes an async request to the extension side using fetch()
+          to load the font file into an ArrayBuffer. After that, the webview creates a web worker and sends
+          the ArrayBuffer data to the worker. The worker can then decode that ArrayBuffer data into a base64
+          string and use postMessage() to send that data back to the webview. Not only can the previously
+          un-renderable font be rendered in a matter of seconds, this solution completely eliminates the
+          previous restriction I set on the maximum file size. Although, the extension still can't render
+          fonts greater than 30 MB because that's the largest web font Chromium can transcode.
+        `
+      },
+      {
+        heading: 'What I learned',
+        text: `
+          Fonts are so much more complicated than I thought. I had very surface level knowledge of
+          variable fonts but I knew absolutely nothing about discretionary ligatures or
+          optical bounds or ornaments or the hundreds of other font features that exist. Not only
+          did I have to navigate the world of fonts, I also had to learn how to make an entire VS code
+          extension. Documentation goes a long way but unfortunately it can only cover so much. I had
+          a lot of trouble figuring out how to set up what's essentially a React app rendered in VS Code.
+          Once that was configured, the next pain point was figuring out how to pass data from the
+          React app to the extension and vice versa. Honestly, the great part about struggling is that
+          you really only have to do it once (or multiple times like me), but once you figure it
+          out and overcome the struggle, every similar project or setup is 100 times easier.
+        `
+      }
+    ]
   }
 ]
 
@@ -354,22 +427,6 @@ const projects = [
     foregroundImage: require('./assets/images/vscode-font-viewer.png'),
     imageAlt: 'VS Code font preview extension screenshot',
     data: projectData.find(data => data.id === 'font-preview')!
-  },
-  {
-    title: 'UCF Parking',
-    description: 'A website and API to keep track of parking spaces.',
-    backgroundImage: require('./assets/images/ucf-parking-fullscreen.png'),
-    foregroundImage: require('./assets/images/ucf-parking.png'),
-    imageAlt: 'UCF parking website screenshot',
-    data: projectData.find(data => data.id === 'ucf-parking')!
-  },
-  {
-    title: 'Portfolio',
-    description: 'This very website and how I approach projects.',
-    backgroundImage: require('./assets/images/portfolio-fullscreen.png'),
-    foregroundImage: require('./assets/images/portfolio.png'),
-    imageAlt: 'Portfolio website screenshot',
-    data: projectData.find(data => data.id === 'portfolio')!
   },
   {
     title: 'Dependency Visualizer',
@@ -386,6 +443,22 @@ const projects = [
     foregroundImage: require('./assets/images/git-browser.png'),
     imageAlt: 'Git Browser website screenshot',
     data: projectData.find(data => data.id === 'git-browser')!
+  },
+  {
+    title: 'UCF Parking',
+    description: 'A website and API to keep track of parking spaces.',
+    backgroundImage: require('./assets/images/ucf-parking-fullscreen.png'),
+    foregroundImage: require('./assets/images/ucf-parking.png'),
+    imageAlt: 'UCF parking website screenshot',
+    data: projectData.find(data => data.id === 'ucf-parking')!
+  },
+  {
+    title: 'Portfolio',
+    description: 'This very website and how I approach projects.',
+    backgroundImage: require('./assets/images/portfolio-fullscreen.png'),
+    foregroundImage: require('./assets/images/portfolio.png'),
+    imageAlt: 'Portfolio website screenshot',
+    data: projectData.find(data => data.id === 'portfolio')!
   },
   {
     title: 'Live Code',
