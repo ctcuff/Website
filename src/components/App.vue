@@ -8,7 +8,7 @@
       <span v-for="(font, index) in fonts" :key="index" :style="{ fontFamily: font }">
       </span>
     </div>
-    <router-view v-if="preloadFinished"></router-view>
+    <router-view v-if="preloadFinished" />
     <Navbar v-if="preloadFinished" />
   </div>
 </template>

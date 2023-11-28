@@ -1,7 +1,9 @@
 <template>
   <div class="root" ref="root" data-simplebar>
     <header class="project-header">
-      <h1 class="no-overflow" ref="header" data-splitting>{{ projectData.title }}</h1>
+      <h1 class="no-overflow" ref="header" data-splitting data-observer-element>
+        {{ projectData.title }}
+      </h1>
     </header>
     <div class="project-image no-overflow">
       <img :src="projectData.image.src" :alt="projectData.image.alt" ref="image" />
@@ -107,22 +109,20 @@
     }
 
     initObserver() {
-      const opts = {
-        margin: '0px',
-        threshold: 0.5
-      }
-
-      const observer = new IntersectionObserver((entries, observer) => {
-        entries.forEach(({ intersectionRatio, target }) => {
-          if (intersectionRatio > 0) {
-            gsap.to(target, {
-              opacity: 1,
-              duration: this.animationDuration
-            })
-            observer.unobserve(target)
-          }
-        })
-      }, opts)
+      const observer = new IntersectionObserver(
+        (entries, observer) => {
+          entries.forEach(({ intersectionRatio, target }) => {
+            if (intersectionRatio > 0) {
+              gsap.to(target, {
+                opacity: 1,
+                duration: this.animationDuration
+              })
+              observer.unobserve(target)
+            }
+          })
+        },
+        { threshold: 0.5 }
+      )
 
       this.targetElements.forEach(element => observer.observe(element))
     }

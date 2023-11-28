@@ -100,7 +100,7 @@
         .fromTo(
           '.start-curtain .curtain__text',
           {
-            y: '20%',
+            y: '-10%',
             opacity: 0
           },
           {
@@ -116,7 +116,7 @@
             y: '-100%',
             ...animationOpts
           },
-          0.5
+          0.65
         )
         .to(
           '.curtain:not(.transition-curtain) .curtain__inner',
@@ -124,7 +124,7 @@
             y: '100%',
             ...animationOpts
           },
-          0.5
+          0.65
         )
 
       const homepageTimeline = gsap
