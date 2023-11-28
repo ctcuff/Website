@@ -1,4 +1,5 @@
 @import 'mixins/fonts';
+@import 'mixins/colors';
 
 *,
 *:before,
@@ -7,8 +8,8 @@
 }
 
 ::selection {
-  background: #353535;
-  color: #fff;
+  background: $selection-bg-color;
+  color: $selection-text-color;
 }
 
 html {
@@ -28,8 +29,4 @@ body {
 // of coming out of a container when animating
 .no-overflow {
   overflow: hidden;
-}
-
-.scrollbar-track.scrollbar-track-y {
-  background: #fff;
 }

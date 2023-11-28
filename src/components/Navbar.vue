@@ -4,7 +4,7 @@
       Projects
     </router-link>
     <router-link to="/" class="navbar__link">
-      Welcome to my portfolio
+      Home
     </router-link>
     <router-link to="/about" class="navbar__link">
       About
@@ -16,6 +16,7 @@
   import { gsap } from 'gsap'
   import Vue from 'vue'
   import Component from 'vue-class-component'
+  import { Watch } from 'vue-property-decorator'
 
   @Component
   export default class Navbar extends Vue {
@@ -23,19 +24,22 @@
       navbar: HTMLElement
     }
 
-    mounted() {
-      gsap.fromTo(
-        this.$refs.navbar,
-        {
-          opacity: 0,
-          y: '-100%'
-        },
-        {
+    @Watch('$store.state.isLandingAnimationFinished')
+    onLandingAnimationFinishedChange(finished: boolean) {
+      if (finished) {
+        gsap.to(this.$refs.navbar, {
           opacity: 1,
           duration: 1,
           y: '0%'
-        }
-      )
+        })
+      }
+    }
+
+    mounted() {
+      gsap.set(this.$refs.navbar, {
+        opacity: 0,
+        y: '-100%'
+      })
     }
   }
 </script>

@@ -21,7 +21,9 @@
     "vue": "^2.6.10",
     "vue-class-component": "^7.2.6",
     "vue-property-decorator": "^9.1.2",
-    "vue-router": "^3.1.2"
+    "vue-router": "^3.1.2",
+    "vuex": "^3.6.2",
+    "vuex-class": "^0.3.2"
   },
   "devDependencies": {
     "@types/gsap": "^3.0.0",

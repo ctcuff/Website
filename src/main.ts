@@ -8,6 +8,7 @@ import 'splitting/dist/splitting-cells.css'
 import Vue from 'vue'
 import App from './components/App.vue'
 import router from './router'
+import store from './store'
 // @ts-ignore
 import CSSPlugin from 'gsap/CSSPlugin'
 
@@ -20,5 +21,6 @@ Vue.config.productionTip = false
 
 new Vue({
   render: h => h(App),
-  router
+  router,
+  store
 }).$mount('#app')

@@ -56,3 +56,23 @@ p.content__text {
     transform-origin: left;
   }
 }
+
+.curtain:not(.transition-curtain):nth-child(odd) {
+  background-color: $bg-color;
+  color: $text-color;
+}
+
+.curtain:not(.transition-curtain):nth-child(even) {
+  background-color: $text-color;
+  color: $bg-color;
+}
+
+.transition-curtain {
+  transform: translateY(100%);
+  background-color: $text-color;
+  color: $bg-color;
+
+  .curtain__inner {
+    transform: translateY(-100%);
+  }
+}

@@ -8,8 +8,8 @@
       <span v-for="(font, index) in fonts" :key="index" :style="{ fontFamily: font }">
       </span>
     </div>
-    <Navbar />
-    <router-view></router-view>
+    <router-view v-if="preloadFinished"></router-view>
+    <Navbar v-show="preloadFinished" />
   </div>
 </template>
 
@@ -20,6 +20,7 @@
   import { projects } from '@/project-info'
   import profileImage from '@/assets/images/profile.svg'
   import { Component } from 'vue-property-decorator'
+  import { Mutation } from 'vuex-class'
 
   @Component({
     components: {
@@ -27,6 +28,10 @@
     }
   })
   export default class App extends Vue {
+    // eslint-disable-next-line @typescript-eslint/no-unused-vars
+    @Mutation setLandingAnimationFinished!: (finished: boolean) => void
+
+    preloadFinished = true
     fonts = ['AvenirNext', 'AvenirNext-Bold', 'Montserrat']
 
     mounted() {
@@ -46,6 +51,14 @@
         const image = new Image()
         image.src = path
       })
+
+      this.preloadFinished = true
+
+      // If the user starts the site on a route other than the home page,
+      // cancel the initial landing animation
+      if (this.$route.path !== '/') {
+        this.setLandingAnimationFinished(true)
+      }
     }
 
     destroyed() {

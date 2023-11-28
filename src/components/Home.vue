@@ -5,24 +5,36 @@
     </h1>
     <div class="no-overflow">
       <p class="content__text" ref="message">
-        I make things sometimes.
+        I write code sometimes.
       </p>
     </div>
     <router-link to="/contact" class="content__link" ref="contactLink">
       Contact
     </router-link>
+    <Curtain text="Welcome to my portfolio." v-if="!isLandingAnimationFinished" />
+    <Curtain text="Hello." class="start-curtain" v-if="!isLandingAnimationFinished" />
   </div>
 </template>
 
 <script lang="ts">
   import Vue from 'vue'
   import splitting from 'splitting'
-  import { gsap } from 'gsap'
+  import { gsap, Expo, Power2 } from 'gsap'
   import Component from 'vue-class-component'
+  import { Mutation, State } from 'vuex-class'
   import { NavigationGuardNext, Route } from 'vue-router'
+  import Curtain from '@/components/Curtain.vue'
 
-  @Component
+  @Component({
+    components: {
+      Curtain
+    }
+  })
   export default class Home extends Vue {
+    // eslint-disable-next-line @typescript-eslint/no-unused-vars
+    @Mutation setLandingAnimationFinished!: (finished: boolean) => void
+    @State isLandingAnimationFinished!: boolean
+
     $refs!: {
       contactLink: Vue
       message: HTMLParagraphElement
@@ -41,7 +53,7 @@
           {
             opacity: 0,
             duration: this.animationDuration,
-            ease: 'power2.in',
+            ease: Power2.easeIn,
             y: '-150%',
             stagger: this.animationStagger
           },
@@ -52,7 +64,7 @@
           {
             opacity: 0,
             duration: this.animationDuration,
-            ease: 'power2.in',
+            ease: Power2.easeIn,
             y: '100%'
           },
           0
@@ -63,7 +75,7 @@
             opacity: 0,
             duration: this.animationDuration,
             y: '150%',
-            ease: 'power2.in'
+            ease: Power2.easeIn
           },
           0
         )
@@ -74,8 +86,49 @@
       splitting()
       const text = document.querySelectorAll('.content__text .word > .char')
 
-      gsap
-        .timeline()
+      const animationOpts: gsap.TweenVars = {
+        duration: 1,
+        // Controls how long the first curtain shows
+        delay: 1.5,
+        // Controls how long other curtains show
+        stagger: -2.5,
+        ease: Expo.easeOut
+      }
+
+      const curtainTimeline = gsap
+        .timeline({ paused: true })
+        .fromTo(
+          '.start-curtain .curtain__text',
+          {
+            y: '20%',
+            opacity: 0
+          },
+          {
+            y: '0%',
+            opacity: 1,
+            duration: 1.5,
+            delay: 0.5
+          }
+        )
+        .to(
+          '.curtain:not(.transition-curtain)',
+          {
+            y: '-100%',
+            ...animationOpts
+          },
+          0.5
+        )
+        .to(
+          '.curtain:not(.transition-curtain) .curtain__inner',
+          {
+            y: '100%',
+            ...animationOpts
+          },
+          0.5
+        )
+
+      const homepageTimeline = gsap
+        .timeline({ paused: true })
         .fromTo(
           text,
           {
@@ -100,7 +153,7 @@
             opacity: 1,
             duration: this.animationDuration,
             y: '0%',
-            ease: 'power2.out'
+            ease: Power2.easeOut
           },
           0.5
         )
@@ -117,6 +170,18 @@
           },
           0
         )
+
+      if (!this.isLandingAnimationFinished) {
+        curtainTimeline
+          .delay(2)
+          .play()
+          .then(() => {
+            this.setLandingAnimationFinished(true)
+            homepageTimeline.play()
+          })
+      } else {
+        homepageTimeline.play()
+      }
     }
   }
 </script>
