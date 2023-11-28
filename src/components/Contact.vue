@@ -23,7 +23,7 @@
 </template>
 
 <script lang="ts">
-  import { gsap } from 'gsap'
+  import { gsap, Power2 } from 'gsap'
   import Vue from 'vue'
   import Component from 'vue-class-component'
   import { NavigationGuardNext, Route } from 'vue-router'
@@ -64,7 +64,7 @@
           y: '150%',
           stagger: -this.animationStagger,
           duration: this.textAnimationDuration,
-          ease: 'power2.in'
+          ease: Power2.easeIn
         })
         .eventCallback('onComplete', () => next())
     }

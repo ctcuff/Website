@@ -11,8 +11,8 @@
     <router-link to="/contact" class="content__link" ref="contactLink">
       Contact
     </router-link>
-    <Curtain text="Welcome to my portfolio." v-if="!isLandingAnimationFinished" />
-    <Curtain text="Hello." class="start-curtain" v-if="!isLandingAnimationFinished" />
+    <Curtain text="Welcome to my portfolio." v-show="!isLandingAnimationFinished" />
+    <Curtain text="Hello." class="start-curtain" v-show="!isLandingAnimationFinished" />
   </div>
 </template>
 

@@ -27,7 +27,7 @@
 </template>
 
 <script lang="ts">
-  import { gsap } from 'gsap'
+  import { gsap, Power1 } from 'gsap'
   import Vue from 'vue'
   import Component from 'vue-class-component'
   import { NavigationGuardNext, Route } from 'vue-router'
@@ -45,7 +45,7 @@
     beforeRouteLeave(_to: Route, _from: Route, next: NavigationGuardNext) {
       const timelineOpts = {
         opacity: 0,
-        ease: 'power1.in',
+        ease: Power1.easeIn,
         duration: this.animationDuration,
         y: '100%'
       }
@@ -68,12 +68,8 @@
     }
 
     mounted() {
-      const aboutContent = document.querySelectorAll(
-        '.content__about-header, .content__about-text'
-      )
-
       gsap.fromTo(
-        aboutContent,
+        [this.$refs.aboutHeader, this.$refs.aboutText],
         {
           opacity: 0,
           y: '100%'
@@ -82,7 +78,7 @@
           opacity: 1,
           duration: this.animationDuration,
           y: '0%',
-          ease: 'power1.out',
+          ease: Power1.easeOut,
           stagger: 0.2
         }
       )

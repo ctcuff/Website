@@ -383,7 +383,7 @@ const projectData: ProjectData[] = [
           the display it in CSS.`
       },
       {
-        heading: 'Interesting challenges, interesting solutions',
+        heading: 'Challenges and solutions',
         text: `
           Difficult or easy, every project has road blocks and this was extension certainly no exception.
           One of the first issues I encountered was that a user had trouble loading a 16 MB font file.

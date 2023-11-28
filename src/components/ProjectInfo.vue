@@ -45,7 +45,7 @@
 <script lang="ts">
   // Polyfill
   import 'intersection-observer'
-  import { gsap } from 'gsap'
+  import { gsap, Power2 } from 'gsap'
   import { projects } from '@/project-info'
   import splitting from 'splitting'
   import Component from 'vue-class-component'
@@ -80,7 +80,7 @@
           {
             y: '-100%',
             opacity: 0,
-            ease: 'power2.in',
+            ease: Power2.easeIn,
             duration: 1,
             stagger: 0.06
           },
@@ -91,7 +91,7 @@
           {
             y: '15%',
             opacity: 0,
-            ease: 'power2.in',
+            ease: Power2.easeIn,
             duration: this.animationDuration
           },
           0
@@ -145,7 +145,7 @@
             y: '0%',
             opacity: 1,
             duration: 1.4,
-            ease: 'power2.out',
+            ease: Power2.easeOut,
             stagger: 0.06
           },
           0
@@ -160,7 +160,7 @@
             y: '0%',
             opacity: 1,
             duration: 1.2,
-            ease: 'power2.out'
+            ease: Power2.easeOut
           },
           0.3
         )

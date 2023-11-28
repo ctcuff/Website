@@ -59,7 +59,7 @@
 
 <script lang="ts">
   import { projects } from '@/project-info'
-  import { gsap } from 'gsap'
+  import { gsap, Power1, Power2 } from 'gsap'
   import Vue from 'vue'
   import Component from 'vue-class-component'
   import { NavigationGuardNext, Route } from 'vue-router'
@@ -179,7 +179,7 @@
       gsap.to(this.$refs.scrollIndicator, {
         x: this.isMobile ? '100%' : '-100%',
         opacity: 0,
-        ease: 'power2.in',
+        ease: Power2.easeIn,
         duration: 1
       })
     }
@@ -211,7 +211,7 @@
           {
             duration,
             y: direction === 'UP' ? '100%' : '-100%',
-            ease: 'power2.in',
+            ease: Power2.easeIn,
             stagger: textStagger * (direction === 'UP' ? -1 : 1),
             opacity: 0
           },
@@ -232,7 +232,7 @@
           {
             duration,
             y: '0%',
-            ease: 'power1.out',
+            ease: Power1.easeOut,
             stagger: textStagger * (direction === 'UP' ? -1 : 1),
             opacity: 1
           },
@@ -264,19 +264,22 @@
 
       const text = gsap.utils.toArray([projectTitle, projectDescription, projectLink])
       const images = gsap.utils.toArray([projectImageBackground, projectImageForeground])
-      const ease = 'power2.in'
+
+      const animationOpts: gsap.TweenVars = {
+        ease: Power2.easeIn,
+        opacity: 0,
+        duration: this.animationDuration
+      }
 
       gsap
         .timeline()
         .eventCallback('onComplete', () => next())
-        .add(() => gsap.set(images, { willChange: 'opacity' }))
+        .set(images, { willChange: 'opacity' })
         .to(
           carouselList,
           {
             x: this.isMobile ? '100%' : '-100%',
-            duration: this.animationDuration,
-            opacity: 0,
-            ease
+            ...animationOpts
           },
           0
         )
@@ -284,22 +287,13 @@
           text,
           {
             y: '100%',
-            duration: this.animationDuration,
-            opacity: 0,
-            ease
+            stagger: -0.1,
+            ...animationOpts
           },
           0
         )
-        .to(
-          images,
-          {
-            duration: this.animationDuration,
-            opacity: 0,
-            ease
-          },
-          0
-        )
-        .add(() => gsap.set(images, { willChange: 'auto' }))
+        .to(images, animationOpts, 0)
+        .set(images, { willChange: 'auto' })
     }
 
     beforeDestroy() {
@@ -340,7 +334,7 @@
 
       gsap
         .timeline()
-        .add(() => gsap.set(images, { willChange: 'opacity' }))
+        .set(images, { willChange: 'opacity' })
         .fromTo(
           carouselList,
           {
@@ -363,22 +357,21 @@
           {
             y: '0%',
             opacity: 1,
-            duration: this.animationDuration
+            duration: this.animationDuration,
+            stagger: 0.1
           },
           0
         )
         .fromTo(
           images,
-          {
-            opacity: 0
-          },
+          { opacity: 0 },
           {
             opacity: 1,
             duration: this.animationDuration
           },
           0
         )
-        .add(() => gsap.set(images, { willChange: 'auto' }))
+        .set(images, { willChange: 'auto' })
     }
   }
 </script>

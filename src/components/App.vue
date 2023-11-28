@@ -9,7 +9,7 @@
       </span>
     </div>
     <router-view v-if="preloadFinished"></router-view>
-    <Navbar v-show="preloadFinished" />
+    <Navbar v-if="preloadFinished" />
   </div>
 </template>
 
@@ -45,9 +45,7 @@
         [] as string[]
       )
 
-      const allImages = [...projectImages, profileImage]
-
-      allImages.forEach((path: string) => {
+      Array.from([...projectImages, profileImage]).forEach((path: string) => {
         const image = new Image()
         image.src = path
       })
