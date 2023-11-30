@@ -35,7 +35,7 @@
   flex-direction: column-reverse;
   padding: 0 10%;
 
-  @include font('Avenir');
+  @include font('AvenirNext');
   @include full-height;
 
   @include breakpoint(sm) {
@@ -232,7 +232,7 @@
     right: auto;
   }
 
-  @include font('Avenir');
+  @include font('AvenirNext');
 
   ul {
     padding: 0;
